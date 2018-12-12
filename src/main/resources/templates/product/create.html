@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Product</title>
+</head>
+<body>
+<h1>CREATE PRODUCT</h1>
+<p>
+    <a href="/products">Chuyển đến trang danh sách</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<table>
+    <form th:action="@{/create-product}" th:object="${product}" method="post">
+        <tr>
+            <td>Name</td>
+            <td><input type="text" th:field="*{name}"></td>
+            <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
+        </tr>
+        <tr>
+            <td>Image</td>
+            <td><input type="text" th:field="*{image}"></td>
+        </tr>
+        <tr>
+            <td>Image1</td>
+            <td><input type="text" th:field="*{image1}"></td>
+        </tr>
+        <tr>
+            <td>Image2</td>
+            <td><input type="text" th:field="*{image2}"></td>
+        </tr>
+        <tr>
+            <td>Image3</td>
+            <td><input type="text" th:field="*{image3}"></td>
+        </tr>
+        <tr>
+            <td>Màu Sắc</td>
+            <td><input type="text" th:field="*{color}"></td>
+            <td th:if="${#fields.hasErrors('color')}" th:errors="*{color}">Color Error</td>
+        </tr>
+        <tr>
+            <td>Sản Phảm Hot</td>
+            <td><input type="text" th:field="*{hot}"></td>
+            <td th:if="${#fields.hasErrors('hot')}" th:errors="*{hot}">Hot Error</td>
+        </tr>
+        <tr>
+            <td>Kiểu Máy</td>
+            <td><input type="text" th:field="*{machineType}"></td>
+            <td th:if="${#fields.hasErrors('machineType')}" th:errors="*{machineType}">Machine Error</td>
+        </tr>
+        <tr>
+            <td>Kích cỡ</td>
+            <td><input type="text" th:field="*{size}"></td>
+            <td th:if="${#fields.hasErrors('size')}" th:errors="*{size}">Size Error</td>
+        </tr>
+        <tr>
+            <td>Chất liệu vỏ</td>
+            <td><input type="text" th:field="*{materialShell}"></td>
+            <td th:if="${#fields.hasErrors('materialShell')}" th:errors="*{materialShell}">MaterialShell Error</td>
+        </tr>
+        <tr>
+            <td>Chống nước</td>
+            <td><input type="text" th:field="*{waterproof}"></td>
+            <td th:if="${#fields.hasErrors('waterproof')}" th:errors="*{waterproof}">Waterproof Error</td>
+        </tr>
+        <tr>
+            <td>Mặt Kính</td>
+            <td><input type="text" th:field="*{faceGlass}"></td>
+            <td th:if="${#fields.hasErrors('faceGlass')}" th:errors="*{faceGlass}">FaceGlass Error</td>
+        </tr>
+        <tr>
+            <td>Chi tiết</td>
+            <td><input type="text" th:field="*{detail}"></td>
+            <td th:if="${#fields.hasErrors('detail')}" th:errors="*{detail}">Detail Error</td>
+        </tr>
+        <tr>
+            <td>Giá Sản Phảm</td>
+            <td><input type="text" th:field="*{unitPrice}"></td>
+            <td th:if="${#fields.hasErrors('unitPrice')}" th:errors="*{unitPrice}">UnitPrice Error</td>
+        </tr>
+        <tr>
+            <td>Giá Khuyến Mãi</td>
+            <td><input type="text" th:field="*{promotionPrice}"></td>
+            <td th:if="${#fields.hasErrors('promotionPrice')}" th:errors="*{promotionPrice}">PromotionPrice Error</td>
+        </tr>
+        <tr>
+            <td>ID Chủng Loại</td>
+            <td><input type="text" th:field="*{idType}"></td>
+            <td th:if="${#fields.hasErrors('idType')}" th:errors="*{idType}">IdType Error</td>
+
+        </tr>
+        <tr>
+            <td>ID Nhà Sản Xuất</td>
+            <td><input type="text" th:field="*{idProducer}"></td>
+            <td th:if="${#fields.hasErrors('idProducer')}" th:errors="*{idProducer}">IdProducer Error</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Thêm Sản Phẩm"></td>
+        </tr>
+    </form>
+</table>
+</body>
+</html>
