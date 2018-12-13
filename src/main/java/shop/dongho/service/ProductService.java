@@ -7,7 +7,7 @@ import shop.dongho.model.Product;
 import java.util.Optional;
 
 public interface ProductService {
-    Page<Product> findAllByContaining( String s, Pageable pageable);
+    Page<Product> findAllByNameContaining( String s, Pageable pageable);
 
     Page<Product> findAll(Pageable pageable);
 

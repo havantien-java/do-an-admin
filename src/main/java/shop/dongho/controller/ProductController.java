@@ -52,7 +52,7 @@ public class ProductController {
         if (s == null) {
             products = productService.findAll(pageable);
         } else {
-            products = productService.findAllByContaining(s, pageable);
+            products = productService.findAllByNameContaining(s, pageable);
         }
         ModelAndView modelAndView = new ModelAndView("/product/list");
         modelAndView.addObject("products", products);
@@ -76,7 +76,7 @@ public class ProductController {
     @PostMapping("/edit-product")
     public ModelAndView updateProduct(@ModelAttribute("product") Product product) {
         productService.save(product);
-        ModelAndView modelAndView = new ModelAndView("/product/edit");
+        ModelAndView modelAndView = new ModelAndView("/product/list");
         modelAndView.addObject("product", product);
         modelAndView.addObject("message","Thành Công");
         return modelAndView;

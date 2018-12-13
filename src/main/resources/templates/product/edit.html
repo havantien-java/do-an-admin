@@ -13,6 +13,7 @@
     <p th:text="${message}"></p>
 </th:block>
 <form th:action="@{/edit-product}" th:object="${product}" method="post">
+    <input th:type="hidden" name="id" th:field="*{id}">
     <table>
         <tr>
             <td>Name</td>

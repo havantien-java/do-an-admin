@@ -187,13 +187,13 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Danh Sách Sản Phẩm</h4>
+                                <h4 class="title">Danh Sách Khách Hàng</h4>
                                 <form action="">
-                                    Tìm kiếm sản phẩm :
+                                    Tìm kiếm khách hàng :
                                     <input type="text" name="s">
                                     <input type="submit" value="Search">
                                     <p>
-                                        <a href="/create-product">Thêm Sản Phẩm</a>
+                                        <a href="/create-user">Thêm Khách Hàng</a>
                                     </p>
                                 </form><br/>
                             </div>
@@ -202,44 +202,40 @@
                                     <thead>
                                     <th>STT</th>
                                     <th>ID</th>
-                                    <th>Tên</th>
-                                    <th>Màu Sắc</th>
-                                    <th>Kiểu Máy</th>
-                                    <th>Kích Cỡ</th>
-                                    <th>Chất Liệu Vỏ</th>
-                                    <th>Chống Nước</th>
-                                    <th>Mặt Kính</th>
-                                    <th>Giá Sản phẩm</th>
-                                    <th>Chủng Loại</th>
-                                    <th>Nhà Sản Xuất</th>
+                                    <th>Tên Đăng Nhập</th>
+                                    <th>Mật Khẩu</th>
+                                    <th>Tên Người Dùng</th>
+                                    <th>Email</th>
+                                    <th>Địa Chỉ</th>
+                                    <th>Ngày Sinh</th>
+                                    <th>Số Điện Thoại</th>
+                                    <th>Vai Trò</th>
                                     <th>Sửa</th>
                                     <th>Xóa</th>
                                     </thead>
                                     <tbody>
-                                    <th:block th:each="product, istart : ${products}">
+                                    <th:block th:each="user, istart : ${users}">
                                         <tr>
-                                            <td th:text="${istart.index + 1}"></td>
-                                            <td th:text="${product.id}"></td>
-                                            <td th:text="${product.name}"></td>
-                                            <td th:text="${product.color}"></td>
-                                            <td th:text="${product.machineType}"></td>
-                                            <td th:text="${product.size}"></td>
-                                            <td th:text="${product.materialShell}"></td>
-                                            <td th:text="${product.waterproof}"></td>
-                                            <td th:text="${product.faceGlass}"></td>
-                                            <td th:text="${product.unitPrice}"></td>
-                                            <td th:text="${product.idType}"></td>
-                                            <td th:text="${product.idProducer}"></td>
-                                            <td><a th:href="@{/edit-product/__${product.id}__ }">Sửa</a></td>
-                                            <td><a th:href="@{/delete-product/__${product.id}__ }">Xóa</a></td>
+                                            <td th:text="${istart.index+1}"></td>
+                                            <td th:text="${user.id}"></td>
+                                            <td th:text="${user.userName}"></td>
+                                            <td th:text="${user.password}"></td>
+                                            <td th:text="${user.name}"></td>
+                                            <td th:text="${user.email}"></td>
+                                            <td th:text="${user.address}"></td>
+                                            <td th:text="${user.birthDay}"></td>
+                                            <td th:text="${user.phone}"></td>
+                                            <td th:text="${user.role}"></td>
+                                            <td><a th:href="@{/edit-user/__${user.id}__ }">Sửa</a></td>
+                                            <td><a th:href="@{/delete-user/__${user.id}__ }">Xóa</a></td>
                                         </tr>
                                     </th:block>
                                     </tbody>
                                 </table>
                                 <div>
-                                    <a th:href="@{'/products'(page=${products.number - 1})}" th:if="${products.hasPrevious()}">Previous</a>
-                                    <span th:text="${products.number + 1}"></span>/<span th:text="${products.totalPages}"></span>
-                                    <a th:href="@{'/products'(page=${products.number + 1})}" th:if="${products.hasNext()}">Next</a>
+                                    <a th:href="@{'/users'(page=${users.number - 1})}" th:if="${users.hasPrevious()}">Previous</a>
+                                    <span th:text="${users.number + 1}"></span>/<span th:text="${users.totalPages}"></span>
+                                    <a th:href="@{'/users'(page=${users.number + 1})}" th:if="${users.hasNext()}">Next</a>
                                 </div>
                             </div>
                         </div>

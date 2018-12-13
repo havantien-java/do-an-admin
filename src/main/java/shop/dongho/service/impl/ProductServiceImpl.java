@@ -14,7 +14,7 @@ public class ProductServiceImpl implements ProductService {
     private ProductRepository productRepository;
 
     @Override
-    public Page<Product> findAllByContaining(String s, Pageable pageable) {
+    public Page<Product> findAllByNameContaining(String s, Pageable pageable) {
         return productRepository.findAllByNameContaining(s, pageable);
     }
 
