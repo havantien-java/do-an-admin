@@ -4,10 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import shop.dongho.service.ProductService;
-import shop.dongho.service.UserService;
-import shop.dongho.service.impl.ProductServiceImpl;
-import shop.dongho.service.impl.UserServiceImpl;
+import shop.dongho.service.*;
+import shop.dongho.service.impl.*;
 
 @SpringBootApplication
 public class DonghoApplication {
@@ -19,6 +17,31 @@ public class DonghoApplication {
 	@Bean
 	UserService userService() {
 		return new UserServiceImpl();
+	}
+
+	@Bean
+	public BillService billService() {
+		return new BillServiceImpl();
+	}
+
+	@Bean
+	public ProductTypeService productTypeService() {
+		return new ProductTypeServiceImpl();
+	}
+
+	@Bean
+	public CustomerService customerService() {
+		return new CustomerServiceImpl();
+	}
+
+	@Bean
+	public BillDetailService billDetailService() {
+		return new BillDetailServiceImpl();
+	}
+
+	@Bean
+	public ProducerService producerService() {
+		return new ProducerServiceImpl();
 	}
 
 	public static void main(String[] args) {
