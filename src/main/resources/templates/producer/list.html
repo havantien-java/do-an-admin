@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="/create-producer">List producer</a>
+<h1>Producer</h1>
+<form>
+    Search by name:
+    <input name="s" type="text"/>
+    <input type="submit" value="Search"/>
+</form><br/>
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <th:block th:each="producer : ${producers}">
+        <tr>
+            <td th:text="${producer.name}"></td>
+            <td><a th:href="@{/edit-producer/__${producer.id}__ }">Edit</a></td>
+            <td><a th:href="@{/delete-producer/__${producer.id}__ }">Delete</a></td>
+        </tr>
+    </th:block>
+</table>
+<div>
+    <a th:href="@{'/producers'(page=${producers.number - 1})}" th:if="${producers.hasPrevious()}">Previous</a>
+    <span th:text="${producers.number + 1}"></span>/<span th:text="${producers.totalPages}"></span>
+    <a th:href="@{'/cproducers'(page=${producers.number + 1})}" th:if="${producers.hasNext()}">Next</a>
+</div>
+</body>
+</html>
