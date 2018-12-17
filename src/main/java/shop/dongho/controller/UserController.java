@@ -12,7 +12,6 @@ import org.springframework.web.servlet.ModelAndView;
 import shop.dongho.model.User;
 import shop.dongho.service.UserService;
 
-import javax.validation.Valid;
 import java.util.Optional;
 
 
@@ -48,7 +47,7 @@ public class UserController {
         if (s == null) {
             users = userService.findAll(pageable);
         } else {
-            users = userService.findAllByContaining(s, pageable);
+            users = userService.findAllByNameContaining(s, pageable);
         }
         ModelAndView modelAndView = new ModelAndView("/user/list");
         modelAndView.addObject("users", users);

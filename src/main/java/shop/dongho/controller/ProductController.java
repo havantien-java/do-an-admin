@@ -76,7 +76,7 @@ public class ProductController {
     @PostMapping("/edit-product")
     public ModelAndView updateProduct(@ModelAttribute("product") Product product) {
         productService.save(product);
-        ModelAndView modelAndView = new ModelAndView("/product/list");
+        ModelAndView modelAndView = new ModelAndView("/product/edit");
         modelAndView.addObject("product", product);
         modelAndView.addObject("message","Thành Công");
         return modelAndView;

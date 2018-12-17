@@ -199,16 +199,17 @@
                             <div class="content table-responsive table-full-width">
                                 <table class="table table-hover table-striped">
                                     <thead>
-                                    <th>STT</th>
                                     <tr>
+                                        <th>STT</th>
                                         <th>Loại Sản Phẩm</th>
                                         <th>Sửa</th>
                                         <th>Xóa</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <th:block th:each="user, istart : ${users}">
+                                    <th:block th:each="productType, istart : ${productTypes}">
                                         <tr>
+                                            <td th:text="${istart.index + 1}"></td>
                                             <td th:text="${productType.name}"></td>
                                             <td><a th:href="@{/edit-productType/__${productType.id}__ }">Sửa</a></td>
                                             <td><a th:href="@{/delete-productType/__${productType.id}__ }">Xóa</a></td>

@@ -72,9 +72,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="icons.html">
+                    <a href="/bills">
                         <i class="pe-7s-science"></i>
-                        <p>Icons</p>
+                        <p>Quản Lý Hóa Đơn</p>
                     </a>
                 </li>
                 <li>
@@ -192,7 +192,7 @@
                                     <input type="text" name="s">
                                     <input type="submit" value="Search">
                                     <p>
-                                        <a href="/create-user">Thêm Khách Hàng</a>
+                                        <a href="/create-bill">Thêm Mới Hóa Đơn</a>
                                     </p>
                                 </form><br/>
                             </div>
@@ -211,6 +211,7 @@
                                     <tbody>
                                     <th:block th:each="bill, istart : ${bills}">
                                         <tr>
+                                            <td th:text="${istart.index+1}"></td>
                                             <td th:text="${bill.dateOrder}"></td>
                                             <td th:text="${bill.total}"></td>
                                             <td th:text="${bill.payment}"></td>
