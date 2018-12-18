@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import shop.dongho.model.Producer;
 import shop.dongho.model.Product;
+import shop.dongho.model.ProductType;
 import shop.dongho.service.ProducerService;
 import shop.dongho.service.ProductService;
+import shop.dongho.service.ProductTypeService;
 
 import java.util.Optional;
 
@@ -25,9 +27,17 @@ public class ProductController {
     @Autowired
     private ProducerService producerService;
 
+    @Autowired
+    private ProductTypeService productTypeService;
+
     @ModelAttribute("producers")
     public Page<Producer> producers(Pageable pageable) {
         return producerService.findAll(pageable);
+    }
+
+    @ModelAttribute("productTypes")
+    public Page<ProductType> productTypes(Pageable pageable) {
+        return productTypeService.findAll(pageable);
     }
 
     @GetMapping("/")

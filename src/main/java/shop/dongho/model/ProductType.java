@@ -1,6 +1,7 @@
 package shop.dongho.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "product_type")
@@ -10,6 +11,17 @@ public class ProductType {
     private Long id;
 
     private String name;
+
+    @OneToMany(targetEntity = Product.class)
+    private List<Product> productList;
+
+    public List<Product> getProductList() {
+        return productList;
+    }
+
+    public void setProductList(List<Product> productList) {
+        this.productList = productList;
+    }
 
     public ProductType() {
 

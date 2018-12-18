@@ -40,12 +40,22 @@ public class Product {
     private String unitPrice;
     @NotEmpty(message = "không được để trống")
     private String promotionPrice;
-    @NotNull(message = "không được để trống")
-    private Integer idType;
+
+    public ProductType getProductType() {
+        return productType;
+    }
+
+    public void setProductType(ProductType productType) {
+        this.productType = productType;
+    }
 
     @ManyToOne(targetEntity = Producer.class)
     @JoinColumn(name = "idProducer")
     private Producer producer;
+
+    @ManyToOne(targetEntity = ProductType.class)
+    @JoinColumn(name = "idProductType")
+    private ProductType productType;
 
     public Producer getProducer() {
         return producer;
@@ -59,7 +69,7 @@ public class Product {
 
     }
 
-    public Product(@NotEmpty(message = "không được để trống") String name, String image, String image1, String image2, String image3, @NotEmpty(message = "không được để trống") String color, @NotEmpty(message = "không được để trống") String hot, @NotEmpty(message = "không được để trống") String machineType, @NotEmpty(message = "không được để trống") String size, @NotEmpty(message = "không được để trống") String materialShell, @NotEmpty(message = "không được để trống") String waterproof, @NotEmpty(message = "không được để trống") String faceGlass, @NotEmpty(message = "không được để trống") String detail, @NotEmpty(message = "không được để trống") String unitPrice, @NotEmpty(message = "không được để trống") String promotionPrice, @NotNull(message = "không được để trống") Integer idType) {
+    public Product(@NotEmpty(message = "không được để trống") String name, String image, String image1, String image2, String image3, @NotEmpty(message = "không được để trống") String color, @NotEmpty(message = "không được để trống") String hot, @NotEmpty(message = "không được để trống") String machineType, @NotEmpty(message = "không được để trống") String size, @NotEmpty(message = "không được để trống") String materialShell, @NotEmpty(message = "không được để trống") String waterproof, @NotEmpty(message = "không được để trống") String faceGlass, @NotEmpty(message = "không được để trống") String detail, @NotEmpty(message = "không được để trống") String unitPrice, @NotEmpty(message = "không được để trống") String promotionPrice) {
         this.name = name;
         this.image = image;
         this.image1 = image1;
@@ -75,7 +85,6 @@ public class Product {
         this.detail = detail;
         this.unitPrice = unitPrice;
         this.promotionPrice = promotionPrice;
-        this.idType = idType;
     }
 
     public Integer getId() {
@@ -206,12 +215,5 @@ public class Product {
         this.promotionPrice = promotionPrice;
     }
 
-    public Integer getIdType() {
-        return idType;
-    }
-
-    public void setIdType(Integer idType) {
-        this.idType = idType;
-    }
 
 }
