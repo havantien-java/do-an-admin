@@ -10,7 +10,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import shop.dongho.model.Producer;
 import shop.dongho.model.Product;
+import shop.dongho.service.ProducerService;
 import shop.dongho.service.ProductService;
 
 import java.util.Optional;
@@ -19,6 +21,14 @@ import java.util.Optional;
 public class ProductController {
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private ProducerService producerService;
+
+    @ModelAttribute("producers")
+    public Page<Producer> producers(Pageable pageable) {
+        return producerService.findAll(pageable);
+    }
 
     @GetMapping("/")
     public ModelAndView home() {

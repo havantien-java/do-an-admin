@@ -21,11 +21,11 @@
         </tr>
         <tr>
             <td>Image</td>
-            <td><input type="text" th:field="*{image}"></td>
+            <td><input th:type="file" th:field="*{image}" th:name="file" th:multiple></td>
         </tr>
         <tr>
             <td>Image1</td>
-            <td><input type="text" th:field="*{image1}"></td>
+            <td><input type="file" th:field="*{image1}"></td>
         </tr>
         <tr>
             <td>Image2</td>
@@ -92,9 +92,14 @@
 
         </tr>
         <tr>
-            <td>ID Nhà Sản Xuất</td>
-            <td><input type="text" th:field="*{idProducer}"></td>
-            <td th:if="${#fields.hasErrors('idProducer')}" th:errors="*{idProducer}">IdProducer Error</td>
+            <td>Nhà Sản Xuất</td>
+            <td>
+                <select th:field="*{producer}"} style="width: 100%;">
+                    <option th:each="producer : ${producers}" th:value="${producer.id}" th:text="${producer.name}">
+
+                    </option>
+                </select>
+            </td>
         </tr>
         <tr>
             <td></td>
