@@ -13,14 +13,14 @@ public class ProductType {
     private String name;
 
     @OneToMany(targetEntity = Product.class)
-    private List<Product> productList;
+    private List<Product> productLists;
 
-    public List<Product> getProductList() {
-        return productList;
+    public List<Product> getProductLists() {
+        return productLists;
     }
 
-    public void setProductList(List<Product> productList) {
-        this.productList = productList;
+    public void setProductLists(List<Product> productLists) {
+        this.productLists = productLists;
     }
 
     public ProductType() {

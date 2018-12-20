@@ -49,11 +49,11 @@ public class Product {
         this.productType = productType;
     }
 
-    @ManyToOne(targetEntity = Producer.class)
+    @ManyToOne
     @JoinColumn(name = "idProducer")
     private Producer producer;
 
-    @ManyToOne(targetEntity = ProductType.class)
+    @ManyToOne
     @JoinColumn(name = "idProductType")
     private ProductType productType;
 

@@ -10,4 +10,5 @@ import shop.dongho.model.User;
 
 public interface UserRepository extends PagingAndSortingRepository<User, Long> {
     Page<User> findAllByNameContaining(String s, Pageable pageable);
+    User findUserByName(String name);
 }

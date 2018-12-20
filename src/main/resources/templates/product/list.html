@@ -43,7 +43,7 @@
         <div class="sidebar-wrapper">
             <div class="logo">
                 <a href="http://www.creative-tim.com" class="simple-text">
-                    Creative Tim
+                    ADMIN
                 </a>
             </div>
 
@@ -73,9 +73,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="icons.html">
+                    <a href="/productTypes">
                         <i class="pe-7s-science"></i>
-                        <p>Icons</p>
+                        <p>Loại Sản Phẩm</p>
                     </a>
                 </li>
                 <li>
@@ -228,7 +228,7 @@
                                             <td th:text="${product.waterproof}"></td>
                                             <td th:text="${product.faceGlass}"></td>
                                             <td th:text="${product.unitPrice}"></td>
-                                            <td th:text="${product.idType}"></td>
+                                            <td th:text="${product.productType.name}"></td>
                                             <td th:text="${product.producer.name}"></td>
                                             <td><a th:href="@{/edit-product/__${product.id}__ }">Sửa</a></td>
                                             <td><a th:href="@{/delete-product/__${product.id}__ }">Xóa</a></td>

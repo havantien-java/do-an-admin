@@ -70,13 +70,18 @@
             <td><input type="text" th:field="*{promotionPrice}"></td>
         </tr>
         <tr>
-            <td>ID Chủng Loại</td>
-            <td><input type="text" th:field="*{idType}"></td>
+            <td>Loại Sản Phẩm</td>
+            <td>
+                <select th:field="*{productType}" style="width: 100%; padding: 10px"} >
+                    <option th:each="productType : ${productTypes}" th:value="${productType.id}" th:text="${productType.name}">
+                    </option>
+                </select>
+            </td>
         </tr>
         <tr>
             <td>Nhà Sản Xuất</td>
             <td>
-                <select th:field="*{producer}"} style="width: 100%;">
+                <select th:field="*{producer}">
                     <option th:each="producer : ${producers}" th:value="${producer.id}" th:text="${producer.name}">
 
                     </option>
