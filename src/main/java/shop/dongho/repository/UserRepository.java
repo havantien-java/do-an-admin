@@ -8,7 +8,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import shop.dongho.model.User;
 
 
-public interface UserRepository extends PagingAndSortingRepository<User, Long> {
+public interface UserRepository extends PagingAndSortingRepository<User, Integer> {
     Page<User> findAllByNameContaining(String s, Pageable pageable);
-    User findUserByName(String name);
+    User findUserByEmail(String name);
 }

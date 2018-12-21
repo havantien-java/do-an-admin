@@ -60,7 +60,7 @@
                     </a>
                 </li>
                 <li class="active">
-                    <a  href="/products">
+                    <a  href="admin/products">
                         <i class="pe-7s-note2"></i>
                         <p>Quản Lý Sản Phẩm</p>
                     </a>
@@ -72,7 +72,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/productTypes">
+                    <a href="admin/productTypes">
                         <i class="pe-7s-science"></i>
                         <p>Quản Trị Loại Đồng Hồ</p>
                     </a>
@@ -192,7 +192,7 @@
                                     <input type="text" name="s">
                                     <input type="submit" value="Search">
                                     <p>
-                                        <a href="/create-user">Thêm Loại Sản Phẩm</a>
+                                        <a href="/admin/create-productType">Thêm Loại Sản Phẩm</a>
                                     </p>
                                 </form><br/>
                             </div>
@@ -211,8 +211,8 @@
                                         <tr>
                                             <td th:text="${istart.index + 1}"></td>
                                             <td th:text="${productType.name}"></td>
-                                            <td><a th:href="@{/edit-productType/__${productType.id}__ }">Sửa</a></td>
-                                            <td><a th:href="@{/delete-productType/__${productType.id}__ }">Xóa</a></td>
+                                            <td><a th:href="@{/admin/edit-productType/__${productType.id}__ }">Sửa</a></td>
+                                            <td><a th:href="@{/admin/delete-productType/__${productType.id}__ }">Xóa</a></td>
                                         </tr>
                                     </th:block>
                                     </tbody>

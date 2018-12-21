@@ -7,26 +7,26 @@
 <body>
 <h1>Edit user</h1>
 <p>
-    <a href="/users">User list</a>
+    <a href="admin/users">User list</a>
 </p>
 <th:block th:if="${message}">
     <p th:text="${message}"></p>
 </th:block>
-<form th:action="@{/edit-user}" th:object="${user}" method="post">
+<form th:action="@{/admin/edit-user}" th:object="${user}" method="post">
     <input th:type="hidden" name="id" th:field="*{id}">
     <table>
         <tr>
-            <td>Tên Đăng Nhập:</td>
+            <td>Tên Người Dùng:</td>
             <td><input type="text" th:field="*{name}"/></td>
         </tr>
         <tr>
             <td>Password:</td>
             <td><input type="text" th:field="*{password}"/></td>
         </tr>
-        <tr>
-            <td>Tên Người Dùng:</td>
-            <td><input type="text" th:field="*{name}"></td>
-        </tr>
+        <!--<tr>-->
+            <!--<td>Tên Người Dùng:</td>-->
+            <!--<td><input type="text" th:field="*{name}"></td>-->
+        <!--</tr>-->
         <tr>
             <td> Email:</td>
             <td><input type="text" th:field="*{email}"></td>
@@ -44,10 +44,10 @@
             <td><input type="text" th:field="*{phone}"></td>
         </tr>
 
-        <tr>
-            <td>Role</td>
-            <td><input type="text" th:field="*{role}"></td>
-        </tr>
+        <!--<tr>-->
+            <!--<td>Role</td>-->
+            <!--<td><input type="text" th:field="*{role}"></td>-->
+        <!--</tr>-->
 
         <tr>
             <td></td>

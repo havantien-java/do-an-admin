@@ -13,6 +13,7 @@ import shop.dongho.service.CustomerService;
 import java.util.Optional;
 
 @Controller
+@RequestMapping("admin")
 public class CustomerController {
     @Autowired
      private CustomerService customerService;

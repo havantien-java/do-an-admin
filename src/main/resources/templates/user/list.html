@@ -193,7 +193,7 @@
                                     <input type="text" name="s">
                                     <input type="submit" value="Search">
                                     <p>
-                                        <a href="/create-user">Thêm Khách Hàng</a>
+                                        <a th:href="@{registration}">Thêm Khách Hàng</a>
                                     </p>
                                 </form><br/>
                             </div>
@@ -202,14 +202,13 @@
                                     <thead>
                                     <th>STT</th>
                                     <th>ID</th>
-                                    <th>Tên Đăng Nhập</th>
-                                    <th>Mật Khẩu</th>
+                                    <!--<th>Tên Đăng Nhập</th>-->
+                                    <!--<th>Mật Khẩu</th>-->
                                     <th>Tên Người Dùng</th>
                                     <th>Email</th>
                                     <th>Địa Chỉ</th>
                                     <th>Ngày Sinh</th>
                                     <th>Số Điện Thoại</th>
-                                    <th>Vai Trò</th>
                                     <th>Sửa</th>
                                     <th>Xóa</th>
                                     </thead>
@@ -218,16 +217,14 @@
                                         <tr>
                                             <td th:text="${istart.index+1}"></td>
                                             <td th:text="${user.id}"></td>
-                                            <td th:text="${user.userName}"></td>
-                                            <td th:text="${user.password}"></td>
+                                            <!--<td th:text="${user.password}"></td>-->
                                             <td th:text="${user.name}"></td>
                                             <td th:text="${user.email}"></td>
                                             <td th:text="${user.address}"></td>
                                             <td th:text="${user.birthDay}"></td>
                                             <td th:text="${user.phone}"></td>
-                                            <td th:text="${user.role}"></td>
-                                            <td><a th:href="@{/edit-user/__${user.id}__ }">Sửa</a></td>
-                                            <td><a th:href="@{/delete-user/__${user.id}__ }">Xóa</a></td>
+                                            <td><a th:href="@{/admin/edit-user/__${user.id}__ }">Sửa</a></td>
+                                            <td><a th:href="@{/admin/delete-user/__${user.id}__ }">Xóa</a></td>
                                         </tr>
                                     </th:block>
                                     </tbody>

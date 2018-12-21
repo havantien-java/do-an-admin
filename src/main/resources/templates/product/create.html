@@ -166,10 +166,10 @@
     <!--</div>-->
 
     <h2>Create a product</h2>
-    <p><a href="/products">Danh Sách Sản Phẩm</a></p>
+    <p><a th:href="@{products}">Danh Sách Sản Phẩm</a></p>
     <div class="contact">
         <table>
-            <form th:action="@{/create-product}" th:object="${product}" method="post">
+            <form th:action="@{/admin/create-product}" th:object="${product}" method="post">
                 <tr>
                     <td>Name</td>
                     <td><input type="text" th:field="*{name}"></td>
@@ -185,11 +185,11 @@
                 </tr>
                 <tr>
                     <td>Image2</td>
-                    <td><input type="text" th:field="*{image2}"></td>
+                    <td><input type="file" th:field="*{image2}"></td>
                 </tr>
                 <tr>
                     <td>Image3</td>
-                    <td><input type="text" th:field="*{image3}"></td>
+                    <td><input type="file" th:field="*{image3}"></td>
                 </tr>
                 <tr>
                     <td>Màu Sắc</td>
@@ -244,8 +244,8 @@
                 <tr>
                     <td>Loại Sản Phẩm</td>
                     <td>
-                        <select th:field="*{productType}" style="width: 100%; padding: 10px"} >
-                            <option th:each="productType : ${productTypes}" th:value="${productType.id}" th:text="${productType.name}">
+                        <select th:field="*{productType}" style="width: 100%; padding: 10px" >
+                            <option th:each="pt : ${productTypes}" th:value="${pt.id}" th:text="${pt.name}">
                             </option>
                         </select>
                     </td>
@@ -255,7 +255,7 @@
                     <td>Nhà Sản Xuất</td>
                     <td>
                         <select th:field="*{producer}"} style="width: 100%; padding: 10px">
-                            <option th:each="producer : ${producers}" th:value="${producer.id}" th:text="${producer.name}">
+                            <option th:each="pc : ${producers}" th:value="${pc.id}" th:text="${pc.name}">
 
                             </option>
                         </select>

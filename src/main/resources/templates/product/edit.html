@@ -1,104 +1,375 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Edit Product</title>
-</head>
-<body>
-<h1>Sửa Thông Tin Sản Phẩm</h1>
-<p>
-    <a href="/products">Chuyển đến trang danh sách</a>
-</p>
-<th:block th:if="${message}">
-    <p th:text="${message}"></p>
-</th:block>
-<form th:action="@{/edit-product}" th:object="${product}" method="post">
-    <input th:type="hidden" name="id" th:field="*{id}">
-    <table>
-        <tr>
-            <td>Name</td>
-            <td><input type="text" th:field="*{name}"></td>
-        </tr>
-        <tr>
-            <td>Image</td>
-            <td><input type="text" th:field="*{image}"></td>
-        </tr>
-        <tr>
-            <td>Image1</td>
-            <td><input type="text" th:field="*{image1}"></td>
-        </tr>
-        <tr>
-            <td>Image2</td>
-            <td><input type="text" th:field="*{image2}"></td>
-        </tr>
-        <tr>
-            <td>Image3</td>
-            <td><input type="text" th:field="*{image3}"></td>
-        </tr>
-        <tr>
-            <td>Màu Sắc</td>
-            <td><input type="text" th:field="*{color}"></td>
-        </tr>
-        <tr>
-            <td>Sản Phảm Hot</td>
-            <td><input type="text" th:field="*{hot}"></td>
-        </tr>
-        <tr>
-            <td>Kiểu Máy</td>
-            <td><input type="text" th:field="*{machineType}"></td>
-        </tr>
-        <tr>
-            <td>Kích cỡ</td>
-            <td><input type="text" th:field="*{size}"></td>
-        </tr>
-        <tr>
-            <td>Chất liệu vỏ</td>
-            <td><input type="text" th:field="*{materialShell}"></td>
-        </tr>
-        <tr>
-            <td>Chống nước</td>
-            <td><input type="text" th:field="*{waterproof}"></td>
-        </tr>
-        <tr>
-            <td>Mặt Kính</td>
-            <td><input type="text" th:field="*{faceGlass}"></td>
-        </tr>
-        <tr>
-            <td>Chi tiết</td>
-            <td><input type="text" th:field="*{detail}"></td>
-        </tr>
-        <tr>
-            <td>Giá Sản Phảm</td>
-            <td><input type="text" th:field="*{unitPrice}"></td>
-        </tr>
-        <tr>
-            <td>Giá Khuyến Mãi</td>
-            <td><input type="text" th:field="*{promotionPrice}"></td>
-        </tr>
-        <tr>
-            <td>Loại Sản Phẩm</td>
-            <td>
-                <select th:field="*{productType}" style="width: 100%; padding: 10px"} >
-                    <option th:each="productType : ${productTypes}" th:value="${productType.id}" th:text="${productType.name}">
-                    </option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td>Nhà Sản Xuất</td>
-            <td>
-                <select th:field="*{producer}">
-                    <option th:each="producer : ${producers}" th:value="${producer.id}" th:text="${producer.name}">
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<title>Edit Product</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h1>Sửa Thông Tin Sản Phẩm</h1>-->
+<!--<p>-->
+    <!--<a th:href="@{products}">Chuyển đến trang danh sách</a>-->
+<!--</p>-->
+<!--<th:block th:if="${message}">-->
+    <!--<p th:text="${message}"></p>-->
+<!--</th:block>-->
+<!--<form th:action="@{edit-product}" th:object="${product}" method="post">-->
+    <!--<input th:type="hidden" name="id" th:field="*{id}">-->
+    <!--<table>-->
+        <!--<tr>-->
+            <!--<td>Name</td>-->
+            <!--<td><input type="text" th:field="*{name}"></td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+            <!--<td>Image</td>-->
+            <!--<td><input type="text" th:field="*{image}"></td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+            <!--<td>Image1</td>-->
+            <!--<td><input type="text" th:field="*{image1}"></td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+            <!--<td>Image2</td>-->
+            <!--<td><input type="text" th:field="*{image2}"></td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+            <!--<td>Image3</td>-->
+            <!--<td><input type="text" th:field="*{image3}"></td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+            <!--<td>Màu Sắc</td>-->
+            <!--<td><input type="text" th:field="*{color}"></td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+            <!--<td>Sản Phảm Hot</td>-->
+            <!--<td><input type="text" th:field="*{hot}"></td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+            <!--<td>Kiểu Máy</td>-->
+            <!--<td><input type="text" th:field="*{machineType}"></td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+            <!--<td>Kích cỡ</td>-->
+            <!--<td><input type="text" th:field="*{size}"></td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+            <!--<td>Chất liệu vỏ</td>-->
+            <!--<td><input type="text" th:field="*{materialShell}"></td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+            <!--<td>Chống nước</td>-->
+            <!--<td><input type="text" th:field="*{waterproof}"></td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+            <!--<td>Mặt Kính</td>-->
+            <!--<td><input type="text" th:field="*{faceGlass}"></td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+            <!--<td>Chi tiết</td>-->
+            <!--<td><input type="text" th:field="*{detail}"></td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+            <!--<td>Giá Sản Phảm</td>-->
+            <!--<td><input type="text" th:field="*{unitPrice}"></td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+            <!--<td>Giá Khuyến Mãi</td>-->
+            <!--<td><input type="text" th:field="*{promotionPrice}"></td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+            <!--<td>Loại Sản Phẩm</td>-->
+            <!--<td>-->
+                <!--<select th:field="*{productType}" style="width: 100%; padding: 10px"} >-->
+                    <!--<option th:each="productType : ${productTypes}" th:value="${productType.id}" th:text="${productType.name}">-->
+                    <!--</option>-->
+                <!--</select>-->
+            <!--</td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+            <!--<td>Nhà Sản Xuất</td>-->
+            <!--<td>-->
+                <!--<select th:field="*{producer}">-->
+                    <!--<option th:each="producer : ${producers}" th:value="${producer.id}" th:text="${producer.name}">-->
 
-                    </option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td><input type="submit" value="Sửa Sản Phẩm"></td>
-        </tr>
+                    <!--</option>-->
+                <!--</select>-->
+            <!--</td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+            <!--<td></td>-->
+            <!--<td><input type="submit" value="Sửa Sản Phẩm"></td>-->
+        <!--</tr>-->
+        <!--</table>-->
+<!--</form>-->
+<!--</body>-->
+<!--</html>-->
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--<meta charset="UTF-8">-->
+<!--<title>Create Product</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h1>CREATE PRODUCT</h1>-->
+<!--<p>-->
+<!--<a href="/products">Chuyển đến trang danh sách</a>-->
+<!--</p>-->
+<!--<th:block th:if="${message}">-->
+<!--<p th:text="${message}"></p>-->
+<!--</th:block>-->
+<!--<table>-->
+<!--<form th:action="@{/create-product}" th:object="${product}" method="post">-->
+<!--<tr>-->
+<!--<td>Name</td>-->
+<!--<td><input type="text" th:field="*{name}"></td>-->
+<!--<td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<td>Image</td>-->
+<!--<td><input th:type="file" th:field="*{image}" th:name="file" th:multiple></td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<td>Image1</td>-->
+<!--<td><input type="file" th:field="*{image1}"></td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<td>Image2</td>-->
+<!--<td><input type="text" th:field="*{image2}"></td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<td>Image3</td>-->
+<!--<td><input type="text" th:field="*{image3}"></td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<td>Màu Sắc</td>-->
+<!--<td><input type="text" th:field="*{color}"></td>-->
+<!--<td th:if="${#fields.hasErrors('color')}" th:errors="*{color}">Color Error</td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<td>Sản Phảm Hot</td>-->
+<!--<td><input type="text" th:field="*{hot}"></td>-->
+<!--<td th:if="${#fields.hasErrors('hot')}" th:errors="*{hot}">Hot Error</td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<td>Kiểu Máy</td>-->
+<!--<td><input type="text" th:field="*{machineType}"></td>-->
+<!--<td th:if="${#fields.hasErrors('machineType')}" th:errors="*{machineType}">Machine Error</td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<td>Kích cỡ</td>-->
+<!--<td><input type="text" th:field="*{size}"></td>-->
+<!--<td th:if="${#fields.hasErrors('size')}" th:errors="*{size}">Size Error</td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<td>Chất liệu vỏ</td>-->
+<!--<td><input type="text" th:field="*{materialShell}"></td>-->
+<!--<td th:if="${#fields.hasErrors('materialShell')}" th:errors="*{materialShell}">MaterialShell Error</td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<td>Chống nước</td>-->
+<!--<td><input type="text" th:field="*{waterproof}"></td>-->
+<!--<td th:if="${#fields.hasErrors('waterproof')}" th:errors="*{waterproof}">Waterproof Error</td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<td>Mặt Kính</td>-->
+<!--<td><input type="text" th:field="*{faceGlass}"></td>-->
+<!--<td th:if="${#fields.hasErrors('faceGlass')}" th:errors="*{faceGlass}">FaceGlass Error</td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<td>Chi tiết</td>-->
+<!--<td><input type="text" th:field="*{detail}"></td>-->
+<!--<td th:if="${#fields.hasErrors('detail')}" th:errors="*{detail}">Detail Error</td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<td>Giá Sản Phảm</td>-->
+<!--<td><input type="text" th:field="*{unitPrice}"></td>-->
+<!--<td th:if="${#fields.hasErrors('unitPrice')}" th:errors="*{unitPrice}">UnitPrice Error</td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<td>Giá Khuyến Mãi</td>-->
+<!--<td><input type="text" th:field="*{promotionPrice}"></td>-->
+<!--<td th:if="${#fields.hasErrors('promotionPrice')}" th:errors="*{promotionPrice}">PromotionPrice Error</td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<td>Loại Sản Phẩm</td>-->
+<!--<td>-->
+<!--<select th:field="*{productType}"} >-->
+<!--<option th:each="productType : ${productTypes}" th:value="${productType.id}" th:text="${productType.name}">-->
+<!--</option>-->
+<!--</select>-->
+<!--</td>-->
+
+<!--</tr>-->
+<!--<tr>-->
+<!--<td>Nhà Sản Xuất</td>-->
+<!--<td>-->
+<!--<select th:field="*{producer}"}>-->
+<!--<option th:each="producer : ${producers}" th:value="${producer.id}" th:text="${producer.name}">-->
+
+<!--</option>-->
+<!--</select>-->
+<!--</td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<td></td>-->
+<!--<td><input type="submit" value="Thêm Sản Phẩm"></td>-->
+<!--</tr>-->
+<!--</form>-->
+<!--</table>-->
+<!--</body>-->
+<!--</html>-->
+
+<!--
+	Author: W3layouts
+	Author URL: http://w3layouts.com
+	License: Creative Commons Attribution 3.0 Unported
+	License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!-- Head -->
+<head>
+
+    <title>User Account Creation Form A Flat Responsive Widget Template :: W3layouts</title>
+
+    <!-- For-Mobile-Apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="User Account Creation Form Widget Responsive, Login Form Web Template, Flat Pricing Tables, Flat Drop-Downs, Sign-Up Web Templates, Flat Web Templates, Login Sign-up Responsive Web Template, Smartphone Compatible Web Template, Free Web Designs for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- //For-Mobile-Apps -->
+
+    <!--&lt;!&ndash; Style &ndash;&gt; <link rel="stylesheet" href="../../../../../../../Desktop/user_account_creation_form_widget/web/css/style.css" type="text/css" media="all" />-->
+    <!--<link rel="stylesheet" th:href="@{/css/style.css}">-->
+    <!-- Web-Fonts -->
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900" 	type="text/css" media="all">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Raleway:400,500,600,700,800" 		type="text/css" media="all">
+    <link rel="stylesheet" th:href="@{/css/styleCreate.css}" >
+    <!-- //Web-Fonts -->
+
+</head>
+<!-- //Head -->
+
+<!-- Body -->
+<body>
+
+<h1>ĐỒNG HỒ XỊN</h1>
+
+<div class="container">
+
+    <!--<p>Login through social media accounts</p>-->
+
+    <!--<div class="social-icons">-->
+    <!--<ul>-->
+    <!--<li><a href="#"><span class="icons"></span><span class="text">Facebook</span></a></li>-->
+    <!--<li class="twt"><a href="#"><span class="icons"></span><span class="text">Twitter</span></a></li>-->
+    <!--<li class="ggp"><a href="#"><span class="icons"></span><span class="text">Google+</span></a></li>-->
+    <!--<div class="clear"> </div>-->
+    <!--</ul>-->
+    <!--</div>-->
+
+    <h2>Create a product</h2>
+    <p><a th:href="@{/products}">Danh Sách Sản Phẩm</a></p>
+    <div class="contact">
+        <form th:action="@{/edit-product}" th:object="${product}" method="post">
+            <input th:type="hidden" name="id" th:field="*{id}">
+            <table>
+                <tr>
+                    <td>Name</td>
+                    <td><input type="text" th:field="*{name}"></td>
+                </tr>
+                <tr>
+                    <td>Image</td>
+                    <td><input type="file" th:field="*{image}"></td>
+                </tr>
+                <tr>
+                    <td>Image1</td>
+                    <td><input type="file" th:field="*{image1}"></td>
+                </tr>
+                <tr>
+                    <td>Image2</td>
+                    <td><input type="file" th:field="*{image2}"></td>
+                </tr>
+                <tr>
+                    <td>Image3</td>
+                    <td><input type="file" th:field="*{image3}"></td>
+                </tr>
+                <tr>
+                    <td>Màu Sắc</td>
+                    <td><input type="text" th:field="*{color}"></td>
+                </tr>
+                <tr>
+                    <td>Sản Phảm Hot</td>
+                    <td><input type="text" th:field="*{hot}"></td>
+                </tr>
+                <tr>
+                    <td>Kiểu Máy</td>
+                    <td><input type="text" th:field="*{machineType}"></td>
+                </tr>
+                <tr>
+                    <td>Kích cỡ</td>
+                    <td><input type="text" th:field="*{size}"></td>
+                </tr>
+                <tr>
+                    <td>Chất liệu vỏ</td>
+                    <td><input type="text" th:field="*{materialShell}"></td>
+                </tr>
+                <tr>
+                    <td>Chống nước</td>
+                    <td><input type="text" th:field="*{waterproof}"></td>
+                </tr>
+                <tr>
+                    <td>Mặt Kính</td>
+                    <td><input type="text" th:field="*{faceGlass}"></td>
+                </tr>
+                <tr>
+                    <td>Chi tiết</td>
+                    <td><input type="text" th:field="*{detail}"></td>
+                </tr>
+                <tr>
+                    <td>Giá Sản Phảm</td>
+                    <td><input type="text" th:field="*{unitPrice}"></td>
+                </tr>
+                <tr>
+                    <td>Giá Khuyến Mãi</td>
+                    <td><input type="text" th:field="*{promotionPrice}"></td>
+                </tr>
+                <tr>
+                    <td>Loại Sản Phẩm</td>
+                    <td>
+                        <select th:field="*{productType}" style="width: 100%; padding: 10px" >
+                            <option th:each="pt : ${productTypes}" th:value="${pt.id}" th:text="${pt.name}">
+                            </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Nhà Sản Xuất</td>
+                    <td>
+                        <select th:field="*{producer}">
+                            <option th:each="pc : ${producers}" th:value="${pc.id}" th:text="${pc.name}">
+
+                            </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="Sửa Sản Phẩm"></td>
+                </tr>
+            </table>
+        </form>
         </table>
-</form>
+    </div>
+</div>
+
+<div class="footer">
+    <p> &copy; shop đồng hồ | đồng hồ uy tín chất lượng</p>
+</div>
+
 </body>
+<!-- //Body -->
+
 </html>

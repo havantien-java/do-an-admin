@@ -7,12 +7,12 @@
 <body>
 <h1>Create </h1>
 <p>
-    <a href="/producers">producer list</a>
+    <a href="admin/producers">producer list</a>
 </p>
 <th:block th:if="${message}">
     <p th:text="${message}"></p>
 </th:block>
-<form th:action="@{/create-producer}" th:object="${producer}" method="post">
+<form th:action="@{admin/create-producer}" th:object="${producer}" method="post">
     <table>
         <tr>
             <td>Name:</td>

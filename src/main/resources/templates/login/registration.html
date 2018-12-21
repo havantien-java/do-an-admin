@@ -68,10 +68,19 @@
                     <!--</div>-->
                     <!--</div>-->
                     <div class="form-row">
+                        <div class="name">Name</div>
+                        <div class="value">
+                            <div class="input-group">
+                                <input class="input--style-5" type="text" name="name" id="name" th:field="*{name}" required="true">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
                         <div class="name">Email</div>
                         <div class="value">
                             <div class="input-group">
-                                <input class="input--style-5" type="email" name="email" th:field="*{name}" required="true">
+                                <input class="input--style-5" type="email" name="email" th:field="*{email}" required="true">
                             </div>
                         </div>
                     </div>
@@ -147,6 +156,33 @@
                     <!--</label>-->
                     <!--</div>-->
                     <!--</div>-->
+                    <div class="form-row">
+                        <div class="name">Phone</div>
+                        <div class="value">
+                            <div class="input-group">
+                                <input class="input--style-5" type="phone" name="phone" id="phone" th:field="*{phone}" required="true">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="name">Birth Day</div>
+                        <div class="value">
+                            <div class="input-group">
+                                <input class="input--style-5" type="date" name="birthDay" id="birthDay" th:field="*{birthDay}" required="true">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="name">Address</div>
+                        <div class="value">
+                            <div class="input-group">
+                                <input class="input--style-5" type="text" name="address" id="address" th:field="*{address}" required="true">
+                            </div>
+                        </div>
+                    </div>
+
                     <div>
                         <button class="btn btn--radius-2 btn--red" type="submit">Register</button>
                     </div>

@@ -142,14 +142,32 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    private String name;
+    private String userName;
     private String password;
+    private String name;
+    private String email;
+    private String address;
+    private String birthDay;
+    private String phone;
+
 
     @ManyToOne
     @JoinColumn(name = "user_role_id")
     public UserRole userRole;
 
     public User() {
+
+    }
+
+    public User(String userName, String password, String name, String email, String address, String birthDay, String phone, UserRole userRole) {
+        this.userName = userName;
+        this.password = password;
+        this.name = name;
+        this.email = email;
+        this.address = address;
+        this.birthDay = birthDay;
+        this.phone = phone;
+        this.userRole = userRole;
     }
 
     public Integer getId() {
@@ -160,6 +178,22 @@ public class User {
         this.id = id;
     }
 
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public String getName() {
         return name;
     }
@@ -168,13 +202,36 @@ public class User {
         this.name = name;
     }
 
-    public String getPassword() {
-        return password;
+    public String getEmail() {
+        return email;
     }
 
-    public void setPassword(String password) {
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-        this.password = password;
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getBirthDay() {
+        return birthDay;
+    }
+
+    public void setBirthDay(String birthDay) {
+        this.birthDay = birthDay;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public UserRole getUserRole() {

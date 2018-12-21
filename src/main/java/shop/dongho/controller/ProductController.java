@@ -20,6 +20,7 @@ import shop.dongho.service.ProductTypeService;
 import java.util.Optional;
 
 @Controller
+@RequestMapping("/admin")
 public class ProductController {
     @Autowired
     private ProductService productService;
@@ -40,10 +41,10 @@ public class ProductController {
         return productTypeService.findAll(pageable);
     }
 
-    @GetMapping("/")
-    public ModelAndView home() {
-        return new ModelAndView("/product/list");
-    }
+//    @GetMapping("/admin/")
+//    public ModelAndView home() {
+//        return new ModelAndView("/product/list");
+//    }
     @GetMapping("/create-product")
     public ModelAndView formCreateProduct() {
         ModelAndView modelAndView = new ModelAndView("/product/create");

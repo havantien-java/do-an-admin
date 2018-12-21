@@ -49,33 +49,33 @@
 
             <ul class="nav">
                 <li>
-                    <a href="/bills">
+                    <a href="bills">
                         <i class="pe-7s-graph"></i>
                         <p>Tổng Quan</p>
                     </a>
                 </li>
                 <li>
-                    <a href="/users">
+                    <a href="users">
                         <i class="pe-7s-user"></i>
                         <p>Quản Trị Thành Viên</p>
                     </a>
                 </li>
                 <li class="active">
-                    <a  href="/products">
+                    <a  href="products">
                         <i class="pe-7s-note2"></i>
                         <p>Quản Lý Sản Phẩm</p>
                     </a>
                 </li>
                 <li>
-                    <a href="/customers">
+                    <a href="customers">
                         <i class="pe-7s-news-paper"></i>
                         <p>Quản Trị Khách Hàng</p>
                     </a>
                 </li>
                 <li>
-                    <a href="/productTypes">
+                    <a href="productTypes">
                         <i class="pe-7s-science"></i>
-                        <p>Loại Sản Phẩm</p>
+                        <p>Quản Trị Loại Đồng Hồ</p>
                     </a>
                 </li>
                 <li>
@@ -193,7 +193,7 @@
                                     <input type="text" name="s">
                                     <input type="submit" value="Search">
                                     <p>
-                                        <a href="/create-product">Thêm Sản Phẩm</a>
+                                        <a th:href="@{create-product}">Thêm Sản Phẩm</a>
                                     </p>
                                 </form><br/>
                             </div>
@@ -230,8 +230,8 @@
                                             <td th:text="${product.unitPrice}"></td>
                                             <td th:text="${product.productType.name}"></td>
                                             <td th:text="${product.producer.name}"></td>
-                                            <td><a th:href="@{/edit-product/__${product.id}__ }">Sửa</a></td>
-                                            <td><a th:href="@{/delete-product/__${product.id}__ }">Xóa</a></td>
+                                            <td><a th:href="@{edit-product/__${product.id}__ }">Sửa</a></td>
+                                            <td><a th:href="@{delete-product/__${product.id}__ }">Xóa</a></td>
                                         </tr>
                                     </th:block>
                                     </tbody>

@@ -15,18 +15,19 @@ import java.util.Optional;
 
 
 @Controller
+@RequestMapping("/admin")
 public class ProducerController {
     @Autowired
     private ProducerService producerService;
 
-    @GetMapping("create-producer")
+    @GetMapping("/create-producer")
     public ModelAndView showCreateProducer() {
         ModelAndView modelAndView = new ModelAndView("/producer/create");
         modelAndView.addObject("producer", new Producer());
         return modelAndView;
     }
 
-    @PostMapping("create-producer")
+    @PostMapping("/create-producer")
     public ModelAndView saveProducer(@ModelAttribute("producer") Producer producer) {
         producerService.save(producer);
         ModelAndView modelAndView = new ModelAndView("producer/create");
@@ -35,7 +36,7 @@ public class ProducerController {
         return modelAndView;
     }
 
-    @GetMapping("producers")
+    @GetMapping("/producers")
     public ModelAndView showProducer(@PageableDefault(size = 10) Pageable pageable, @ModelAttribute("s") String s) {
         Page<Producer> producers;
         if (s != null) {
@@ -48,7 +49,7 @@ public class ProducerController {
         return modelAndView;
     }
 
-    @GetMapping("edit-producer/{id}")
+    @GetMapping("/edit-producer/{id}")
     public ModelAndView showEditForm(@PathVariable Long id) {
         Optional<Producer> producer = producerService.findById(id);
         if (producer != null) {

@@ -18,9 +18,9 @@ import java.util.Optional;
 
 @Controller
 public class UserController {
-//    @Autowired
-//    private UserService userService;
-//
+    @Autowired
+    private UserService userService;
+////
 //    @GetMapping("create-user")
 //    public ModelAndView createUser() {
 //        ModelAndView modelAndView = new ModelAndView("user/create");
@@ -41,41 +41,41 @@ public class UserController {
 //            return modelAndView;
 //        }
 //    }
+
+    @GetMapping("admin/users")
+    public ModelAndView showUser(@PageableDefault(size = 10) Pageable pageable, @ModelAttribute("s") String s) {
+        Page<User> users;
+        if (s == null) {
+            users = userService.findAll(pageable);
+        } else {
+            users = userService.findAllByNameContaining(s, pageable);
+        }
+        ModelAndView modelAndView = new ModelAndView("/user/list");
+        modelAndView.addObject("users", users);
+        return modelAndView;
+    }
 //
-//    @GetMapping("users")
-//    public ModelAndView showUser(@PageableDefault(size = 10) Pageable pageable, @ModelAttribute("s") String s) {
-//        Page<User> users;
-//        if (s == null) {
-//            users = userService.findAll(pageable);
-//        } else {
-//            users = userService.findAllByNameContaining(s, pageable);
-//        }
-//        ModelAndView modelAndView = new ModelAndView("/user/list");
-//        modelAndView.addObject("users", users);
-//        return modelAndView;
-//    }
-//
-//    @GetMapping("edit-user/{id}")
-//    public ModelAndView editUser(@PathVariable Long id) {
-//        Optional<User> user =userService.findById(id);
-//        if (user != null) {
-//            ModelAndView modelAndView = new ModelAndView("/user/edit");
-//            modelAndView.addObject("user", user);
-//            return modelAndView;
-//        } else {
-//            ModelAndView modelAndView = new ModelAndView("error.404");
-//            return modelAndView;
-//        }
-//    }
-//
-//    @PostMapping("edit-user")
-//    public ModelAndView updateUser(@ModelAttribute("user") User user) {
-//        userService.save(user);
-//        ModelAndView modelAndView = new ModelAndView("/user/edit");
-//        modelAndView.addObject("user", user);
-//        modelAndView.addObject("message","Thành Công");
-//        return modelAndView;
-//    }
+    @GetMapping("admin/edit-user/{id}")
+    public ModelAndView editUser(@PathVariable Integer id) {
+        Optional<User> user =userService.findById(id);
+        if (user != null) {
+            ModelAndView modelAndView = new ModelAndView("/user/edit");
+            modelAndView.addObject("user", user);
+            return modelAndView;
+        } else {
+            ModelAndView modelAndView = new ModelAndView("error.404");
+            return modelAndView;
+        }
+    }
+
+    @PostMapping("admin/edit-user")
+    public ModelAndView updateUser(@ModelAttribute("user") User user) {
+        userService.save(user);
+        ModelAndView modelAndView = new ModelAndView("/user/edit");
+        modelAndView.addObject("user", user);
+        modelAndView.addObject("message","Thành Công");
+        return modelAndView;
+    }
 //
 //    @GetMapping("delete-user/{id}")
 //    public ModelAndView deleteUser(@PathVariable Long id) {
@@ -102,9 +102,9 @@ public class UserController {
         return new ModelAndView("index");
     }
 
-    @GetMapping("/admin/index")
+    @GetMapping("admin/product/list")
     public String admin() {
-        return "admin";
+        return "product/list";
     }
 
     @GetMapping("/403")

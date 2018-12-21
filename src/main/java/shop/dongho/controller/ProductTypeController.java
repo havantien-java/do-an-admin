@@ -13,18 +13,19 @@ import shop.dongho.service.ProductTypeService;
 import java.util.Optional;
 
 @Controller
+    @RequestMapping("/admin")
 public class ProductTypeController {
     @Autowired
     private ProductTypeService productTypeService;
 
-    @GetMapping("create-productType")
+    @GetMapping("/create-productType")
     public ModelAndView showCreateProductType() {
         ModelAndView modelAndView = new ModelAndView("/productType/create");
         modelAndView.addObject("productType", new ProductType());
         return modelAndView;
     }
 
-    @PostMapping("create-productType")
+    @PostMapping("/create-productType")
     public ModelAndView saveProductType(@ModelAttribute("productType") ProductType productType) {
     productTypeService.save(productType);
     ModelAndView modelAndView = new ModelAndView("productType/create");
@@ -33,7 +34,7 @@ public class ProductTypeController {
     return modelAndView;
     }
 
-    @GetMapping("productTypes")
+    @GetMapping("/productTypes")
     public ModelAndView showProductType(@PageableDefault(size = 10) Pageable pageable, @ModelAttribute("s") String s) {
         Page<ProductType> productTypes;
         if (s != null) {
@@ -46,7 +47,7 @@ public class ProductTypeController {
         return modelAndView;
     }
 
-    @GetMapping("edit-productType/{id}")
+    @GetMapping("/edit-productType/{id}")
     public ModelAndView showEditForm(@PathVariable Long id) {
         Optional<ProductType> productType = productTypeService.findById(id);
         if (productType != null) {
