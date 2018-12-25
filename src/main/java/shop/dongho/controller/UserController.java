@@ -13,6 +13,7 @@ import shop.dongho.model.User;
 import shop.dongho.service.UserService;
 import shop.dongho.service.impl.UserDetailServiceImpl;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.Optional;
 
 
@@ -76,26 +77,26 @@ public class UserController {
         modelAndView.addObject("message","Thành Công");
         return modelAndView;
     }
-//
-//    @GetMapping("delete-user/{id}")
-//    public ModelAndView deleteUser(@PathVariable Long id) {
-//        Optional<User> user = userService.findById(id);
-//        if (user != null) {
-//            ModelAndView modelAndView = new ModelAndView("/user/delete");
-//            modelAndView.addObject("user", user);
-//            return modelAndView;
-//        } else {
-//            ModelAndView modelAndView = new ModelAndView("error.404");
-//            return modelAndView;
-//        }
-//    }
-//
-//    @PostMapping("delete-user")
-//    public String delete(@ModelAttribute("user") User user) {
-//        userService.remove(user.getId());
-//        return "redirect:users";
-//
-//    }
+
+    @GetMapping("admin/delete-user/{id}")
+    public ModelAndView deleteUser(@PathVariable Integer id) {
+        Optional<User> user = userService.findById(id);
+        if (user != null) {
+            ModelAndView modelAndView = new ModelAndView("/user/delete");
+            modelAndView.addObject("user", user);
+            return modelAndView;
+        } else {
+            ModelAndView modelAndView = new ModelAndView("error.404");
+            return modelAndView;
+        }
+    }
+
+    @PostMapping("admin/delete-user")
+    public String delete(@ModelAttribute("user") User user) {
+        userService.remove(user.getId());
+        return "redirect:users";
+
+    }
 
     @GetMapping("/hello")
     public ModelAndView index() {

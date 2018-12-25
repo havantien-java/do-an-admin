@@ -166,31 +166,34 @@
     <!--</div>-->
 
     <h2>Create a product</h2>
-    <p><a th:href="@{products}">Danh Sách Sản Phẩm</a></p>
+    <p><a th:href="@{/admin/products}">Danh Sách Sản Phẩm</a></p>
     <div class="contact">
         <table>
-            <form th:action="@{/admin/create-product}" th:object="${product}" method="post">
+            <form th:action="@{/admin/create-product}" th:object="${product}" method="post" enctype="multipart/form-data">
                 <tr>
                     <td>Name</td>
                     <td><input type="text" th:field="*{name}"></td>
                     <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
                 </tr>
                 <tr>
-                    <td>Image</td>
-                    <td><input th:type="file" th:field="*{image}" th:name="file" th:multiple></td>
+                    <!--<td>Image</td>-->
+                    <!--<td><input th:type="file" th:field="*{image}" th:name="file" th:multiple></td>-->
+                    <input class="input-file" type="file" name="file-image" id="file-image" >
+                    <label class="label--file" for="file-image">Choose files</label>
+                    <span class="input-file__info">No file chosen</span>
                 </tr>
-                <tr>
-                    <td>Image1</td>
-                    <td><input type="file" th:field="*{image1}"></td>
-                </tr>
-                <tr>
-                    <td>Image2</td>
-                    <td><input type="file" th:field="*{image2}"></td>
-                </tr>
-                <tr>
-                    <td>Image3</td>
-                    <td><input type="file" th:field="*{image3}"></td>
-                </tr>
+                <!--<tr>-->
+                    <!--<td>Image1</td>-->
+                    <!--<td><input type="file" th:field="*{image1}"></td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td>Image2</td>-->
+                    <!--<td><input type="file" th:field="*{image2}"></td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td>Image3</td>-->
+                    <!--<td><input type="file" th:field="*{image3}"></td>-->
+                <!--</tr>-->
                 <tr>
                     <td>Màu Sắc</td>
                     <td><input type="text" th:field="*{color}"></td>

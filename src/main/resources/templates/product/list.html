@@ -203,6 +203,7 @@
                                     <th>STT</th>
                                     <th>ID</th>
                                     <th>Tên</th>
+                                    <th>Ảnh</th>
                                     <th>Màu Sắc</th>
                                     <th>Kiểu Máy</th>
                                     <th>Kích Cỡ</th>
@@ -221,6 +222,7 @@
                                             <td th:text="${istart.index + 1}"></td>
                                             <td th:text="${product.id}"></td>
                                             <td th:text="${product.name}"></td>
+                                            <td><img th:src="@{/resources/__${imageProduct.url}__}" height="100px" width="100px"></td>
                                             <td th:text="${product.color}"></td>
                                             <td th:text="${product.machineType}"></td>
                                             <td th:text="${product.size}"></td>

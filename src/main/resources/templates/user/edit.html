@@ -1,59 +1,167 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Edit ser</title>
-</head>
-<body>
-<h1>Edit user</h1>
-<p>
-    <a href="admin/users">User list</a>
-</p>
-<th:block th:if="${message}">
-    <p th:text="${message}"></p>
-</th:block>
-<form th:action="@{/admin/edit-user}" th:object="${user}" method="post">
-    <input th:type="hidden" name="id" th:field="*{id}">
-    <table>
-        <tr>
-            <td>Tên Người Dùng:</td>
-            <td><input type="text" th:field="*{name}"/></td>
-        </tr>
-        <tr>
-            <td>Password:</td>
-            <td><input type="text" th:field="*{password}"/></td>
-        </tr>
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<title>Edit ser</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h1>Edit user</h1>-->
+<!--<p>-->
+    <!--<a href="/admin/users">User list</a>-->
+<!--</p>-->
+<!--<th:block th:if="${message}">-->
+    <!--<p th:text="${message}"></p>-->
+<!--</th:block>-->
+<!--<form th:action="@{/admin/edit-user}" th:object="${user}" method="post">-->
+    <!--<input th:type="hidden" name="id" th:field="*{id}">-->
+    <!--<table>-->
         <!--<tr>-->
             <!--<td>Tên Người Dùng:</td>-->
-            <!--<td><input type="text" th:field="*{name}"></td>-->
+            <!--<td><input type="text" th:field="*{name}"/></td>-->
         <!--</tr>-->
-        <tr>
-            <td> Email:</td>
-            <td><input type="text" th:field="*{email}"></td>
-        </tr>
-        <tr>
-            <td>Địa Chỉ</td>
-            <td><input type="text" th:field="*{address}"></td>
-        </tr>
-        <tr>
-            <td>Ngày Sinh</td>
-            <td><input type="date" th:field="*{birthDay}"></td>
-        </tr>
-        <tr>
-            <td>Số Điện Thoại</td>
-            <td><input type="text" th:field="*{phone}"></td>
-        </tr>
+        <!--<tr>-->
+            <!--<td>Password:</td>-->
+            <!--<td><input type="text" th:field="*{password}"/></td>-->
+        <!--</tr>-->
+        <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+            <!--&lt;!&ndash;<td>Tên Người Dùng:</td>&ndash;&gt;-->
+            <!--&lt;!&ndash;<td><input type="text" th:field="*{name}"></td>&ndash;&gt;-->
+        <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+        <!--<tr>-->
+            <!--<td> Email:</td>-->
+            <!--<td><input type="text" th:field="*{email}"></td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+            <!--<td>Địa Chỉ</td>-->
+            <!--<td><input type="text" th:field="*{address}"></td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+            <!--<td>Ngày Sinh</td>-->
+            <!--<td><input type="date" th:field="*{birthDay}"></td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+            <!--<td>Số Điện Thoại</td>-->
+            <!--<td><input type="text" th:field="*{phone}"></td>-->
+        <!--</tr>-->
+
+        <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+            <!--&lt;!&ndash;<td>Role</td>&ndash;&gt;-->
+            <!--&lt;!&ndash;<td><input type="text" th:field="*{role}"></td>&ndash;&gt;-->
+        <!--&lt;!&ndash;</tr>&ndash;&gt;-->
 
         <!--<tr>-->
-            <!--<td>Role</td>-->
-            <!--<td><input type="text" th:field="*{role}"></td>-->
+            <!--<td></td>-->
+            <!--<td><input type="submit" value="Edit user"></td>-->
         <!--</tr>-->
+    <!--</table>-->
+<!--</form>-->
+<!--</body>-->
+<!--</html>-->
 
-        <tr>
-            <td></td>
-            <td><input type="submit" value="Edit user"></td>
-        </tr>
-    </table>
-</form>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!-- Head -->
+<head>
+
+    <title>User Account Creation Form A Flat Responsive Widget Template :: W3layouts</title>
+
+    <!-- For-Mobile-Apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="User Account Creation Form Widget Responsive, Login Form Web Template, Flat Pricing Tables, Flat Drop-Downs, Sign-Up Web Templates, Flat Web Templates, Login Sign-up Responsive Web Template, Smartphone Compatible Web Template, Free Web Designs for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- //For-Mobile-Apps -->
+
+    <!--&lt;!&ndash; Style &ndash;&gt; <link rel="stylesheet" href="../../../../../../../Desktop/user_account_creation_form_widget/web/css/style.css" type="text/css" media="all" />-->
+    <!--<link rel="stylesheet" th:href="@{/css/style.css}">-->
+    <!-- Web-Fonts -->
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900" 	type="text/css" media="all">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Raleway:400,500,600,700,800" 		type="text/css" media="all">
+    <link rel="stylesheet" th:href="@{/css/styleCreate.css}" >
+    <!-- //Web-Fonts -->
+
+</head>
+<!-- //Head -->
+
+<!-- Body -->
+<body>
+
+<h1>ĐỒNG HỒ XỊN</h1>
+
+<div class="container">
+
+    <!--<p>Login through social media accounts</p>-->
+
+    <!--<div class="social-icons">-->
+    <!--<ul>-->
+    <!--<li><a href="#"><span class="icons"></span><span class="text">Facebook</span></a></li>-->
+    <!--<li class="twt"><a href="#"><span class="icons"></span><span class="text">Twitter</span></a></li>-->
+    <!--<li class="ggp"><a href="#"><span class="icons"></span><span class="text">Google+</span></a></li>-->
+    <!--<div class="clear"> </div>-->
+    <!--</ul>-->
+    <!--</div>-->
+
+    <h2>Edit User</h2>
+    <p>
+        <a href="/admin/users">User list</a>
+    </p>
+    <th:block th:if="${message}">
+        <p th:text="${message}"></p>
+    </th:block>
+    <div class="contact">
+        <form th:action="@{/admin/edit-user}" th:object="${user}" method="post">
+            <input th:type="hidden" name="id" th:field="*{id}">
+            <table>
+                <tr>
+                    <td>Tên Người Dùng:</td>
+                    <td><input type="text" th:field="*{name}"/></td>
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td><input type="text" th:field="*{password}"/></td>
+                </tr>
+                <!--<tr>-->
+                <!--<td>Tên Người Dùng:</td>-->
+                <!--<td><input type="text" th:field="*{name}"></td>-->
+                <!--</tr>-->
+                <tr>
+                    <td> Email:</td>
+                    <td><input type="text" th:field="*{email}"></td>
+                </tr>
+                <tr>
+                    <td>Địa Chỉ</td>
+                    <td><input type="text" th:field="*{address}"></td>
+                </tr>
+                <tr>
+                    <td>Ngày Sinh</td>
+                    <td><input type="date" th:field="*{birthDay}"></td>
+                </tr>
+                <tr>
+                    <td>Số Điện Thoại</td>
+                    <td><input type="text" th:field="*{phone}"></td>
+                </tr>
+
+                <!--<tr>-->
+                <!--<td>Role</td>-->
+                <!--<td><input type="text" th:field="*{role}"></td>-->
+                <!--</tr>-->
+
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="Edit user"></td>
+                </tr>
+            </table>
+        </form>
+        </table>
+    </div>
+</div>
+
+<div class="footer">
+    <p> &copy; shop đồng hồ | đồng hồ uy tín chất lượng</p>
+</div>
+
 </body>
+<!-- //Body -->
+
 </html>

@@ -3,6 +3,8 @@ package shop.dongho.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table(name = "product")
@@ -56,6 +58,17 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "idProductType")
     private ProductType productType;
+
+    @OneToMany(targetEntity = ImageProduct.class, mappedBy = "product")
+    public List<ImageProduct> imageProducts;
+
+    public List<ImageProduct> getImageProducts() {
+        return imageProducts;
+    }
+
+    public void setImageProducts(List<ImageProduct> imageProducts) {
+        this.imageProducts = imageProducts;
+    }
 
     public Producer getProducer() {
         return producer;

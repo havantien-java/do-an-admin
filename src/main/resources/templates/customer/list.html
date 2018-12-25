@@ -101,27 +101,27 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/users">
+                    <a href="/admin/users">
                         <i class="pe-7s-user"></i>
                         <p>Quản Trị Thành Viên</p>
                     </a>
                 </li>
                 <li class="active">
-                    <a  href="/products">
+                    <a  href="/admin/products">
                         <i class="pe-7s-note2"></i>
                         <p>Quản Lý Sản Phẩm</p>
                     </a>
                 </li>
                 <li>
-                    <a href="/customers">
+                    <a href="/admin/customers">
                         <i class="pe-7s-news-paper"></i>
                         <p>Quản Trị Khách Hàng</p>
                     </a>
                 </li>
                 <li>
-                    <a href="icons.html">
+                    <a href="/admin/productTypes">
                         <i class="pe-7s-science"></i>
-                        <p>Icons</p>
+                        <p>Quản Trị Loại Đồng Hồ</p>
                     </a>
                 </li>
                 <li>
@@ -239,7 +239,7 @@
                                     <input type="text" name="s">
                                     <input type="submit" value="Search">
                                     <p>
-                                        <a th:href="@{create-customer}">Thêm Khách Hàng</a>
+                                        <a th:href="@{/admin/create-customer}">Thêm Khách Hàng</a>
                                     </p>
                                 </form><br/>
                             </div>
@@ -266,8 +266,8 @@
                                             <td th:text="${customer.address}"></td>
                                             <td th:text="${customer.phone}"></td>
                                             <td th:text="${customer.note}"></td>
-                                            <td><a th:href="@{/edit-customer/__${customer.id}__ }">Edit</a></td>
-                                            <td><a th:href="@{/delete-customer/__${customer.id}__ }">Delete</a></td>
+                                            <td><a th:href="@{/admin/edit-customer/__${customer.id}__ }">Edit</a></td>
+                                            <td><a th:href="@{/admin/delete-customer/__${customer.id}__ }">Delete</a></td>
                                         </tr>
                                         </tr>
                                     </th:block>
