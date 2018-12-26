@@ -9,7 +9,6 @@ import org.springframework.format.FormatterRegistry;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import shop.dongho.formatter.UserRoleFormatter;
-import shop.dongho.model.ImageProduct;
 import shop.dongho.service.*;
 import shop.dongho.service.impl.*;
 
@@ -61,11 +60,6 @@ public class DonghoApplication {
 	public BCryptPasswordEncoder passwordEncoder() {
 		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 		return bCryptPasswordEncoder;
-	}
-
-	@Bean
-	public ImageProductService imageProductService() {
-		return new ImageProductServiceImpl();
 	}
 
 	@Configuration

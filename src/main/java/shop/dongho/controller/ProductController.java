@@ -9,23 +9,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-import shop.dongho.model.ImageProduct;
 import shop.dongho.model.Producer;
 import shop.dongho.model.Product;
 import shop.dongho.model.ProductType;
-import shop.dongho.service.ImageProductService;
 import shop.dongho.service.ProducerService;
 import shop.dongho.service.ProductService;
 import shop.dongho.service.ProductTypeService;
 
-import javax.xml.crypto.Data;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.Date;
 import java.util.Optional;
 
 @Controller
@@ -62,18 +53,16 @@ public class ProductController {
     }
 
     @PostMapping("/create-product")
-    public ModelAndView createProduct(@Validated @ModelAttribute("product") Product product, BindingResult bindingResult, @RequestParam("file-image") MultipartFile avartaImage) {
+    public ModelAndView createProduct(@Validated @ModelAttribute("product") Product product, BindingResult bindingResult) {
         if (bindingResult.hasFieldErrors()){
             ModelAndView modelAndView = new ModelAndView("/product/create");
             return modelAndView;
         } else {
             productService.save(product);
-//            ModelAndView modelAndView = new ModelAndView("/product/create");
-//            modelAndView.addObject("product", product);
-//            modelAndView.addObject("message", "Thành Công");
-//            return modelAndView;
-
-            return doUpload(avartaImage, product);
+            ModelAndView modelAndView = new ModelAndView("/product/create");
+            modelAndView.addObject("product", product);
+            modelAndView.addObject("message", "Thành Công");
+            return modelAndView;
         }
 
     }
@@ -88,7 +77,6 @@ public class ProductController {
         }
         ModelAndView modelAndView = new ModelAndView("/product/list");
         modelAndView.addObject("products", products);
-        modelAndView.addObject("imageProduct", products.get());
         return modelAndView;
 
     }
@@ -133,83 +121,5 @@ public class ProductController {
         productService.remove(product.getId());
         return "redirect:products";
     }
-
-    @Autowired
-    private ImageProductService imageProductService;
-
-    public ModelAndView doUpload (MultipartFile avartaImage, Product product ) {
-        uploadAvartaImage(avartaImage, product);
-        ModelAndView modelAndView = new ModelAndView("product/create");
-        modelAndView.addObject("product", new Product());
-        return modelAndView;
-    }
-
-    private void uploadAvartaImage(MultipartFile file, Product product) {
-        File uploadRootDir = new File("F:/image/");
-
-        if (!uploadRootDir.exists()) {
-            uploadRootDir.mkdirs();
-        }
-
-        String name = file.getOriginalFilename();
-        System.out.println("Client File Name = " + name);
-
-        Date date = new Date();
-
-        String url = "";
-        url = String.valueOf((name + date.toString()).hashCode());
-        ImageProduct image = new ImageProduct(0, url,product);
-        imageProductService.save(image);
-
-        if (name != null && name.length() > 0) {
-            try {
-                File serverFile = new File(uploadRootDir.getAbsolutePath() + File.separator + url);
-                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
-                stream.write(file.getBytes());
-                stream.close();
-            } catch (IOException e) {
-//                failedFile = "Error Write file: " + name;
-            }
-        }
-    }
-
-//    private void uploadDetailImages(MultipartFile[] files, Product product) {
-//        File uploadRootDir = new File("file:///C:/Users/Ha%20Tien/Desktop/DongHo/");
-//
-//        //Tao thu muc goc neu no khong ton tai
-//        if (!uploadRootDir.exists()) {
-//            uploadRootDir.mkdirs();
-//        }
-////        List<File> uploadedFiles = new ArrayList<>();
-////        List<String> failedFiles = new ArrayList<>();
-//
-//        for (MultipartFile file : files) {
-//            //Ten goc tai Client
-//            String name = file.getOriginalFilename();
-//            System.out.println("Client File Name = " + name);
-//
-//            Date date = new Date();
-//
-//            String url = "";
-//            url = String.valueOf((name + date.toString()).hashCode());
-//            ImageProduct image = new ImageProduct(1, url, product);
-//            imageProductService.save(image);
-//
-//            if (name != null && name.length() > 0) {
-//                try {
-//                    File serverFile = new File(uploadRootDir.getAbsolutePath() + File.separator + url);
-//                    BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
-//                    stream.write(file.getBytes());
-//                    stream.close();
-//                    //
-////                    uploadedFiles.add(serverFile);
-////                    System.out.println("Write file: " + serverFile);
-//                } catch (IOException e) {
-////                    System.out.println("Error Write file: " + name);
-////                    failedFiles.add(name);
-//                }
-//            }
-//        }
-//    }
 
 }

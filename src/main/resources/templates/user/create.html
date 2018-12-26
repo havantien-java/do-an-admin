@@ -1,193 +1,73 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
-<!--<head>-->
-    <!--<meta charset="UTF-8">-->
-    <!--<title>Create User</title>-->
-<!--</head>-->
-<!--<body>-->
-<!--<h1>Create User</h1>-->
-<!--<p>-->
-    <!--<a href="/admin/users">User list</a>-->
-<!--</p>-->
-<!--<th:block th:if="${message}">-->
-    <!--<p th:text="${message}"></p>-->
-<!--</th:block>-->
-<!--<form th:action="@{/admin/create-user}" th:object="${user}" method="post">-->
-    <!--<table>-->
-        <!--<tr>-->
-            <!--<td>Tên Đăng Nhập:</td>-->
-            <!--<td><input type="text" th:field="*{userName}"/></td>-->
-            <!--<td th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">userName Error</td>-->
-
-        <!--</tr>-->
-        <!--<tr>-->
-            <!--<td>Password</td>-->
-            <!--<td><input type="text" th:field="*{password}"></td>-->
-            <!--<td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">password Error</td>-->
-
-        <!--</tr>-->
-        <!--<tr>-->
-            <!--<td>Tên Người Dùng</td>-->
-            <!--<td><input type="text" th:field="*{name}"></td>-->
-            <!--<td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>-->
-
-        <!--</tr>-->
-        <!--<tr>-->
-            <!--<td>Email</td>-->
-            <!--<td><input type="text" th:field="*{email}"></td>-->
-            <!--<td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</td>-->
-
-        <!--</tr>-->
-        <!--<tr>-->
-            <!--<td>Địa Chỉ</td>-->
-            <!--<td><input type="text" th:field="*{address}"></td>-->
-            <!--<td th:if="${#fields.hasErrors('address')}" th:errors="*{address}">Address Error</td>-->
-
-        <!--</tr>-->
-        <!--<tr>-->
-            <!--<td>Ngày Sinh</td>-->
-            <!--<td><input type="date" th:field="*{birthDay}"></td>-->
-            <!--<td th:if="${#fields.hasErrors('birthDay')}" th:errors="*{birthDay}">birthDay Error</td>-->
-
-        <!--</tr>-->
-        <!--<tr>-->
-            <!--<td>Số Điện Thoại</td>-->
-            <!--<td><input type="text" th:field="*{phone}"></td>-->
-            <!--<td th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">Phone Error</td>-->
-
-        <!--</tr>-->
-        <!--<tr>-->
-            <!--<td>Vai Trò</td>-->
-            <!--<td><input type="text" th:field="*{role}"></td>-->
-            <!--<td th:if="${#fields.hasErrors('role')}" th:errors="*{role}">Role Error</td>-->
-
-        <!--</tr>-->
-        <!--<tr>-->
-            <!--<td></td>-->
-            <!--<td><input type="submit" value="Create User"></td>-->
-
-        <!--</tr>-->
-    <!--</table>-->
-<!--</form>-->
-<!--</body>-->
-<!--</html>-->
-
-
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-
-<!-- Head -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-
-    <title>User Account Creation Form A Flat Responsive Widget Template :: W3layouts</title>
-
-    <!-- For-Mobile-Apps -->
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="keywords" content="User Account Creation Form Widget Responsive, Login Form Web Template, Flat Pricing Tables, Flat Drop-Downs, Sign-Up Web Templates, Flat Web Templates, Login Sign-up Responsive Web Template, Smartphone Compatible Web Template, Free Web Designs for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design" />
-    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-    <!-- //For-Mobile-Apps -->
-
-    <!--&lt;!&ndash; Style &ndash;&gt; <link rel="stylesheet" href="../../../../../../../Desktop/user_account_creation_form_widget/web/css/style.css" type="text/css" media="all" />-->
-    <!--<link rel="stylesheet" th:href="@{/css/style.css}">-->
-    <!-- Web-Fonts -->
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900" 	type="text/css" media="all">
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Raleway:400,500,600,700,800" 		type="text/css" media="all">
-    <link rel="stylesheet" th:href="@{/css/styleCreate.css}" >
-    <!-- //Web-Fonts -->
-
+    <meta charset="UTF-8">
+    <title>Create User</title>
 </head>
-<!-- //Head -->
-
-<!-- Body -->
 <body>
+<h1>Create User</h1>
+<p>
+    <a href="/users">User list</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/create-user}" th:object="${user}" method="post">
+    <table>
+        <tr>
+            <td>Tên Đăng Nhập:</td>
+            <td><input type="text" th:field="*{userName}"/></td>
+            <td th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">userName Error</td>
 
-<h1>ĐỒNG HỒ XỊN</h1>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td><input type="text" th:field="*{password}"></td>
+            <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">password Error</td>
 
-<div class="container">
+        </tr>
+        <tr>
+            <td>Tên Người Dùng</td>
+            <td><input type="text" th:field="*{name}"></td>
+            <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
 
-    <!--<p>Login through social media accounts</p>-->
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td><input type="text" th:field="*{email}"></td>
+            <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</td>
 
-    <!--<div class="social-icons">-->
-    <!--<ul>-->
-    <!--<li><a href="#"><span class="icons"></span><span class="text">Facebook</span></a></li>-->
-    <!--<li class="twt"><a href="#"><span class="icons"></span><span class="text">Twitter</span></a></li>-->
-    <!--<li class="ggp"><a href="#"><span class="icons"></span><span class="text">Google+</span></a></li>-->
-    <!--<div class="clear"> </div>-->
-    <!--</ul>-->
-    <!--</div>-->
+        </tr>
+        <tr>
+            <td>Địa Chỉ</td>
+            <td><input type="text" th:field="*{address}"></td>
+            <td th:if="${#fields.hasErrors('address')}" th:errors="*{address}">Address Error</td>
 
-    <h2>Create User</h2>
-    <p>
-        <a href="/admin/users">User list</a>
-    </p>
-    <th:block th:if="${message}">
-        <p th:text="${message}"></p>
-    </th:block>
-    <form th:action="@{/admin/create-user}" th:object="${user}" method="post">
-        <table>
-            <tr>
-                <td>Tên Đăng Nhập:</td>
-                <td><input type="text" th:field="*{userName}"/></td>
-                <td th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">userName Error</td>
+        </tr>
+        <tr>
+            <td>Ngày Sinh</td>
+            <td><input type="date" th:field="*{birthDay}"></td>
+            <td th:if="${#fields.hasErrors('birthDay')}" th:errors="*{birthDay}">birthDay Error</td>
 
-            </tr>
-            <tr>
-                <td>Password</td>
-                <td><input type="text" th:field="*{password}"></td>
-                <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">password Error</td>
+        </tr>
+        <tr>
+            <td>Số Điện Thoại</td>
+            <td><input type="text" th:field="*{phone}"></td>
+            <td th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">Phone Error</td>
 
-            </tr>
-            <tr>
-                <td>Tên Người Dùng</td>
-                <td><input type="text" th:field="*{name}"></td>
-                <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
+        </tr>
+        <tr>
+            <td>Vai Trò</td>
+            <td><input type="text" th:field="*{role}"></td>
+            <td th:if="${#fields.hasErrors('role')}" th:errors="*{role}">Role Error</td>
 
-            </tr>
-            <tr>
-                <td>Email</td>
-                <td><input type="text" th:field="*{email}"></td>
-                <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Create User"></td>
 
-            </tr>
-            <tr>
-                <td>Địa Chỉ</td>
-                <td><input type="text" th:field="*{address}"></td>
-                <td th:if="${#fields.hasErrors('address')}" th:errors="*{address}">Address Error</td>
-
-            </tr>
-            <tr>
-                <td>Ngày Sinh</td>
-                <td><input type="date" th:field="*{birthDay}"></td>
-                <td th:if="${#fields.hasErrors('birthDay')}" th:errors="*{birthDay}">birthDay Error</td>
-
-            </tr>
-            <tr>
-                <td>Số Điện Thoại</td>
-                <td><input type="text" th:field="*{phone}"></td>
-                <td th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">Phone Error</td>
-
-            </tr>
-            <tr>
-                <td>Vai Trò</td>
-                <td><input type="text" th:field="*{role}"></td>
-                <td th:if="${#fields.hasErrors('role')}" th:errors="*{role}">Role Error</td>
-
-            </tr>
-            <tr>
-                <td></td>
-                <td><input type="submit" value="Create User"></td>
-
-            </tr>
-        </table>
-    </form>
-    </div>
-
-<div class="footer">
-    <p> &copy; shop đồng hồ | đồng hồ uy tín chất lượng</p>
-</div>
-
+        </tr>
+    </table>
+</form>
 </body>
-<!-- //Body -->
-
 </html>
