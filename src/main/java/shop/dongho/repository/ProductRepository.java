@@ -7,4 +7,6 @@ import shop.dongho.model.Product;
 
 public interface ProductRepository extends PagingAndSortingRepository<Product, Integer> {
     Page<Product> findAllByNameContaining(String s, Pageable pageable);
+
+    Page<Product> findAllByProducer_Id(Long id,Pageable pageable);
 }

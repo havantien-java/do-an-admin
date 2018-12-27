@@ -8,12 +8,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Luxury Watches A Ecommerce Category Flat Bootstrap Resposive Website Template | Home :: w3layouts</title>
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link th:href="@{/css/bootstrap.css}" rel="stylesheet" type="text/css" media="all" />
 <!--jQuery(necessary for Bootstrap's JavaScript plugins)-->
-<script src="js/jquery-1.11.0.min.js"></script>
+<script th:src="@{/js/jquery-1.11.0.min.js}"></script>
 <!--Custom-Theme-files-->
 <!--theme-style-->
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
+<link th:href="@{/css/style.css}" rel="stylesheet" type="text/css" media="all" />
 <!--//theme-style-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -21,12 +21,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!--start-menu-->
-<script src="js/simpleCart.min.js"> </script>
-<link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />
-<script type="text/javascript" src="js/memenu.js"></script>
+<script th:src="@{/js/simpleCart.min.js}"> </script>
+<link th:href="@{/css/memenu.css}" rel="stylesheet" type="text/css" media="all" />
+<script type="text/javascript" th:src="@{/js/memenu.js}"></script>
 <script>$(document).ready(function(){$(".memenu").memenu();});</script>	
 <!--dropdown-->
-<script src="js/jquery.easydropdown.js"></script>			
+<script th:src="@{/js/jquery.easydropdown.js}"></script>
 </head>
 <body> 
 	<!--top-header-->
@@ -87,16 +87,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<div class="row">
 											<div class="col1 me-one">
 												<h4>Thương Hiệu</h4>
-												<ul>
-													<li><a href="products.html">Đồng Hồ QQ</a></li>
-													<li><a href="products.html">Đồng Hồ Epos Swiss</a></li>
-													<li><a href="products.html">Đồng Hồ Aries Gold</a></li>
-													<li><a href="products.html">Đồng Hồ Citizen</a></li>
-													<li><a href="products.html">Đồng Hồ Casio</a></li>
-													<li><a href="products.html">Đồng Hồ Rolex</a></li>
-													<li><a href="products.html">Đồng Hồ Atlantic</a></li>
-													<li><a href="products.html">Đồng Hồ Diamond D</a></li>
+												<ul th:each="producer : ${producers}">
+													<li><a th:href="@{/choi/__${producer.id}__ }"><p th:text="${producer.name}"></p></a></li>
 												</ul>
+
 											</div>
 											<div class="col1 me-one">
 												<h4>Khoảng Giá</h4>
@@ -298,7 +292,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 						<div class="col-md-3 product-left" style="margin-top: 50px" >
 							<div class="product-main simpleCart_shelfItem" style="background: #9fcdff">
-								<a href="single.html" class="mask"><img th:src="@{/__${product.image }__}" height="100px" width="80px"></a>
+								<a href="single.html" class="mask"><img th:src="@{/__${product.image }__}" height="200px" width="150px"></a>
 								<div class="product-bottom">
 									<h3 th:text="${product.name}"></h3>
 									<p>Explore Now</p>

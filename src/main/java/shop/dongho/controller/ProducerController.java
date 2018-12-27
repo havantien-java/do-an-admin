@@ -89,4 +89,6 @@ public class ProducerController {
         producerService.remove(producer.getId());
         return "redirect:producers";
     }
+
+
 }

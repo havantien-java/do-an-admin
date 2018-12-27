@@ -17,5 +17,7 @@ public interface ProductService {
 
     void remove(Integer id);
 
+    Page<Product> findAllByProducer_Id(Long id, Pageable pageable);
+
 
 }
