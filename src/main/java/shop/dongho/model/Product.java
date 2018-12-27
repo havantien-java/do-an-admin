@@ -36,10 +36,10 @@ public class Product {
     private String faceGlass;
     @NotEmpty(message = "không được để trống")
     private String detail;
-    @NotEmpty(message = "không được để trống")
-    private String unitPrice;
-    @NotEmpty(message = "không được để trống")
-    private String promotionPrice;
+    @NotNull(message = "không được để trống")
+    private Integer unitPrice;
+    @NotNull(message = "không được để trống")
+    private Integer promotionPrice;
 
     public ProductType getProductType() {
         return productType;
@@ -69,7 +69,7 @@ public class Product {
 
     }
 
-    public Product(@NotEmpty(message = "không được để trống") String name, String image, String image1, String image2, String image3, @NotEmpty(message = "không được để trống") String color, @NotEmpty(message = "không được để trống") String hot, @NotEmpty(message = "không được để trống") String machineType, @NotEmpty(message = "không được để trống") String size, @NotEmpty(message = "không được để trống") String materialShell, @NotEmpty(message = "không được để trống") String waterproof, @NotEmpty(message = "không được để trống") String faceGlass, @NotEmpty(message = "không được để trống") String detail, @NotEmpty(message = "không được để trống") String unitPrice, @NotEmpty(message = "không được để trống") String promotionPrice) {
+    public Product(@NotEmpty(message = "không được để trống") String name, String image, String image1, String image2, String image3, @NotEmpty(message = "không được để trống") String color, @NotEmpty(message = "không được để trống") String hot, @NotEmpty(message = "không được để trống") String machineType, @NotEmpty(message = "không được để trống") String size, @NotEmpty(message = "không được để trống") String materialShell, @NotEmpty(message = "không được để trống") String waterproof, @NotEmpty(message = "không được để trống") String faceGlass, @NotEmpty(message = "không được để trống") String detail, @NotEmpty(message = "không được để trống") Integer unitPrice, @NotEmpty(message = "không được để trống") Integer promotionPrice) {
         this.name = name;
         this.image = image;
         this.image1 = image1;
@@ -200,19 +200,19 @@ public class Product {
         this.detail = detail;
     }
 
-    public String getUnitPrice() {
+    public Integer getUnitPrice() {
         return unitPrice;
     }
 
-    public void setUnitPrice(String unitPrice) {
+    public void setUnitPrice(Integer unitPrice) {
         this.unitPrice = unitPrice;
     }
 
-    public String getPromotionPrice() {
+    public Integer getPromotionPrice() {
         return promotionPrice;
     }
 
-    public void setPromotionPrice(String promotionPrice) {
+    public void setPromotionPrice(Integer promotionPrice) {
         this.promotionPrice = promotionPrice;
     }
 

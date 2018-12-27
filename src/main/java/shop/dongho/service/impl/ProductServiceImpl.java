@@ -42,4 +42,14 @@ public class ProductServiceImpl implements ProductService {
     public Page<Product> findAllByProducer_Id(Long id, Pageable pageable) {
         return productRepository.findAllByProducer_Id(id, pageable);
     }
+
+    @Override
+    public Page<Product> findAllByUnitPriceLessThan(Integer number, Pageable pageable) {
+        return productRepository.findAllByUnitPriceLessThan(number,pageable);
+    }
+
+    @Override
+    public Page<Product> findAllByUnitPriceBetween(Integer pri1, Integer pri2, Pageable pageable) {
+        return productRepository.findAllByUnitPriceBetween(pri1, pri2, pageable);
+    }
 }
