@@ -273,7 +273,7 @@
     <h2>Create a product</h2>
     <p><a th:href="@{/products}">Danh Sách Sản Phẩm</a></p>
     <div class="contact">
-        <form th:action="@{/edit-product}" th:object="${product}" method="post">
+        <form th:action="@{/admin/edit-product}" th:object="${product}" method="post">
             <input th:type="hidden" name="id" th:field="*{id}">
             <table>
                 <tr>

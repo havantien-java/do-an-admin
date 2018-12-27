@@ -103,6 +103,7 @@ public class Product {
         this.name = name;
     }
 
+    @Column(name = "image", nullable = false)
     public String getImage() {
         return image;
     }

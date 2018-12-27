@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import shop.dongho.model.Producer;
 import shop.dongho.model.Product;
@@ -16,12 +17,17 @@ import shop.dongho.model.ProductType;
 import shop.dongho.service.ProducerService;
 import shop.dongho.service.ProductService;
 import shop.dongho.service.ProductTypeService;
+import shop.dongho.storage.StorageService;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Optional;
 
 @Controller
 @RequestMapping("/admin")
 public class ProductController {
+    private final StorageService storageService;
+
     @Autowired
     private ProductService productService;
 
@@ -30,6 +36,10 @@ public class ProductController {
 
     @Autowired
     private ProductTypeService productTypeService;
+
+    public ProductController(StorageService storageService) {
+        this.storageService = storageService;
+    }
 
     @ModelAttribute("producers")
     public Page<Producer> producers(Pageable pageable) {
@@ -53,11 +63,16 @@ public class ProductController {
     }
 
     @PostMapping("/create-product")
-    public ModelAndView createProduct(@Validated @ModelAttribute("product") Product product, BindingResult bindingResult) {
+    public ModelAndView createProduct(@Validated @ModelAttribute("product") Product product, BindingResult bindingResult, @RequestParam("file")MultipartFile file) {
         if (bindingResult.hasFieldErrors()){
             ModelAndView modelAndView = new ModelAndView("/product/create");
             return modelAndView;
         } else {
+            if (!file.isEmpty()) {
+                String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+                product.setImage(timeStamp + file.getOriginalFilename());
+                storageService.store(file);
+            }
             productService.save(product);
             ModelAndView modelAndView = new ModelAndView("/product/create");
             modelAndView.addObject("product", product);

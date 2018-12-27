@@ -67,9 +67,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="customers">
+                    <a href="/admin/producers">
                         <i class="pe-7s-news-paper"></i>
-                        <p>Quản Trị Khách Hàng</p>
+                        <p>Quản Trị Nhà Sản Xuất</p>
                     </a>
                 </li>
                 <li>
@@ -203,6 +203,7 @@
                                     <th>STT</th>
                                     <th>ID</th>
                                     <th>Tên</th>
+                                    <th>Ảnh</th>
                                     <th>Màu Sắc</th>
                                     <th>Kiểu Máy</th>
                                     <th>Kích Cỡ</th>
@@ -221,6 +222,7 @@
                                             <td th:text="${istart.index + 1}"></td>
                                             <td th:text="${product.id}"></td>
                                             <td th:text="${product.name}"></td>
+                                            <td><img th:src="@{/__${product.image}__}" height="150" width="100"></td>
                                             <td th:text="${product.color}"></td>
                                             <td th:text="${product.machineType}"></td>
                                             <td th:text="${product.size}"></td>
@@ -230,8 +232,8 @@
                                             <td th:text="${product.unitPrice}"></td>
                                             <td th:text="${product.productType.name}"></td>
                                             <td th:text="${product.producer.name}"></td>
-                                            <td><a th:href="@{edit-product/__${product.id}__ }">Sửa</a></td>
-                                            <td><a th:href="@{delete-product/__${product.id}__ }">Xóa</a></td>
+                                            <td><a th:href="@{/admin/edit-product/__${product.id}__ }">Sửa</a></td>
+                                            <td><a th:href="@{/admin/delete-product/__${product.id}__ }">Xóa</a></td>
                                         </tr>
                                     </th:block>
                                     </tbody>
