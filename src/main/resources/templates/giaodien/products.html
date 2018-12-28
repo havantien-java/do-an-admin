@@ -1,37 +1,13 @@
-
-<!--<th:block th:each="product : ${products}">-->
-
-	<!--<div class="col-md-3 product-left" style="margin-top: 50px" >-->
-		<!--<div class="product-main simpleCart_shelfItem" style="background: #9fcdff">-->
-			<!--<a href="single.html" class="mask"><img th:src="@{/__${product.image }__}" height="100px" width="80px"></a>-->
-			<!--<div class="product-bottom">-->
-				<!--<h3 th:text="${product.name}"></h3>-->
-				<!--<p>Explore Now</p>-->
-				<!--<h4><a class="item_add" href="#"><i></i></a> <span class=" item_price"><p th:text="${product.unitPrice}"></p></span></h4>-->
-			<!--</div>-->
-			<!--<div class="srch">-->
-				<!--<span>-50%</span>-->
-			<!--</div>-->
-		<!--</div>-->
-	<!--</div>-->
-<!--</th:block>-->
-
-<!--A Design by W3layouts
-Author: W3layout
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<title>Luxury Watches A Ecommerce Category Flat Bootstrap Resposive Website Template | Home :: w3layouts</title>
-	<link th:href="@{css/bootstrap.css}" rel="stylesheet" type="text/css" media="all" />
+	<link th:href="@{/css/bootstrap.css}" rel="stylesheet" type="text/css" media="all" />
 	<!--jQuery(necessary for Bootstrap's JavaScript plugins)-->
-	<script th:src="@{js/jquery-1.11.0.min.js}"></script>
+	<script th:src="@{/js/jquery-1.11.0.min.js}"></script>
 	<!--Custom-Theme-files-->
 	<!--theme-style-->
-	<link th:href="@{css/style.css}" rel="stylesheet" type="text/css" media="all" />
+	<link th:href="@{/css/style.css}" rel="stylesheet" type="text/css" media="all" />
 	<!--//theme-style-->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -39,12 +15,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 	<!--start-menu-->
-	<script th:src="@{js/simpleCart.min.js}"> </script>
-	<link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />
-	<script type="text/javascript" src="js/memenu.js"></script>
+	<script th:src="@{/js/simpleCart.min.js}"> </script>
+	<link th:href="@{/css/memenu.css}" rel="stylesheet" type="text/css" media="all" />
+	<script type="text/javascript" th:src="@{/js/memenu.js}"></script>
 	<script>$(document).ready(function(){$(".memenu").memenu();});</script>
 	<!--dropdown-->
-	<script src="js/jquery.easydropdown.js"></script>
+	<script th:src="@{/js/jquery.easydropdown.js}"></script>
 </head>
 <body>
 <!--top-header-->
@@ -107,23 +83,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											<h4>Thương Hiệu</h4>
 											<ul th:each="producer : ${producers}">
 												<li><a th:href="@{/choi/__${producer.id}__ }"><p th:text="${producer.name}"></p></a></li>
-												<!--<li><a href="products.html">Đồng Hồ Epos Swiss</a></li>-->
-												<!--<li><a href="products.html">Đồng Hồ Aries Gold</a></li>-->
-												<!--<li><a href="products.html">Đồng Hồ Citizen</a></li>-->
-												<!--<li><a href="products.html">Đồng Hồ Casio</a></li>-->
-												<!--<li><a href="products.html">Đồng Hồ Rolex</a></li>-->
-												<!--<li><a href="products.html">Đồng Hồ Atlantic</a></li>-->
-												<!--<li><a href="products.html">Đồng Hồ Diamond D</a></li>-->
 											</ul>
-
 
 										</div>
 										<div class="col1 me-one">
 											<h4>Khoảng Giá</h4>
 											<ul>
-												<li><a href="products.html">Giá Dưới 1 triệu</a></li>
+												<li><a href="products.html">Giá Dưới 1 Triệu</a></li>
 												<li><a href="products.html">Giá Từ 1 - 3 triệu</a></li>
-												<li><a href="products.html">Giá Từ 3 - 5 triệu</a></li>
+												<li><a th:href="@{/list35}">Giá Từ 3 - 5 triệu</a></li>
 												<li><a href="products.html">Giá Từ 5 - 10 triệu</a></li>
 												<li><a href="products.html">Giá Từ 10 - 20 triệu</a></li>
 												<li><a href="products.html">Giá Trên 20 triệu</a></li>
@@ -195,7 +163,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<div class="col1 me-one">
 											<h4>Khoảng Giá</h4>
 											<ul>
-												<li><a href="products.html">Giá Dưới 1 triệu</a></li>
+												<li><a href="">Giá Dưới 1 triệu</a></li>
 												<li><a href="products.html">Giá Từ 1 - 3 triệu</a></li>
 												<li><a href="products.html">Giá Từ 3 - 5 triệu</a></li>
 												<li><a href="products.html">Giá Từ 5 - 10 triệu</a></li>
@@ -314,23 +282,41 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="product-top">
 				<div class="product-one">
+						<table>
+							<tr>
+								<td th:text="${product.name}"></td>
+							</tr>
+							<tr>
+								<td><img th:src="@{/__${product.image}__}" height="150" width="100"></td>
+							</tr>
+							<tr>
+								<td th:text="${product.color}"></td>
+							</tr>
+							<tr><td th:text="${product.machineType}"></td>
+							</tr>
+						<tr>
+							<td th:text="${product.size}"></td>
+						</tr>
+						<tr>
+							<td th:text="${product.materialShell}"></td>
+						</tr>
+						<tr>
+							<td th:text="${product.waterproof}"></td>
+						</tr>
+						<tr>
+							<td th:text="${product.faceGlass}"></td>
+						</tr>
+						<tr>
+							<td th:text="${product.unitPrice}"></td>
+						</tr>
+						<tr>
+							<td th:text="${product.productType.name}"></td>
+						</tr>
+						<tr>
+							<td th:text="${product.producer.name}"></td>
+						</tr>
 
-					<th:block th:each="product : ${products}">
-
-					<div class="col-md-3 product-left" style="margin-top: 50px" >
-					<div class="product-main simpleCart_shelfItem" style="background: #9fcdff">
-					<a href="single.html" class="mask"><img th:src="@{/__${product.image }__}" height="100px" width="80px"></a>
-					<div class="product-bottom">
-					<h3 th:text="${product.name}"></h3>
-					<p>Explore Now</p>
-					<h4><a class="item_add" href="#"><i></i></a> <span class=" item_price"><p th:text="${product.unitPrice}"></p></span></h4>
-					</div>
-					<div class="srch">
-					<span>-50%</span>
-					</div>
-					</div>
-					</div>
-					</th:block>
+						</table>
 
 				</div>
 			</div>

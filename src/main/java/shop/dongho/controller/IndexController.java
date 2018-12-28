@@ -5,15 +5,14 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import shop.dongho.model.Producer;
 import shop.dongho.model.Product;
 import shop.dongho.service.ProducerService;
 import shop.dongho.service.ProductService;
+
+import java.util.Optional;
 
 @Controller
 public class IndexController {
@@ -76,4 +75,17 @@ public class IndexController {
         modelAndView.addObject("producers", producers);
         return modelAndView;
     }
+
+    @GetMapping("/list-product/{id}")
+    public ModelAndView showEditForm(@PathVariable Integer id, Pageable pageable) {
+        Optional<Product> product = productService.findById(id);
+        Page<Producer> producers = producerService.findAll(pageable);
+        ModelAndView modelAndView = new ModelAndView("/giaodien/products");
+        modelAndView.addObject("product", product.get());
+        modelAndView.addObject("producers", producers);
+        return modelAndView;
+    }
+
+
+
 }
