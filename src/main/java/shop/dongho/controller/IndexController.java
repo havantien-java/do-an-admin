@@ -80,7 +80,7 @@ public class IndexController {
     public ModelAndView showEditForm(@PathVariable Integer id, Pageable pageable) {
         Optional<Product> product = productService.findById(id);
         Page<Producer> producers = producerService.findAll(pageable);
-        ModelAndView modelAndView = new ModelAndView("/giaodien/products");
+        ModelAndView modelAndView = new ModelAndView("/giaodien/single");
         modelAndView.addObject("product", product.get());
         modelAndView.addObject("producers", producers);
         return modelAndView;
