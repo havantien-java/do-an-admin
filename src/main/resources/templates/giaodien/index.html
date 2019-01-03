@@ -82,7 +82,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="col-md-9 header-left">
 						<div class="top-nav">
 							<ul class="memenu skyblue"><li class="active"><a href="index.html">Home</a></li>
-								<li class="grid"><a href="#">Đồng Hồ Nam</a>
+								<li class="grid"><a href="#">Đồng Hồ</a>
 									<div class="mepanel">
 										<div class="row">
 											<div class="col1 me-one">
@@ -95,103 +95,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											<div class="col1 me-one">
 												<h4>Khoảng Giá</h4>
 												<ul>
-													<li><a href="">Giá Dưới 1 triệu</a></li>
-													<li><a href="products.html">Giá Từ 1 - 3 triệu</a></li>
+													<li><a th:href="@{/list01}">Giá Dưới 1 triệu</a></li>
+													<li><a th:href="@{/list13}">Giá Từ 1 - 3 triệu</a></li>
 													<li><a th:href="@{/list35}">Giá Từ 3 - 5 triệu</a></li>
-													<li><a href="products.html">Giá Từ 5 - 10 triệu</a></li>
-													<li><a href="products.html">Giá Từ 10 - 20 triệu</a></li>
+													<li><a th:href="@{/list51}">Giá Từ 5 - 10 triệu</a></li>
+													<li><a th:href="@{/list102}">Giá Từ 10 - 20 triệu</a></li>
 													<li><a href="products.html">Giá Trên 20 triệu</a></li>
 												</ul>
 											</div>
 											<div class="col1 me-one">
 												<h4>Năng Lượng Sử Dụng</h4>
-												<ul>
-													<li><a href="products.html">Đồng Hồ Cơ</a></li>
-													<li><a href="products.html">Đồng Hồ Điện Tử</a></li>
+
+												<ul th:each="productType : ${productTypes}">
+													<li><a th:href="@{/energy/__${productType.id}__ }"><p th:text="${productType.name}"></p></a></li>
 												</ul>
+
 											</div>
 										</div>
 									</div>
 								</li>
-								<li class="grid"><a href="#">Đồng Hồ Nữ</a>
-									<div class="mepanel">
-										<div class="row">
-											<div class="col1 me-one">
-												<h4>Thương Hiệu</h4>
-												<ul>
-													<li><a href="products.html">Đồng Hồ QQ</a></li>
-													<li><a href="products.html">Đồng Hồ EposSwiss</a></li>
-													<li><a href="products.html">Đồng Hồ Aries Gold</a></li>
-													<li><a href="products.html">Đồng Hồ Citizen</a></li>
-													<li><a href="products.html">Đồng Hồ Casio</a></li>
-													<li><a href="products.html">Đồng Hồ Rolex</a></li>
-													<li><a href="products.html">Đồng Hồ Atlantic</a></li>
-													<li><a href="products.html">Đồng Hồ Diamond D</a></li>
-												</ul>
-											</div>
-											<div class="col1 me-one">
-												<h4>Khoảng Giá</h4>
-												<ul>
-													<li><a href="products.html">Giá Dưới 1 triệu</a></li>
-													<li><a href="products.html">Giá Từ 1 - 3 triệu</a></li>
-													<li><a href="products.html">Giá Từ 3 - 5 triệu</a></li>
-													<li><a href="products.html">Giá Từ 5 - 10 triệu</a></li>
-													<li><a href="products.html">Giá Từ 10 - 20 triệu</a></li>
-													<li><a href="products.html">Giá Trên 20 triệu</a></li>
-												</ul>
-											</div>
-											<div class="col1 me-one">
-												<h4>Năng Lượng Sử Dụng</h4>
-												<ul>
-													<li><a href="products.html">Đồng Hồ Cơ</a></li>
-													<li><a href="products.html">Đồng Hồ Điện Tử</a></li>
-												</ul>
-											</div>
-										</div>
-									</div>
-								</li>
-								<li class="grid"><a href="#">Đồng Hồ Trẻ Em</a>
-									<div class="mepanel">
-										<div class="row">
-											<div class="col1 me-one">
-												<h4>Thương Hiệu</h4>
-												<ul>
-													<li><a href="products.html">Đồng Hồ QQ</a></li>
-													<li><a href="products.html">Đồng Hồ EposSwiss</a></li>
-													<li><a href="products.html">Đồng Hồ Aries Gold</a></li>
-													<li><a href="products.html">Đồng Hồ Citizen</a></li>
-													<li><a href="products.html">Đồng Hồ Casio</a></li>
-													<li><a href="products.html">Đồng Hồ Rolex</a></li>
-													<li><a href="products.html">Đồng Hồ Atlantic</a></li>
-													<li><a href="products.html">Đồng Hồ Diamond D</a></li>
-												</ul>
-											</div>
-											<div class="col1 me-one">
-												<h4>Khoảng Giá</h4>
-												<ul>
-                                                    <li>
-                                                        <form th:action="@{/gia}" method="get">
-                                                        <input type="hidden" name="number">
-                                                        <button type="submit">ok</button>
-                                                        </form>
-                                                    </li>
-													<li><a href="products.html">Giá Từ 1 - 3 triệu</a></li>
-													<li><a href="products.html">Giá Từ 3 - 5 triệu</a></li>
-													<li><a href="products.html">Giá Từ 5 - 10 triệu</a></li>
-													<li><a href="products.html">Giá Từ 10 - 20 triệu</a></li>
-													<li><a href="products.html">Giá Trên 20 triệu</a></li>
-												</ul>
-											</div>
-											<div class="col1 me-one">
-												<h4>Năng Lượng Sử Dụng</h4>
-												<ul>
-													<li><a href="products.html">Đồng Hồ Cơ</a></li>
-													<li><a href="products.html">Đồng Hồ Điện Tử</a></li>
-												</ul>
-											</div>
-										</div>
-									</div>
-								</li>
+
 								<li class="grid"><a href="typo.html">Blog</a>
 								</li>
 								<li class="grid"><a href="contact.html">Contact</a>
@@ -212,77 +135,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 	<!--bottom-header-->
 	<!--banner-starts-->
-	<div class="bnr" id="home">
-		<div  id="top" class="callbacks_container">
-			<ul class="rslides" id="slider4">
-			    <li>
-					<img src="images/bnr-1.jpg" alt=""/>
-				</li>
-				<li>
-					<img src="images/bnr-2.jpg" alt=""/>
-				</li>
-				<li>
-					<img src="images/bnr-3.jpg" alt=""/>
-				</li>
-			</ul>
-		</div>
-		<div class="clearfix"> </div>
-	</div>
 	<!--banner-ends--> 
 	<!--Slider-Starts-Here-->
-				<script th:src="@{js/responsiveslides.min.js}"></script>
-			 <script>
-			    // You can also use "$(window).load(function() {"
-			    $(function () {
-			      // Slideshow 4
-			      $("#slider4").responsiveSlides({
-			        auto: true,
-			        pager: true,
-			        nav: true,
-			        speed: 500,
-			        namespace: "callbacks",
-			        before: function () {
-			          $('.events').append("<li>before event fired.</li>");
-			        },
-			        after: function () {
-			          $('.events').append("<li>after event fired.</li>");
-			        }
-			      });
-			
-			    });
-			  </script>
-			<!--End-slider-script-->
-	<!--about-starts-->
-	<div class="about"> 
-		<div class="container">
-			<div class="about-top grid-1">
-				<div class="col-md-4 about-left">
-					<figure class="effect-bubba">
-						<img class="img-responsive" src="images/abt-1.jpg" alt=""/>
-						<figcaption>
-							<h2>Nulla maximus nunc</h2>
-							<p>In sit amet sapien eros Integer dolore magna aliqua</p>	
-						</figcaption>			
-					</figure>
-				</div>
-				<div class="col-md-4 about-left">
-					<figure class="effect-bubba">
-						<img class="img-responsive" src="images/abt-2.jpg" alt=""/>
-						<figcaption>
-							<h4>Mauris erat augue</h4>
-							<p>In sit amet sapien eros Integer dolore magna aliqua</p>	
-						</figcaption>			
-					</figure>
-				</div>
-				<div class="col-md-4 about-left">
-					<figure class="effect-bubba">
-						<img class="img-responsive" src="images/abt-3.jpg" alt=""/>
-						<figcaption>
-							<h4>Cras elit mauris</h4>
-							<p>In sit amet sapien eros Integer dolore magna aliqua</p>	
-						</figcaption>			
-					</figure>
-				</div>
 				<div class="clearfix"></div>
 			</div>
 		</div>
@@ -296,7 +150,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<th:block th:each="product : ${products}">
 
 						<div class="col-md-3 product-left" style="margin-top: 50px" >
-							<div class="product-main simpleCart_shelfItem" style="background: #9fcdff">
+							<div class="product-main simpleCart_shelfItem">
 								<a th:href="@{/list-product/__${product.id}__}" class="mask"><img th:src="@{/__${product.image }__}" height="200px" width="150px"></a>
 								<div class="product-bottom">
 									<h3 th:text="${product.name}"></h3>

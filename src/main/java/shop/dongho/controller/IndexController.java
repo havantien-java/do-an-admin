@@ -33,14 +33,14 @@ public class IndexController {
         } else {
             products = productService.findAllByNameContaining(s, pageable);
         }
-        ModelAndView modelAndView = new ModelAndView("/giaodien/index");
+        ModelAndView modelAndView = new ModelAndView("/giaodien/home");
         modelAndView.addObject("products", products);
         modelAndView.addObject("producers", producers);
         return modelAndView;
 
     }
 
-    @GetMapping("choi/{id}")
+    @GetMapping("/choi/{id}")
     public ModelAndView listQQ(@PageableDefault(size = 10) Pageable pageable, @PathVariable Long id) {
         Page<Product> products = productService.findAllByProducer_Id(id, pageable);
         Page<Producer> producers = producerService.findAll(pageable);
@@ -68,7 +68,7 @@ public class IndexController {
 
     @GetMapping("/list35")
     public ModelAndView hehe(@PageableDefault(size = 10) Pageable pageable) {
-        Page<Product> products = productService.findAllByUnitPriceBetween(3000000, 5000000, pageable);
+        Page<Product> products = productService.findAllByUnitPriceBetween(3000000, 4999999, pageable);
         Page<Producer> producers = producerService.findAll(pageable);
         ModelAndView modelAndView = new ModelAndView("/giaodien/index");
         modelAndView.addObject("products", products);
@@ -86,6 +86,55 @@ public class IndexController {
         return modelAndView;
     }
 
+    @GetMapping("/list01")
+    public ModelAndView list01(@PageableDefault(size = 10) Pageable pageable) {
+        Page<Product> products = productService.findAllByUnitPriceBetween(0, 999999, pageable);
+        Page<Producer> producers = producerService.findAll(pageable);
+        ModelAndView modelAndView = new ModelAndView("/giaodien/index");
+        modelAndView.addObject("products", products);
+        modelAndView.addObject("producers", producers);
+        return modelAndView;
+    }
+
+    @GetMapping("/list13")
+    public ModelAndView list13(@PageableDefault(size = 10) Pageable pageable) {
+        Page<Product> products = productService.findAllByUnitPriceBetween(1000000, 2999999, pageable);
+        Page<Producer> producers = producerService.findAll(pageable);
+        ModelAndView modelAndView = new ModelAndView("/giaodien/index");
+        modelAndView.addObject("products", products);
+        modelAndView.addObject("producers", producers);
+        return modelAndView;
+    }
+
+    @GetMapping("/list51")
+    public ModelAndView list51(@PageableDefault(size = 10) Pageable pageable) {
+        Page<Product> products = productService.findAllByUnitPriceBetween(5000000, 9999999, pageable);
+        Page<Producer> producers = producerService.findAll(pageable);
+        ModelAndView modelAndView = new ModelAndView("/giaodien/index");
+        modelAndView.addObject("products", products);
+        modelAndView.addObject("producers", producers);
+        return modelAndView;
+    }
+
+    @GetMapping("/list102")
+    public ModelAndView list102(@PageableDefault(size = 10) Pageable pageable) {
+        Page<Product> products = productService.findAllByUnitPriceBetween(10000000, 20000000, pageable);
+        Page<Producer> producers = producerService.findAll(pageable);
+        ModelAndView modelAndView = new ModelAndView("/giaodien/index");
+        modelAndView.addObject("products", products);
+        modelAndView.addObject("producers", producers);
+        return modelAndView;
+    }
+
+    @GetMapping("/energy/{id}")
+    public ModelAndView energy(@PageableDefault(size = 10) Pageable pageable, @PathVariable Long id){
+        Page<Product> products = productService.findAllByProductType_Id(id, pageable);
+
+        ModelAndView modelAndView = new ModelAndView("/giaodien/index");
+        modelAndView.addObject("products", products);
+
+        return modelAndView;
+    }
 
 
 }

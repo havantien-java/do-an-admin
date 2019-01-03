@@ -104,7 +104,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="header">
 				<div class="col-md-9 header-left">
 				<div class="top-nav">
-					<ul class="memenu skyblue"><li class="active"><a href="index.html">Home</a></li>
+					<ul class="memenu skyblue"><li class="active"><a th:href="@{/index}">Home</a></li>
 						<li class="grid"><a href="#">Men</a>
 							<div class="mepanel">
 								<div class="row">
@@ -277,7 +277,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<li data-thumb="images/s-1.jpg">
 									<div class="thumb-image"> <img th:src="@{/__${product.image}__}" height="500" width="300"> </div>
 								</li>
-
 							  </ul>
 						</div>
 						<!-- FlexSlider -->
@@ -316,6 +315,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<tr>
 									<td >Giá: </td>
 									<td th:text="${product.unitPrice}"></td>
+								</tr>
+								<tr>
+									<td>Size: </td>
+									<td th:text="${product.size}"></td>
 								</tr>
 							</table>
 							<!--<h5 class="item_price" th:text="${product.unitPrice}">Giá</h5><br>-->

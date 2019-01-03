@@ -52,4 +52,9 @@ public class ProductServiceImpl implements ProductService {
     public Page<Product> findAllByUnitPriceBetween(Integer pri1, Integer pri2, Pageable pageable) {
         return productRepository.findAllByUnitPriceBetween(pri1, pri2, pageable);
     }
+
+    @Override
+    public Page<Product> findAllByProductType_Id(Long id, Pageable pageable) {
+        return productRepository.findAllByProductType_Id(id, pageable);
+    }
 }
