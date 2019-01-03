@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import shop.dongho.model.Producer;
 import shop.dongho.model.Product;
+import shop.dongho.model.ProductType;
 import shop.dongho.service.ProducerService;
 import shop.dongho.service.ProductService;
+import shop.dongho.service.ProductTypeService;
 
 import java.util.Optional;
 
@@ -23,11 +25,15 @@ public class IndexController {
     @Autowired
     private ProducerService producerService;
 
+    @Autowired
+    private ProductTypeService productTypeService;
+
 
     @GetMapping("/index")
     public ModelAndView listProduct(@PageableDefault(size = 10) Pageable pageable, @ModelAttribute("s") String s) {
         Page<Product> products;
         Page<Producer> producers = producerService.findAll(pageable);
+        Page<ProductType> productTypes = productTypeService.findAll(pageable);
         if (s == null) {
             products = productService.findAll(pageable);
         } else {
@@ -36,6 +42,7 @@ public class IndexController {
         ModelAndView modelAndView = new ModelAndView("/giaodien/home");
         modelAndView.addObject("products", products);
         modelAndView.addObject("producers", producers);
+        modelAndView.addObject("productTypes", productTypes);
         return modelAndView;
 
     }
@@ -129,11 +136,18 @@ public class IndexController {
     @GetMapping("/energy/{id}")
     public ModelAndView energy(@PageableDefault(size = 10) Pageable pageable, @PathVariable Long id){
         Page<Product> products = productService.findAllByProductType_Id(id, pageable);
-
+        Page<Producer> producers = producerService.findAll(pageable);
+        Page<ProductType> productTypes = productTypeService.findAll(pageable);
         ModelAndView modelAndView = new ModelAndView("/giaodien/index");
         modelAndView.addObject("products", products);
-
+        modelAndView.addObject("producers", producers);
+        modelAndView.addObject("productTypes", productTypes);
         return modelAndView;
+    }
+
+    @GetMapping("/checkout")
+    public ModelAndView checkout() {
+        return new ModelAndView("/giaodien/checkout");
     }
 
 
