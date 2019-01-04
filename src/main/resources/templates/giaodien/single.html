@@ -104,135 +104,40 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="header">
 				<div class="col-md-9 header-left">
 				<div class="top-nav">
-					<ul class="memenu skyblue"><li class="active"><a th:href="@{/index}">Home</a></li>
-						<li class="grid"><a href="#">Men</a>
+					<ul class="memenu skyblue"><li class="active"><a href="/home">Home</a></li>
+						<li class="grid"><a href="#">Đồng Hồ</a>
 							<div class="mepanel">
 								<div class="row">
 									<div class="col1 me-one">
-										<h4>Shop</h4>
+										<h4>Thương Hiệu</h4>
+										<ul th:each="producer : ${producers}">
+											<li><a th:href="@{/choi/__${producer.id}__ }"><p th:text="${producer.name}"></p></a></li>
+										</ul>
+
+									</div>
+									<div class="col1 me-one">
+										<h4>Khoảng Giá</h4>
 										<ul>
-											<li><a href="products.html">New Arrivals</a></li>
-											<li><a href="products.html">Blazers</a></li>
-											<li><a href="products.html">Swem Wear</a></li>
-											<li><a href="products.html">Accessories</a></li>
-											<li><a href="products.html">Handbags</a></li>
-											<li><a href="products.html">T-Shirts</a></li>
-											<li><a href="products.html">Watches</a></li>
-											<li><a href="products.html">My Shopping Bag</a></li>
+											<li><a th:href="@{/list01}">Giá Dưới 1 triệu</a></li>
+											<li><a th:href="@{/list13}">Giá Từ 1 - 3 triệu</a></li>
+											<li><a th:href="@{/list35}">Giá Từ 3 - 5 triệu</a></li>
+											<li><a th:href="@{/list51}">Giá Từ 5 - 10 triệu</a></li>
+											<li><a th:href="@{/list102}">Giá Từ 10 - 20 triệu</a></li>
+											<li><a href="products.html">Giá Trên 20 triệu</a></li>
 										</ul>
 									</div>
 									<div class="col1 me-one">
-										<h4>Style Zone</h4>
-										<ul>
-											<li><a href="products.html">Shoes</a></li>
-											<li><a href="products.html">Watches</a></li>
-											<li><a href="products.html">Brands</a></li>
-											<li><a href="products.html">Coats</a></li>
-											<li><a href="products.html">Accessories</a></li>
-											<li><a href="products.html">Trousers</a></li>
-										</ul>	
-									</div>
-									<div class="col1 me-one">
-										<h4>Popular Brands</h4>
-										<ul>
-											<li><a href="products.html">499 Store</a></li>
-											<li><a href="products.html">Fastrack</a></li>
-											<li><a href="products.html">Casio</a></li>
-											<li><a href="products.html">Fossil</a></li>
-											<li><a href="products.html">Maxima</a></li>
-											<li><a href="products.html">Timex</a></li>
-											<li><a href="products.html">TomTom</a></li>
-											<li><a href="products.html">Titan</a></li>
-										</ul>		
+										<h4>Năng Lượng Sử Dụng</h4>
+
+										<ul th:each="productType : ${productTypes}">
+											<li><a th:href="@{/energy/__${productType.id}__ }"><p th:text="${productType.name}"></p></a></li>
+										</ul>
+
 									</div>
 								</div>
 							</div>
 						</li>
-						<li class="grid"><a href="#">Women</a>
-							<div class="mepanel">
-								<div class="row">
-									<div class="col1 me-one">
-										<h4>Shop</h4>
-										<ul>
-											<li><a href="products.html">New Arrivals</a></li>
-											<li><a href="products.html">Blazers</a></li>
-											<li><a href="products.html">Swem Wear</a></li>
-											<li><a href="products.html">Accessories</a></li>
-											<li><a href="products.html">Handbags</a></li>
-											<li><a href="products.html">T-Shirts</a></li>
-											<li><a href="products.html">Watches</a></li>
-											<li><a href="products.html">My Shopping Bag</a></li>
-										</ul>
-									</div>
-									<div class="col1 me-one">
-										<h4>Style Zone</h4>
-										<ul>
-											<li><a href="products.html">Shoes</a></li>
-											<li><a href="products.html">Watches</a></li>
-											<li><a href="products.html">Brands</a></li>
-											<li><a href="products.html">Coats</a></li>
-											<li><a href="products.html">Accessories</a></li>
-											<li><a href="products.html">Trousers</a></li>
-										</ul>
-									</div>
-									<div class="col1 me-one">
-										<h4>Popular Brands</h4>
-										<ul>
-											<li><a href="products.html">499 Store</a></li>
-											<li><a href="products.html">Fastrack</a></li>
-											<li><a href="products.html">Casio</a></li>
-											<li><a href="products.html">Fossil</a></li>
-											<li><a href="products.html">Maxima</a></li>
-											<li><a href="products.html">Timex</a></li>
-											<li><a href="products.html">TomTom</a></li>
-											<li><a href="products.html">Titan</a></li>
-										</ul>	
-									</div>
-								</div>
-							</div>
-						</li>
-						<li class="grid"><a href="#">Kids</a>
-							<div class="mepanel">
-								<div class="row">
-									<div class="col1 me-one">
-										<h4>Shop</h4>
-										<ul>
-											<li><a href="products.html">New Arrivals</a></li>
-											<li><a href="products.html">Blazers</a></li>
-											<li><a href="products.html">Swem Wear</a></li>
-											<li><a href="products.html">Accessories</a></li>
-											<li><a href="products.html">Handbags</a></li>
-											<li><a href="products.html">T-Shirts</a></li>
-											<li><a href="products.html">Watches</a></li>
-											<li><a href="products.html">My Shopping Bag</a></li>
-										</ul>
-									</div>
-									<div class="col1 me-one">
-										<h4>Style Zone</h4>
-										<ul>
-											<li><a href="products.html">Shoes</a></li>
-											<li><a href="products.html">Watches</a></li>
-											<li><a href="products.html">Brands</a></li>
-											<li><a href="products.html">Coats</a></li>
-											<li><a href="products.html">Accessories</a></li>
-											<li><a href="products.html">Trousers</a></li>
-										</ul>	
-									</div>
-									<div class="col1 me-one">
-										<h4>Popular Brands</h4>
-										<ul>
-											<li><a href="products.html">499 Store</a></li>
-											<li><a href="products.html">Fastrack</a></li>
-											<li><a href="products.html">Casio</a></li>
-											<li><a href="products.html">Fossil</a></li>
-											<li><a href="products.html">Maxima</a></li>
-											<li><a href="products.html">Timex</a></li>
-											<li><a href="products.html">TomTom</a></li>
-											<li><a href="products.html">Titan</a></li>
-										</ul>	
-									</div>
-								</div>
-							</div>
+
 						</li>
 						<li class="grid"><a href="typo.html">Blog</a>
 						</li>
@@ -242,12 +147,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="clearfix"> </div>
 			</div>
-			<div class="col-md-3 header-right"> 
-				<div class="search-bar">
-					<input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
-					<input type="submit" value="">
-				</div>
-			</div>
+			<!--<div class="col-md-3 header-right"> -->
+				<!--<div class="search-bar">-->
+					<!--<input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">-->
+					<!--<input type="submit" value="">-->
+				<!--</div>-->
+			<!--</div>-->
 			<div class="clearfix"> </div>
 			</div>
 		</div>
@@ -331,7 +236,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<li><span>SKU</span>
 								<span class="women1">: CK09</span></li>
 							</ul>
-								<a href="#" class="add-cart item_add">ADD TO CART</a>
+								<a th:href="@{/addtocard/__${product.id}__}" class="add-cart item_add">ADD TO CART</a>
 							
 						</div>
 					</div>

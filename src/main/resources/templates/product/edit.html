@@ -131,10 +131,12 @@
                                             <td><input type="text" th:field="*{name}"></td>
                                             <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
                                         </tr>
-                                        <!--<tr>-->
-                                            <!--<td>Image</td>-->
-                                            <!--<td><input th:type="file"  th:name="file" ></td>-->
-                                        <!--</tr>-->
+                                        <tr>
+                                            <td>Image</td>
+                                            <td>
+                                                <input th:type="text"  th:field="*{image}" >
+                                            </td>
+                                        </tr>
                                         <tr>
                                             <td>Màu Sắc</td>
                                             <td><input type="text" th:field="*{color}"></td>

@@ -6,7 +6,7 @@ License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Luxury Watches A Ecommerce Category Flat Bootstarp Resposive Website Template | Checkout :: w3layouts</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
@@ -81,136 +81,40 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="header">
 				<div class="col-md-9 header-left">
 				<div class="top-nav">
-					<ul class="memenu skyblue"><li class="active"><a href="index.html">Home</a></li>
-						<li class="grid"><a href="#">Men</a>
+					<ul class="memenu skyblue"><li class="active"><a href="/home">Home</a></li>
+						<li class="grid"><a href="#">Đồng Hồ</a>
 							<div class="mepanel">
 								<div class="row">
 									<div class="col1 me-one">
-										<h4>Shop</h4>
+										<h4>Thương Hiệu</h4>
+										<ul th:each="producer : ${producers}">
+											<li><a th:href="@{/choi/__${producer.id}__ }"><p th:text="${producer.name}"></p></a></li>
+										</ul>
+
+									</div>
+									<div class="col1 me-one">
+										<h4>Khoảng Giá</h4>
 										<ul>
-											<li><a href="products.html">New Arrivals</a></li>
-											<li><a href="products.html">Blazers</a></li>
-											<li><a href="products.html">Swem Wear</a></li>
-											<li><a href="products.html">Accessories</a></li>
-											<li><a href="products.html">Handbags</a></li>
-											<li><a href="products.html">T-Shirts</a></li>
-											<li><a href="products.html">Watches</a></li>
-											<li><a href="products.html">My Shopping Bag</a></li>
+											<li><a th:href="@{/list01}">Giá Dưới 1 triệu</a></li>
+											<li><a th:href="@{/list13}">Giá Từ 1 - 3 triệu</a></li>
+											<li><a th:href="@{/list35}">Giá Từ 3 - 5 triệu</a></li>
+											<li><a th:href="@{/list51}">Giá Từ 5 - 10 triệu</a></li>
+											<li><a th:href="@{/list102}">Giá Từ 10 - 20 triệu</a></li>
+											<li><a href="products.html">Giá Trên 20 triệu</a></li>
 										</ul>
 									</div>
 									<div class="col1 me-one">
-										<h4>Style Zone</h4>
-										<ul>
-											<li><a href="products.html">Shoes</a></li>
-											<li><a href="products.html">Watches</a></li>
-											<li><a href="products.html">Brands</a></li>
-											<li><a href="products.html">Coats</a></li>
-											<li><a href="products.html">Accessories</a></li>
-											<li><a href="products.html">Trousers</a></li>
-										</ul>	
-									</div>
-									<div class="col1 me-one">
-										<h4>Popular Brands</h4>
-										<ul>
-											<li><a href="products.html">499 Store</a></li>
-											<li><a href="products.html">Fastrack</a></li>
-											<li><a href="products.html">Casio</a></li>
-											<li><a href="products.html">Fossil</a></li>
-											<li><a href="products.html">Maxima</a></li>
-											<li><a href="products.html">Timex</a></li>
-											<li><a href="products.html">TomTom</a></li>
-											<li><a href="products.html">Titan</a></li>
-										</ul>		
+										<h4>Năng Lượng Sử Dụng</h4>
+
+										<ul th:each="productType : ${productTypes}">
+											<li><a th:href="@{/energy/__${productType.id}__ }"><p th:text="${productType.name}"></p></a></li>
+										</ul>
+
 									</div>
 								</div>
 							</div>
 						</li>
-						<li class="grid"><a href="#">Women</a>
-							<div class="mepanel">
-								<div class="row">
-									<div class="col1 me-one">
-										<h4>Shop</h4>
-										<ul>
-											<li><a href="products.html">New Arrivals</a></li>
-											<li><a href="products.html">Blazers</a></li>
-											<li><a href="products.html">Swem Wear</a></li>
-											<li><a href="products.html">Accessories</a></li>
-											<li><a href="products.html">Handbags</a></li>
-											<li><a href="products.html">T-Shirts</a></li>
-											<li><a href="products.html">Watches</a></li>
-											<li><a href="products.html">My Shopping Bag</a></li>
-										</ul>
-									</div>
-									<div class="col1 me-one">
-										<h4>Style Zone</h4>
-										<ul>
-											<li><a href="products.html">Shoes</a></li>
-											<li><a href="products.html">Watches</a></li>
-											<li><a href="products.html">Brands</a></li>
-											<li><a href="products.html">Coats</a></li>
-											<li><a href="products.html">Accessories</a></li>
-											<li><a href="products.html">Trousers</a></li>
-										</ul>
-									</div>
-									<div class="col1 me-one">
-										<h4>Popular Brands</h4>
-										<ul>
-											<li><a href="products.html">499 Store</a></li>
-											<li><a href="products.html">Fastrack</a></li>
-											<li><a href="products.html">Casio</a></li>
-											<li><a href="products.html">Fossil</a></li>
-											<li><a href="products.html">Maxima</a></li>
-											<li><a href="products.html">Timex</a></li>
-											<li><a href="products.html">TomTom</a></li>
-											<li><a href="products.html">Titan</a></li>
-										</ul>	
-									</div>
-								</div>
-							</div>
-						</li>
-						<li class="grid"><a href="#">Kids</a>
-							<div class="mepanel">
-								<div class="row">
-									<div class="col1 me-one">
-										<h4>Shop</h4>
-										<ul>
-											<li><a href="products.html">New Arrivals</a></li>
-											<li><a href="products.html">Blazers</a></li>
-											<li><a href="products.html">Swem Wear</a></li>
-											<li><a href="products.html">Accessories</a></li>
-											<li><a href="products.html">Handbags</a></li>
-											<li><a href="products.html">T-Shirts</a></li>
-											<li><a href="products.html">Watches</a></li>
-											<li><a href="products.html">My Shopping Bag</a></li>
-										</ul>
-									</div>
-									<div class="col1 me-one">
-										<h4>Style Zone</h4>
-										<ul>
-											<li><a href="products.html">Shoes</a></li>
-											<li><a href="products.html">Watches</a></li>
-											<li><a href="products.html">Brands</a></li>
-											<li><a href="products.html">Coats</a></li>
-											<li><a href="products.html">Accessories</a></li>
-											<li><a href="products.html">Trousers</a></li>
-										</ul>	
-									</div>
-									<div class="col1 me-one">
-										<h4>Popular Brands</h4>
-										<ul>
-											<li><a href="products.html">499 Store</a></li>
-											<li><a href="products.html">Fastrack</a></li>
-											<li><a href="products.html">Casio</a></li>
-											<li><a href="products.html">Fossil</a></li>
-											<li><a href="products.html">Maxima</a></li>
-											<li><a href="products.html">Timex</a></li>
-											<li><a href="products.html">TomTom</a></li>
-											<li><a href="products.html">Titan</a></li>
-										</ul>	
-									</div>
-								</div>
-							</div>
-						</li>
+
 						<li class="grid"><a href="typo.html">Blog</a>
 						</li>
 						<li class="grid"><a href="contact.html">Contact</a>
@@ -275,49 +179,51 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						});	  
 					});
 			   </script>
-				
-			<div class="in-check" >
-				<ul class="unit">
-					<li><span>Item</span></li>
-					<li><span>Product Name</span></li>		
-					<li><span>Unit Price</span></li>
-					<li><span>Delivery Details</span></li>
-					<li> </li>
-					<div class="clearfix"> </div>
-				</ul>
-				<ul class="cart-header">
-					<div class="close1"> </div>
-						<li class="ring-in"><a href="single.html" ><img src="images/c-1.jpg" class="img-responsive" alt=""></a>
-						</li>
-						<li><span class="name">Analog Watches</span></li>
-						<li><span class="cost">$ 290.00</span></li>
-						<li><span>Free</span>
-						<p>Delivered in 2-3 business days</p></li>
-					<div class="clearfix"> </div>
-				</ul>
-				<ul class=" cart-header1">
-					<div class="close2"> </div>
-						<li class="ring-in"><a href="single.html" ><img src="images/c-2.jpg" class="img-responsive" alt=""></a>
-						</li>
-						<li><span class="name">Analog Watches</span></li>
-						<li><span class="cost">$ 300.00</span></li>
-						<li><span>Free</span>
-						<p>Delivered in 2-3 business days</p></li>
-						<div class="clearfix"> </div>
-				</ul>
-				<ul class="cart-header2">
-					<div class="close3"> </div>
-						<li class="ring-in"><a href="single.html" ><img src="images/c-3.jpg" class="img-responsive" alt=""></a>
-						</li>
-						<li><span class="name">Analog Watches</span></li>
-						<li><span class="cost">$ 360.00</span></li>
-						<li><span>Free</span>
-						<p>Delivered in 2-3 business days</p></li>
-						<div class="clearfix"> </div>
-				</ul>
 			</div>
-			</div>  
-		 </div>
+			</div>
+			<div class="in-check" >
+				<form action="">
+					<table class="table table-hover table-striped" id="res">
+						<tr>
+							<th>Id</th>
+							<th>Name</th>
+							<th>Image</th>
+							<th>Price</th>
+							<th>Quantity</th>
+							<th>Sub Total</th>
+						</tr>
+						<th:block th:each="item: ${session.order.items}" th:unless="${session == null}" >
+							<tr>
+								<td th:text="${item.product.id}"></td>
+								<td th:text="${item.product.name}"></td>
+								<td><img th:src="@{/__${item.product.image }__}" height="200px" width="150px"></td>
+								<td th:text="${item.product.unitPrice}"></td>
+								<td th:text="${item.quantity}" th:value="${item.quantity}"></td>
+								<td th:text="${item.product.unitPrice * item.quantity}" class="dongia"></td>
+							</tr>
+						</th:block>
+					</table>
+					<script type="application/javascript">
+                        var sum = 0;
+                        var table = document.getElementById("res");
+                        var ths = table.getElementsByTagName('th');
+                        var tds = table.getElementsByClassName('dongia');
+                        for(var i=0;i<tds.length;i++){
+                            sum += isNaN(tds[i].innerText) ? 0 : parseInt(tds[i].innerText);
+                        }
+
+                        var row = table.insertRow(table.rows.length);
+                        var cell = row.insertCell(0);
+                        cell.setAttribute('colspan', ths.length);
+
+                        var totalBalance  = document.createTextNode('TỔNG TIỀN ' + sum);
+                        cell.appendChild(totalBalance);
+					</script>
+					<div style="margin-top: 50px; margin-left: 50px; text-align: right"  >
+					<input type="submit" value="Đặt Hàng">
+					</div>
+				</form>
+			</div>
 		</div>
 	</div>
 	<!--end-ckeckout-->

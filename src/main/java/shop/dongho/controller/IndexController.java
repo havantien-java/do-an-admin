@@ -29,7 +29,7 @@ public class IndexController {
     private ProductTypeService productTypeService;
 
 
-    @GetMapping("/index")
+    @GetMapping("/home")
     public ModelAndView listProduct(@PageableDefault(size = 10) Pageable pageable, @ModelAttribute("s") String s) {
         Page<Product> products;
         Page<Producer> producers = producerService.findAll(pageable);
