@@ -150,5 +150,17 @@ public class IndexController {
         return new ModelAndView("/giaodien/checkout");
     }
 
+    @GetMapping("/search")
+    public ModelAndView search(@PageableDefault(size = 10) Pageable pageable, @ModelAttribute("s") String s) {
+        Page<Product> products;
+        if (s == null) {
+            products = productService.findAll(pageable);
+        } else {
+            products = productService.findAllByNameContaining(s, pageable);
+        }
+        ModelAndView modelAndView = new ModelAndView("giaodien/home");
+        modelAndView.addObject("products", products);
+        return modelAndView;
+    }
 
 }

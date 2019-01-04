@@ -81,7 +81,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="header">
                 <div class="col-md-9 header-left">
                     <div class="top-nav">
-                        <ul class="memenu skyblue"><li class="active"><a href="index.html">Home</a></li>
+                        <ul class="memenu skyblue"><li class="active"><a href="/index">Home</a></li>
                             <li class="grid"><a href="#">Đồng Hồ</a>
                                 <div class="mepanel">
                                     <div class="row">
@@ -125,7 +125,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
                 <div class="col-md-3 header-right">
                     <div class="search-bar">
-                        <form th:action="@{/index}" method="get" th:object="${product}">
+                        <form th:action="@{/search}" method="get" th:object="${products}">
                             <input type="text" name="s">
                             <input type="submit" value="">
                         </form>
