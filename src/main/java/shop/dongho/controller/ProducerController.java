@@ -50,7 +50,7 @@ public class ProducerController {
     }
 
     @GetMapping("/edit-producer/{id}")
-    public ModelAndView showEditForm(@PathVariable Long id) {
+    public ModelAndView showEditForm(@PathVariable Integer id) {
         Optional<Producer> producer = producerService.findById(id);
         if (producer != null) {
             ModelAndView modelAndView = new ModelAndView("/producer/edit");
@@ -72,7 +72,7 @@ public class ProducerController {
     }
 
     @GetMapping("/delete-producer/{id}")
-    public ModelAndView showDeleteForm(@PathVariable Long id) {
+    public ModelAndView showDeleteForm(@PathVariable Integer id) {
         Optional<Producer> producer = producerService.findById(id);
         if (producer != null) {
             ModelAndView modelAndView = new ModelAndView("/producer/delete");

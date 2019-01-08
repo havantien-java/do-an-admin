@@ -48,7 +48,7 @@ public class ProductTypeController {
     }
 
     @GetMapping("/edit-productType/{id}")
-    public ModelAndView showEditForm(@PathVariable Long id) {
+    public ModelAndView showEditForm(@PathVariable Integer id) {
         Optional<ProductType> productType = productTypeService.findById(id);
         if (productType != null) {
             ModelAndView modelAndView = new ModelAndView("/productType/edit");
@@ -70,7 +70,7 @@ public class ProductTypeController {
     }
 
     @GetMapping("/delete-productType/{id}")
-    public ModelAndView showDeleteForm(@PathVariable Long id) {
+    public ModelAndView showDeleteForm(@PathVariable Integer id) {
         Optional<ProductType> productType = productTypeService.findById(id);
         if (productType != null) {
             ModelAndView modelAndView = new ModelAndView("/productType/delete");

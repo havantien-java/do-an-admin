@@ -24,8 +24,8 @@ public class Product {
     private String color;
     @NotEmpty(message = "không được để trống")
     private String hot;
-    @NotEmpty(message = "không được để trống")
-    private String machineType;
+//    @NotEmpty(message = "không được để trống")
+//    private String machineType;
     @NotEmpty(message = "không được để trống")
     private String size;
     @NotEmpty(message = "không được để trống")
@@ -80,7 +80,7 @@ public class Product {
 
     }
 
-    public Product(@NotEmpty(message = "không được để trống") String name, String image, String image1, String image2, String image3, @NotEmpty(message = "không được để trống") String color, @NotEmpty(message = "không được để trống") String hot, @NotEmpty(message = "không được để trống") String machineType, @NotEmpty(message = "không được để trống") String size, @NotEmpty(message = "không được để trống") String materialShell, @NotEmpty(message = "không được để trống") String waterproof, @NotEmpty(message = "không được để trống") String faceGlass, @NotEmpty(message = "không được để trống") String detail, @NotEmpty(message = "không được để trống") Integer unitPrice, @NotEmpty(message = "không được để trống") Integer promotionPrice) {
+    public Product(@NotEmpty(message = "không được để trống") String name, String image, String image1, String image2, String image3, @NotEmpty(message = "không được để trống") String color, @NotEmpty(message = "không được để trống") String hot, @NotEmpty(message = "không được để trống") String size, @NotEmpty(message = "không được để trống") String materialShell, @NotEmpty(message = "không được để trống") String waterproof, @NotEmpty(message = "không được để trống") String faceGlass, @NotEmpty(message = "không được để trống") String detail, @NotEmpty(message = "không được để trống") Integer unitPrice, @NotEmpty(message = "không được để trống") Integer promotionPrice) {
         this.name = name;
         this.image = image;
         this.image1 = image1;
@@ -88,7 +88,7 @@ public class Product {
         this.image3 = image3;
         this.color = color;
         this.hot = hot;
-        this.machineType = machineType;
+//        this.machineType = machineType;
         this.size = size;
         this.materialShell = materialShell;
         this.waterproof = waterproof;
@@ -163,13 +163,13 @@ public class Product {
         this.hot = hot;
     }
 
-    public String getMachineType() {
-        return machineType;
-    }
+//    public String getMachineType() {
+//        return machineType;
+//    }
 
-    public void setMachineType(String machineType) {
-        this.machineType = machineType;
-    }
+//    public void setMachineType(String machineType) {
+//        this.machineType = machineType;
+//    }
 
     public String getSize() {
         return size;

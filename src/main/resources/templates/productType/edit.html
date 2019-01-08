@@ -173,7 +173,7 @@
                                 <a href="/admin/productTypes">Quay Lại Trang Danh Sách</a>
                             </div>
                             <div class="content table-responsive table-full-width">
-                                <form th:action="@{admin/edit-productType}" th:object="${productType}" method="post">
+                                <form th:action="@{/admin/edit-productType}" th:object="${productType}" method="post">
                                     <input type="hidden" name="id" th:field="*{id}">
                                     <table>
                                         <tr>

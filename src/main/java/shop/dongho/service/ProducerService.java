@@ -11,9 +11,9 @@ public interface ProducerService {
 
     Page<Producer> findAll(Pageable pageable);
 
-    Optional<Producer> findById(Long id);
+    Optional<Producer> findById(Integer id);
 
     void save(Producer producer);
 
-    void remove(Long id);
+    void remove(Integer id);
 }

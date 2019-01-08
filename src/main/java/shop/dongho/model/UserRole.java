@@ -4,24 +4,13 @@ import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
-@Table(name = "user_role")
+@Table(name = "role")
 public class UserRole {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     private String name;
-
-    @OneToMany(targetEntity = User.class, mappedBy = "userRole")
-    private Collection<User> users;
-
-    public Collection<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(Collection<User> users) {
-        this.users = users;
-    }
 
     public UserRole() {
 

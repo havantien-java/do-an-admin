@@ -17,11 +17,11 @@ public interface ProductService {
 
     void remove(Integer id);
 
-    Page<Product> findAllByProducer_Id(Long id, Pageable pageable);
+    Page<Product> findAllByProducer_Id(Integer id, Pageable pageable);
 
     Page<Product> findAllByUnitPriceLessThan(Integer number, Pageable pageable);
 
     Page<Product> findAllByUnitPriceBetween(Integer pri1, Integer pri2, Pageable pageable);
 
-    Page<Product> findAllByProductType_Id(Long id, Pageable pageable);
+    Page<Product> findAllByProductType_Id(Integer id, Pageable pageable);
 }

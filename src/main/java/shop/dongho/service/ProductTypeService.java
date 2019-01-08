@@ -12,9 +12,9 @@ public interface ProductTypeService {
 
     Page<ProductType> findAll(Pageable pageable);
 
-    Optional<ProductType> findById(Long id);
+    Optional<ProductType> findById(Integer id);
 
     void save(ProductType productType);
 
-    void remove(Long id);
+    void remove(Integer id);
 }

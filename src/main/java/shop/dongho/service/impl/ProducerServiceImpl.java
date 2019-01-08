@@ -25,7 +25,7 @@ public class ProducerServiceImpl implements ProducerService {
     }
 
     @Override
-    public Optional<Producer> findById(Long id) {
+    public Optional<Producer> findById(Integer id) {
         return producerRepository.findById(id);
     }
 
@@ -35,7 +35,7 @@ public class ProducerServiceImpl implements ProducerService {
     }
 
     @Override
-    public void remove(Long id) {
+    public void remove(Integer id) {
         producerRepository.deleteById(id);
     }
 }

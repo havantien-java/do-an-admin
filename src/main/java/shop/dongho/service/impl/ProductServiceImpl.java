@@ -39,7 +39,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Page<Product> findAllByProducer_Id(Long id, Pageable pageable) {
+    public Page<Product> findAllByProducer_Id(Integer id, Pageable pageable) {
         return productRepository.findAllByProducer_Id(id, pageable);
     }
 
@@ -54,7 +54,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Page<Product> findAllByProductType_Id(Long id, Pageable pageable) {
+    public Page<Product> findAllByProductType_Id(Integer id, Pageable pageable) {
         return productRepository.findAllByProductType_Id(id, pageable);
     }
 }

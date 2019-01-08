@@ -24,7 +24,7 @@ public class ProducerFormatter implements Formatter<Optional<Producer>> {
 
     @Override
     public Optional<Producer> parse(String text, Locale locale) throws ParseException {
-        return producerService.findById((long) Integer.parseInt(text));
+        return producerService.findById(Integer.parseInt(text));
     }
 
     @Override

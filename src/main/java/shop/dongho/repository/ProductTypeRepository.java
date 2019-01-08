@@ -7,6 +7,6 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import shop.dongho.model.ProductType;
 
 
-public interface ProductTypeRepository extends PagingAndSortingRepository<ProductType, Long> {
+public interface ProductTypeRepository extends PagingAndSortingRepository<ProductType, Integer> {
     Page<ProductType> findByNameContaining(String s, Pageable pageable);
 }

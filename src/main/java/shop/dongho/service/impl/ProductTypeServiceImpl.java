@@ -26,7 +26,7 @@ public class ProductTypeServiceImpl implements ProductTypeService {
     }
 
     @Override
-    public Optional<ProductType> findById(Long id) {
+    public Optional<ProductType> findById(Integer id) {
         return productTypeRepository.findById(id);
     }
 
@@ -37,7 +37,7 @@ public class ProductTypeServiceImpl implements ProductTypeService {
     }
 
     @Override
-    public void remove(Long id) {
+    public void remove(Integer id) {
         productTypeRepository.deleteById(id);
 
     }

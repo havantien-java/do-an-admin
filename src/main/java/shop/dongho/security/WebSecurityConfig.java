@@ -33,16 +33,24 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/register", "/index","/").permitAll()
-                .antMatchers("/user/**").hasRole("USER")
+                .antMatchers("/menber/**").hasRole("MEMBER")
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .and()
                 .formLogin().loginPage("/login").successHandler(customSuccessHandler)
-                .usernameParameter("username")
+                .usernameParameter("email")
                 .passwordParameter("password")
                 .failureUrl("/login?error")
                 .and()
+                .rememberMe()
+                .key("rem-me-key")
+                .rememberMeParameter("remember")
+                .rememberMeCookieName("rememberlogin")
+                .tokenValiditySeconds(100)
+                .and()
                 .exceptionHandling()
-                .accessDeniedPage("/403").and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
+                .accessDeniedPage("/403")
+                .and()
+                .logout().logoutSuccessUrl("/login").logoutUrl("/logout").permitAll();
     }
 
 }

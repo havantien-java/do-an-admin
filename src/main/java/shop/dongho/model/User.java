@@ -152,9 +152,12 @@ public class User {
     private String phone;
 
 
-    @ManyToOne
-    @JoinColumn(name = "user_role_id")
-    public UserRole userRole;
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "user_role_id",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private List<UserRole> roles;
 
     @OneToMany(targetEntity = Order.class)
     private List<Order> orders;
@@ -171,7 +174,7 @@ public class User {
 
     }
 
-    public User(String userName, String password, String name, String email, String address, String birthDay, String phone, UserRole userRole) {
+    public User(String userName, String password, String name, String email, String address, String birthDay, String phone, List<UserRole> roles, List<Order> orders) {
         this.userName = userName;
         this.password = password;
         this.name = name;
@@ -179,7 +182,8 @@ public class User {
         this.address = address;
         this.birthDay = birthDay;
         this.phone = phone;
-        this.userRole = userRole;
+        this.roles = roles;
+        this.orders = orders;
     }
 
     public Integer getId() {
@@ -246,11 +250,11 @@ public class User {
         this.phone = phone;
     }
 
-    public UserRole getUserRole() {
-        return userRole;
+    public List<UserRole> getRoles() {
+        return roles;
     }
 
-    public void setUserRole(UserRole userRole) {
-        this.userRole = userRole;
+    public void setRoles(List<UserRole> roles) {
+        this.roles = roles;
     }
 }

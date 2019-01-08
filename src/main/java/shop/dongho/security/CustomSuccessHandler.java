@@ -49,17 +49,15 @@ public class CustomSuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
 
         if (isAdmin(roles)) {
             url = "admin/products";
-        } else if (isUser(roles)) {
-            url = "/member/";
         } else {
-            url = "/product/list";
+            url = "member/home";
         }
 
         return url;
     }
 
     private boolean isUser(List<String> roles) {
-        if (roles.contains("ROLE_USER")) {
+        if (roles.contains("ROLE_MEMBER")) {
             return true;
         }
         return false;

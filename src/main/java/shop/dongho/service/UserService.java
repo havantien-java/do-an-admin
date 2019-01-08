@@ -11,11 +11,11 @@ public interface UserService {
 
     Page<User> findAll(Pageable pageable);
 
-    Optional<User> findById(Integer id);
+    Optional<User> findById(Long id);
 
     void save(User user);
 
-    void remove(Integer id);
+    void remove(Long id);
 
     User findByName(String username);
 

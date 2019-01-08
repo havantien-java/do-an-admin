@@ -4,6 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
@@ -13,6 +16,8 @@ import shop.dongho.model.User;
 import shop.dongho.service.UserService;
 import shop.dongho.service.impl.UserDetailServiceImpl;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Optional;
 
 
@@ -56,7 +61,7 @@ public class UserController {
     }
 //
     @GetMapping("admin/edit-user/{id}")
-    public ModelAndView editUser(@PathVariable Integer id) {
+    public ModelAndView editUser(@PathVariable Long id) {
         Optional<User> user =userService.findById(id);
         if (user != null) {
             ModelAndView modelAndView = new ModelAndView("/user/edit");
@@ -112,9 +117,11 @@ public class UserController {
         return "403";
     }
 
-    @GetMapping("/login")
-    public String getLogin() {
-        return "login/login";
+    @RequestMapping(value = {"/login"}, method = RequestMethod.GET)
+    public ModelAndView Login() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("/login/login");
+        return modelAndView;
     }
 
     @GetMapping("/registration")
@@ -133,6 +140,15 @@ public class UserController {
         modelAndView.addObject("message", "User has been registered successfully");
         modelAndView.addObject("user", new User());
         return modelAndView;
+    }
+
+    @RequestMapping(value = "/logout", method = RequestMethod.POST)
+    public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null) {
+            new SecurityContextLogoutHandler().logout(request, response, auth);
+        }
+        return "redirect:/login";
     }
 
 }

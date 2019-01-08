@@ -217,9 +217,10 @@
                             <!--</ul>-->
                         <!--</li>-->
                         <li style="text-align: right">
-                            <a href="#">
-                                <p>Log out</p>
-                            </a>
+                            <form th:action="@{/logout}" method="post">
+                                <button class="btn btn-lg btn-primary btn-block" value="Logout" type="submit"
+                                        th:text="Logout"></button>
+                            </form>
                         </li>
                         <li class="separator hidden-lg hidden-md"></li>
                     </ul>
