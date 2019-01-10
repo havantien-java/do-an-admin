@@ -10,6 +10,17 @@ public class Item {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    @ManyToOne(targetEntity = Order.class)
+    private Order order;
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
     @OneToOne(targetEntity = Product.class)
     @JoinColumn(name = "product_id")
     private Product product;

@@ -11,6 +11,11 @@ public class Producer {
     private Integer id;
     private String name;
 
+
+
+    @OneToMany(targetEntity = Product.class,mappedBy = "producer")
+    private List<Product> productList;
+
     public List<Product> getProductList() {
         return productList;
     }
@@ -18,10 +23,6 @@ public class Producer {
     public void setProductList(List<Product> productList) {
         this.productList = productList;
     }
-
-    @OneToMany(targetEntity = Product.class)
-    private List<Product> productList;
-
     public Producer() {
 
     }

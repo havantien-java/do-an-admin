@@ -50,11 +50,11 @@ public class Product {
     }
 
     @ManyToOne
-    @JoinColumn(name = "idProducer")
+    @JoinColumn(name = "id_producer")
     private Producer producer;
 
     @ManyToOne
-    @JoinColumn(name = "idProductType")
+    @JoinColumn(name = "id_productType")
     private ProductType productType;
 
     @OneToOne(targetEntity = Item.class)

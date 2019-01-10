@@ -11,11 +11,11 @@ import java.util.Optional;
 public interface CustomerService {
     Page<Customer> findAll(Pageable pageable);
 
-    Optional<Customer> findById(Long id);
+    Optional<Customer> findById(Integer id);
 
     void save(Customer customer);
 
-    void remove(Long id);
+    void remove(Integer id);
 
     Page<Customer> findAllByNameContaining(String s, Pageable pageable);
 }

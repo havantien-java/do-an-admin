@@ -12,7 +12,7 @@ public class ProductType {
 
     private String name;
 
-    @OneToMany(targetEntity = Product.class)
+    @OneToMany(targetEntity = Product.class, mappedBy = "productType")
     private List<Product> productLists;
 
     public List<Product> getProductLists() {

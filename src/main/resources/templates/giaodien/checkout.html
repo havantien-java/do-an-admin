@@ -72,7 +72,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!--top-header-->
 	<!--start-logo-->
 	<div class="logo">
-		<a href="index.html"><h1>Luxury Watches</h1></a>
+		<a href="/member/home"><h1>Luxury Watches</h1></a>
 	</div>
 	<!--start-logo-->
 	<!--bottom-header-->
@@ -81,7 +81,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="header">
 				<div class="col-md-9 header-left">
 				<div class="top-nav">
-					<ul class="memenu skyblue"><li class="active"><a href="/home">Home</a></li>
+					<ul class="memenu skyblue"><li class="active"><a href="/member/home">Home</a></li>
 						<li class="grid"><a href="#">Đồng Hồ</a>
 							<div class="mepanel">
 								<div class="row">
@@ -100,7 +100,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											<li><a th:href="@{/list35}">Giá Từ 3 - 5 triệu</a></li>
 											<li><a th:href="@{/list51}">Giá Từ 5 - 10 triệu</a></li>
 											<li><a th:href="@{/list102}">Giá Từ 10 - 20 triệu</a></li>
-											<li><a href="products.html">Giá Trên 20 triệu</a></li>
+											<li><a th:href="@{/product-price200}">Giá Trên 20 triệu</a></li>
 										</ul>
 									</div>
 									<div class="col1 me-one">
@@ -125,8 +125,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="col-md-3 header-right"> 
 				<div class="search-bar">
-					<input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
-					<input type="submit" value="">
+					<form th:action="@{/search}" method="get" th:object="${products}">
+						<input type="text" name="s">
+						<input type="submit" value="">
+					</form>
 				</div>
 			</div>
 			<div class="clearfix"> </div>
@@ -220,9 +222,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         cell.appendChild(totalBalance);
 					</script>
 					<div style="margin-top: 50px; margin-left: 50px; text-align: right"  >
-					<input type="submit" value="Đặt Hàng">
+						<input type="submit" value="Đặt Hàng">
 					</div>
 				</form>
+				<a th:href="@{/create-order}">test</a>
 			</div>
 		</div>
 	</div>

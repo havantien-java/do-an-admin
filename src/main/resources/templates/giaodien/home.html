@@ -8,23 +8,31 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Luxury Watches A Ecommerce Category Flat Bootstrap Resposive Website Template | Home :: w3layouts</title>
-    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" type="text/css" media="all" />
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" type="text/css" media="all"/>
     <!--jQuery(necessary for Bootstrap's JavaScript plugins)-->
     <script th:src="@{/js/jquery-1.11.0.min.js}"></script>
     <!--Custom-Theme-files-->
     <!--theme-style-->
-    <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css" media="all" />
+    <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css" media="all"/>
     <!--//theme-style-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="keywords" content="Luxury Watches Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design"/>
+    <script type="application/x-javascript"> addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    } </script>
     <!--start-menu-->
-    <script th:src="@{/js/simpleCart.min.js}"> </script>
-    <link th:href="@{/css/memenu.css}" rel="stylesheet" type="text/css" media="all" />
+    <script th:src="@{/js/simpleCart.min.js}"></script>
+    <link th:href="@{/css/memenu.css}" rel="stylesheet" type="text/css" media="all"/>
     <script type="text/javascript" th:src="@{/js/memenu.js}"></script>
-    <script>$(document).ready(function(){$(".memenu").memenu();});</script>
+    <script>$(document).ready(function () {
+        $(".memenu").memenu();
+    });</script>
     <!--dropdown-->
     <script th:src="@{/js/jquery.easydropdown.js}"></script>
 </head>
@@ -58,10 +66,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <a href="/checkout">
                         <div class="total">
                             <span class="simpleCart_total"></span></div>
-                        <img th:src="@{/images/cart-1.png}" alt="" />
+                        <img th:src="@{/images/cart-1.png}" alt=""/>
                     </a>
                     <p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
-                    <div class="clearfix"> </div>
+                    <div class="clearfix"></div>
                 </div>
             </div>
             <div class="col-md-2 top-header-left">
@@ -74,24 +82,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--top-header-->
 <!--start-logo-->
 <div class="logo">
-    <a href="index.html"><h1>Luxury Watches</h1></a>
+    <a href="/member/home"><h1>Luxury Watches</h1></a>
 </div>
 <!--start-logo-->
 <!--bottom-header-->
-<div class="header-bottom">
+<div class="header-bottom ">
     <div class="header-bottom">
         <div class="container">
             <div class="header">
                 <div class="col-md-9 header-left">
                     <div class="top-nav">
-                        <ul class="memenu skyblue"><li class="active"><a href="/home">Home</a></li>
+                        <ul class="memenu skyblue">
+                            <li class="active"><a href="/member/home">Home</a></li>
                             <li class="grid"><a href="#">Đồng Hồ</a>
                                 <div class="mepanel">
                                     <div class="row">
                                         <div class="col1 me-one">
                                             <h4>Thương Hiệu</h4>
                                             <ul th:each="producer : ${producers}">
-                                                <li><a th:href="@{/choi/__${producer.id}__ }"><p th:text="${producer.name}"></p></a></li>
+                                                <li><a th:href="@{/choi/__${producer.id}__ }"><p
+                                                        th:text="${producer.name}"></p></a></li>
                                             </ul>
 
                                         </div>
@@ -103,14 +113,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                 <li><a th:href="@{/list35}">Giá Từ 3 - 5 triệu</a></li>
                                                 <li><a th:href="@{/list51}">Giá Từ 5 - 10 triệu</a></li>
                                                 <li><a th:href="@{/list102}">Giá Từ 10 - 20 triệu</a></li>
-                                                <li><a href="products.html">Giá Trên 20 triệu</a></li>
+                                                <li><a th:href="@{/product-price200}">Giá Trên 20 triệu</a></li>
                                             </ul>
                                         </div>
                                         <div class="col1 me-one">
                                             <h4>Năng Lượng Sử Dụng</h4>
 
                                             <ul th:each="productType : ${productTypes}">
-                                                <li><a th:href="@{/energy/__${productType.id}__ }"><p th:text="${productType.name}"></p></a></li>
+                                                <li><a th:href="@{/energy/__${productType.id}__ }"><p
+                                                        th:text="${productType.name}"></p></a></li>
                                             </ul>
 
                                         </div>
@@ -124,7 +135,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </li>
                         </ul>
                     </div>
-                    <div class="clearfix"> </div>
+                    <div class="clearfix"></div>
                 </div>
                 <div class="col-md-3 header-right">
                     <div class="search-bar">
@@ -134,14 +145,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </form>
                     </div>
                 </div>
-                <div class="clearfix"> </div>
+                <div class="clearfix"></div>
             </div>
         </div>
     </div>
     <!--bottom-header-->
     <!--banner-starts-->
     <div class="bnr" id="home">
-        <div  id="top" class="callbacks_container">
+        <div id="top" class="callbacks_container">
             <ul class="rslides" id="slider4">
                 <li>
                     <img th:src="@{/images/bnr-1.jpg}" alt=""/>
@@ -154,7 +165,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </li>
             </ul>
         </div>
-        <div class="clearfix"> </div>
+        <div class="clearfix"></div>
     </div>
     <!--banner-ends-->
     <!--Slider-Starts-Here-->
@@ -221,27 +232,82 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="container">
             <div class="product-top">
                 <div class="product-one">
-                    <th:block th:each="product : ${products}">
-
-                        <div class="col-md-3 product-left" style="margin-top: 50px" >
-                            <div class="product-main simpleCart_shelfItem">
-                                <a th:href="@{/list-product/__${product.id}__}" class="mask"><img th:src="@{/__${product.image }__}" height="200px" width="150px"></a>
-                                <div class="product-bottom">
-                                    <h3 th:text="${product.name}"></h3>
-                                    <p>Explore Now</p>
-                                    <h4><a class="item_add" th:href="@{/addtocard/__${product.id}__}"><i></i></a> <span class=" item_price"><p th:text="${product.unitPrice}"></p></span></h4>
-                                </div>
-                                <div class="srch">
-                                    <span>-50%</span>
-                                </div>
-                            </div>
-                        </div>
+                    <th:block th:if="${message}">
+                        <h1 th:text="${message} " style="color: red"></h1>
                     </th:block>
+
+                    <!--<th:block th:each="product : ${products}">-->
+
+                    <!--<div class="col-md-3 product-left" style="margin-top: 50px">-->
+                    <!--<div class="product-main simpleCart_shelfItem">-->
+                    <!--<a th:href="@{/list-product/__${product.id}__}" class="mask"><img-->
+                    <!--th:src="@{/__${product.image }__}" height="200px" width="150px"></a>-->
+                    <!--<div class="product-bottom">-->
+                    <!--<h3 th:text="${product.name}"></h3>-->
+                    <!--<p>Explore Now</p>-->
+                    <!--<h4><a class="item_add" th:href="@{/addtocard/__${product.id}__}"><i></i></a> <span-->
+                    <!--class=" item_price"><p th:text="${product.unitPrice}"></p></span></h4>-->
+                    <!--</div>-->
+                    <!--<div class="srch">-->
+                    <!--<span>-50%</span>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--</th:block>-->
                 </div>
             </div>
         </div>
     </div>
     <!--product-end-->
+
+    <div class="col-lg-12 container-fluid" style="padding: 0" th:each="producer : ${producers}">
+        <h1 class="col-lg-12 " th:text="${producer.name}" style="text-align: center; background-color: #ccc"></h1>
+        <!--<p th:text="${producer.getProductList().size()}"></p>-->
+        <th:block th:each="product:${producer.productList}">
+            <div class="col-md-3 product-left" style="margin-top: 50px">
+                <div class="product-main simpleCart_shelfItem">
+                    <a th:href="@{/list-product/__${product.id}__}" class="mask"><img
+                            th:src="@{/__${product.getImage()}__}" height="200px" width="150px"></a>
+                    <div class="product-bottom">
+                        <h3 th:text="${product.name}"></h3>
+                        <p>Explore Now</p>
+                        <h4><a class="item_add" th:href="@{/addtocard/__${product.id}__}"><i></i></a> <span
+                                class=" item_price"><p th:text="${product.unitPrice}"></p></span></h4>
+                        <div style="color: blue" th:if="${not #strings.startsWith(product.promotionPrice,'0')}">đang
+                            giảm giá
+                        </div>
+                    </div>
+                    <div class="srch">
+                        <span>-50%</span>
+                    </div>
+                </div>
+            </div>
+        </th:block>
+    </div>
+
+
+    <!--<div>-->
+    <!--&lt;!&ndash;<div class="col-lg-12" style="text-align: center"><h1 th:text=""></h1>&ndash;&gt;-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--<div>-->
+    <!--<th:block th:each="product : ${products}">-->
+
+    <!--<div class="col-md-3 product-left" style="margin-top: 50px" >-->
+    <!--<div class="product-main simpleCart_shelfItem">-->
+    <!--<a th:href="@{/list-product/__${product.id}__}" class="mask"><img th:src="@{/__${product.image }__}" height="200px" width="150px"></a>-->
+    <!--<div class="product-bottom">-->
+    <!--<h3 th:text="${product.name}"></h3>-->
+    <!--<p>Explore Now</p>-->
+    <!--<h4><a class="item_add" th:href="@{/addtocard/__${product.id}__}"><i></i></a> <span class=" item_price"><p th:text="${product.unitPrice}"></p></span></h4>-->
+    <!--</div>-->
+    <!--<div class="srch">-->
+    <!--<span>-50%</span>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</th:block>-->
+    <!--</div>-->
+    <!--</div>-->
     <!--information-starts-->
     <div class="information">
         <div class="container">
@@ -293,12 +359,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="footer-top">
                 <div class="col-md-6 footer-left">
                     <form>
-                        <input type="text" value="Enter Your Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter Your Email';}">
+                        <input type="text" value="Enter Your Email" onfocus="this.value = '';"
+                               onblur="if (this.value == '') {this.value = 'Enter Your Email';}">
                         <input type="submit" value="Subscribe">
                     </form>
                 </div>
                 <div class="col-md-6 footer-right">
-                    <p>© 2015 Luxury Watches. All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+                    <p>© 2015 Luxury Watches. All Rights Reserved | Design by <a href="http://w3layouts.com/"
+                                                                                 target="_blank">W3layouts</a></p>
                 </div>
                 <div class="clearfix"></div>
             </div>

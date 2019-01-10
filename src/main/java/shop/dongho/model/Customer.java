@@ -1,6 +1,7 @@
 package shop.dongho.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "customer")
@@ -8,13 +9,16 @@ public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Integer id;
     private String name;
     private String email;
     private String gender;
     private  String address;
     private String phone;
     private String note;
+
+    @OneToMany(targetEntity = Order.class)
+    private List<Order> orders;
 
     public Customer() {
 
@@ -29,11 +33,11 @@ public class Customer {
         this.note = note;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

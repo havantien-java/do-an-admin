@@ -3,6 +3,8 @@ package shop.dongho.model;
 import org.hibernate.cache.spi.support.AbstractReadWriteAccess;
 
 import javax.persistence.*;
+import javax.xml.crypto.Data;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -15,11 +17,13 @@ public class Order {
     @OneToMany(targetEntity = Item.class)
     private List<Item> items;
 
-    private int status;
+    private String status;
 
-    @ManyToOne(targetEntity = User.class)
-    @JoinColumn(name = "user_id")
-    private User user;
+    private Date dateOrder;
+
+    @ManyToOne(targetEntity = Customer.class)
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
 
     public Order() {
     }
@@ -40,19 +44,27 @@ public class Order {
         this.items = items;
     }
 
-    public int getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
-    public User getUser() {
-        return user;
+    public Date getDateOrder() {
+        return dateOrder;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setDateOrder(Date dateOrder) {
+        this.dateOrder = dateOrder;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 }

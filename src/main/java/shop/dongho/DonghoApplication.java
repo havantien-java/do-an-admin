@@ -62,6 +62,16 @@ public class DonghoApplication {
 	}
 
 	@Bean
+	public ItemService itemService() {
+		return new ItemServiceImpl();
+	}
+
+	@Bean
+	public OrderService orderService() {
+		return new OrderServiceImpl();
+	}
+
+	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
 		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 		return bCryptPasswordEncoder;

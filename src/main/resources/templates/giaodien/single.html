@@ -95,7 +95,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!--top-header-->
 	<!--start-logo-->
 	<div class="logo">
-		<a href="index.html"><h1>Luxury Watches</h1></a>
+		<a href="/member/home"><h1>Luxury Watches</h1></a>
 	</div>
 	<!--start-logo-->
 	<!--bottom-header-->
@@ -104,7 +104,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="header">
 				<div class="col-md-9 header-left">
 				<div class="top-nav">
-					<ul class="memenu skyblue"><li class="active"><a href="/home">Home</a></li>
+					<ul class="memenu skyblue"><li class="active"><a href="/member/home">Home</a></li>
 						<li class="grid"><a href="#">Đồng Hồ</a>
 							<div class="mepanel">
 								<div class="row">
@@ -123,7 +123,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											<li><a th:href="@{/list35}">Giá Từ 3 - 5 triệu</a></li>
 											<li><a th:href="@{/list51}">Giá Từ 5 - 10 triệu</a></li>
 											<li><a th:href="@{/list102}">Giá Từ 10 - 20 triệu</a></li>
-											<li><a href="products.html">Giá Trên 20 triệu</a></li>
+											<li><a th:href="@{/product-price200}">Giá Trên 20 triệu</a></li>
 										</ul>
 									</div>
 									<div class="col1 me-one">
@@ -147,12 +147,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="clearfix"> </div>
 			</div>
-			<!--<div class="col-md-3 header-right"> -->
-				<!--<div class="search-bar">-->
-					<!--<input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">-->
-					<!--<input type="submit" value="">-->
-				<!--</div>-->
-			<!--</div>-->
+			<div class="col-md-3 header-right">
+				<div class="search-bar">
+					<form th:action="@{/search}" method="get" th:object="${products}">
+						<input type="text" name="s">
+						<input type="submit" value="">
+					</form>
+				</div>
+			</div>
 			<div class="clearfix"> </div>
 			</div>
 		</div>
@@ -176,7 +178,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="single-main">
 				<div class="col-md-9 single-main-left">
 				<div class="sngl-top">
-					<div class="col-md-5 single-top-left">	
+					<div class="col-md-6 single-top-left">
 						<div class="flexslider">
 							  <ul class="slides">
 								<li data-thumb="images/s-1.jpg">
@@ -199,7 +201,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						});
 						</script>
 					</div>	
-					<div class="col-md-7 single-top-right">
+					<div class="col-md-6 single-top-right">
 						<div class="single-para simpleCart_shelfItem">
 						<h2 th:text="${product.name}"></h2>
 							<div class="star-on">
@@ -218,24 +220,48 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</div>
 							<table class="tien">
 								<tr>
-									<td >Giá: </td>
-									<td th:text="${product.unitPrice}"></td>
+									<td>>Giá: </td>
+									<td><lable th:text="${product.unitPrice}"></lable></td>
+								</tr>
+								<tr>
+									<td>Khuyến mãi: </td>
+									<td ><lable th:text="${product.promotionPrice}"></lable></td>
 								</tr>
 								<tr>
 									<td>Size: </td>
-									<td th:text="${product.size}"></td>
+									<td><lable th:text="${product.size}"></lable></td>
+								</tr>
+								<tr>
+									<td>Chất liệu vỏ: </td>
+									<td><lable th:text="${product.materialShell}"></lable></td>
+								</tr>
+								<tr>
+									<td>Chống nước: </td>
+									<td><lable th:text="${product.waterproof}"></lable></td>
+								</tr>
+								<tr>
+									<td>Mặt kính: </td>
+									<td><lable th:text="${product.faceGlass}"></lable></td>
+								</tr>
+								<tr>
+									<td>Nhà sản xuất: </td>
+									<td><lable th:text="${product.producer.name}"></lable></td>
+								</tr>
+								<tr>
+									<td>Chủng loại: </td>
+									<td><lable th:text="${product.productType.name}"></lable></td>
 								</tr>
 							</table>
 							<!--<h5 class="item_price" th:text="${product.unitPrice}">Giá</h5><br>-->
 							<!--<h5 class="item_price" th:text="${product.size}">Size</h5>-->
 
 
-							<ul class="tag-men">
-								<li><span>TAG</span>
-								<span class="women1">: Women,</span></li>
-								<li><span>SKU</span>
-								<span class="women1">: CK09</span></li>
-							</ul>
+							<!--<ul class="tag-men">-->
+								<!--<li><span>TAG</span>-->
+								<!--<span class="women1">: Women,</span></li>-->
+								<!--<li><span>SKU</span>-->
+								<!--<span class="women1">: CK09</span></li>-->
+							<!--</ul>-->
 								<a th:href="@{/addtocard/__${product.id}__}" class="add-cart item_add">ADD TO CART</a>
 							
 						</div>
@@ -287,81 +313,81 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 				<div class="col-md-3 single-right">
 					<div class="w_sidebar">
-						<section  class="sky-form">
-							<h4>Catogories</h4>
-							<div class="row1 scroll-pane">
-								<div class="col col-4">
-									<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>All Accessories</label>
-								</div>
-								<div class="col col-4">								
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Women Watches</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Kids Watches</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Men Watches</label>			
-								</div>
-							</div>
-						</section>
-						<section  class="sky-form">
-							<h4>Brand</h4>
-							<div class="row1 row2 scroll-pane">
-								<div class="col col-4">
-									<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>kurtas</label>
-								</div>
-								<div class="col col-4">
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Sonata</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Titan</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Casio</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Omax</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox" ><i></i>shree</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Fastrack</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Sports</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Fossil</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Maxima</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Yepme</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Citizen</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Diesel</label>			
-								</div>
-							</div>
-						</section>
-						<section class="sky-form">
-							<h4>Colour</h4>
-								<ul class="w_nav2">
-									<li><a class="color1" href="#"></a></li>
-									<li><a class="color2" href="#"></a></li>
-									<li><a class="color3" href="#"></a></li>
-									<li><a class="color4" href="#"></a></li>
-									<li><a class="color5" href="#"></a></li>
-									<li><a class="color6" href="#"></a></li>
-									<li><a class="color7" href="#"></a></li>
-									<li><a class="color8" href="#"></a></li>
-									<li><a class="color9" href="#"></a></li>
-									<li><a class="color10" href="#"></a></li>
-									<li><a class="color12" href="#"></a></li>
-									<li><a class="color13" href="#"></a></li>
-									<li><a class="color14" href="#"></a></li>
-									<li><a class="color15" href="#"></a></li>
-									<li><a class="color5" href="#"></a></li>
-									<li><a class="color6" href="#"></a></li>
-									<li><a class="color7" href="#"></a></li>
-									<li><a class="color8" href="#"></a></li>
-									<li><a class="color9" href="#"></a></li>
-									<li><a class="color10" href="#"></a></li>
-								</ul>
-						</section>
-						<section class="sky-form">
-							<h4>discount</h4>
-							<div class="row1 row2 scroll-pane">
-								<div class="col col-4">
-									<label class="radio"><input type="radio" name="radio" checked=""><i></i>60 % and above</label>
-									<label class="radio"><input type="radio" name="radio"><i></i>50 % and above</label>
-									<label class="radio"><input type="radio" name="radio"><i></i>40 % and above</label>
-								</div>
-								<div class="col col-4">
-									<label class="radio"><input type="radio" name="radio"><i></i>30 % and above</label>
-									<label class="radio"><input type="radio" name="radio"><i></i>20 % and above</label>
-									<label class="radio"><input type="radio" name="radio"><i></i>10 % and above</label>
-								</div>
-							</div>						
-						</section>
+						<!--<section  class="sky-form">-->
+							<!--<h4>Catogories</h4>-->
+							<!--<div class="row1 scroll-pane">-->
+								<!--<div class="col col-4">-->
+									<!--<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>All Accessories</label>-->
+								<!--</div>-->
+								<!--<div class="col col-4">-->
+									<!--<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Women Watches</label>-->
+									<!--<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Kids Watches</label>-->
+									<!--<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Men Watches</label>-->
+								<!--</div>-->
+							<!--</div>-->
+						<!--</section>-->
+						<!--<section  class="sky-form">-->
+							<!--<h4>Brand</h4>-->
+							<!--<div class="row1 row2 scroll-pane">-->
+								<!--<div class="col col-4">-->
+									<!--<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>kurtas</label>-->
+								<!--</div>-->
+								<!--<div class="col col-4">-->
+									<!--<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Sonata</label>-->
+									<!--<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Titan</label>-->
+									<!--<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Casio</label>-->
+									<!--<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Omax</label>-->
+									<!--<label class="checkbox"><input type="checkbox" name="checkbox" ><i></i>shree</label>-->
+									<!--<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Fastrack</label>-->
+									<!--<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Sports</label>-->
+									<!--<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Fossil</label>-->
+									<!--<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Maxima</label>-->
+									<!--<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Yepme</label>-->
+									<!--<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Citizen</label>-->
+									<!--<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Diesel</label>-->
+								<!--</div>-->
+							<!--</div>-->
+						<!--</section>-->
+						<!--<section class="sky-form">-->
+							<!--<h4>Colour</h4>-->
+								<!--<ul class="w_nav2">-->
+									<!--<li><a class="color1" href="#"></a></li>-->
+									<!--<li><a class="color2" href="#"></a></li>-->
+									<!--<li><a class="color3" href="#"></a></li>-->
+									<!--<li><a class="color4" href="#"></a></li>-->
+									<!--<li><a class="color5" href="#"></a></li>-->
+									<!--<li><a class="color6" href="#"></a></li>-->
+									<!--<li><a class="color7" href="#"></a></li>-->
+									<!--<li><a class="color8" href="#"></a></li>-->
+									<!--<li><a class="color9" href="#"></a></li>-->
+									<!--<li><a class="color10" href="#"></a></li>-->
+									<!--<li><a class="color12" href="#"></a></li>-->
+									<!--<li><a class="color13" href="#"></a></li>-->
+									<!--<li><a class="color14" href="#"></a></li>-->
+									<!--<li><a class="color15" href="#"></a></li>-->
+									<!--<li><a class="color5" href="#"></a></li>-->
+									<!--<li><a class="color6" href="#"></a></li>-->
+									<!--<li><a class="color7" href="#"></a></li>-->
+									<!--<li><a class="color8" href="#"></a></li>-->
+									<!--<li><a class="color9" href="#"></a></li>-->
+									<!--<li><a class="color10" href="#"></a></li>-->
+								<!--</ul>-->
+						<!--</section>-->
+						<!--<section class="sky-form">-->
+							<!--<h4>discount</h4>-->
+							<!--<div class="row1 row2 scroll-pane">-->
+								<!--<div class="col col-4">-->
+									<!--<label class="radio"><input type="radio" name="radio" checked=""><i></i>60 % and above</label>-->
+									<!--<label class="radio"><input type="radio" name="radio"><i></i>50 % and above</label>-->
+									<!--<label class="radio"><input type="radio" name="radio"><i></i>40 % and above</label>-->
+								<!--</div>-->
+								<!--<div class="col col-4">-->
+									<!--<label class="radio"><input type="radio" name="radio"><i></i>30 % and above</label>-->
+									<!--<label class="radio"><input type="radio" name="radio"><i></i>20 % and above</label>-->
+									<!--<label class="radio"><input type="radio" name="radio"><i></i>10 % and above</label>-->
+								<!--</div>-->
+							<!--</div>-->
+						<!--</section>-->
 					</div>
 				</div>
 				<div class="clearfix"> </div>
