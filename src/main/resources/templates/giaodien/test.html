@@ -1,5 +1,5 @@
 
-<!--A Design by W3layouts 
+<!--A Design by W3layouts
 Author: W3layout
 Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
@@ -184,83 +184,51 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
         </div>
         <div class="in-check" >
-            <form th:action="@{/save-or}" th:object="${order}" method="post">
-                <input type="hidden" th:field="*{customer.id}">
-                        <table class="table table-hover table-striped" id="res">
-                            <!--<tr>-->
-                                <!--<th>Id</th>-->
-                                <!--<th>Name</th>-->
-                                <!--<th>Image</th>-->
-                                <!--<th>Price</th>-->
-                                <!--<th>Quantity</th>-->
-                                <!--<th>Sub Total</th>-->
-                            <!--</tr>-->
-                            <!--<th:block th:each="item: ${session.order.items}" th:unless="${session == null}" >-->
-                                    <!--&lt;!&ndash;<input th:type="hidden" name="id" th:field="*{id}">&ndash;&gt;-->
-                                <!--<tr>-->
-                                    <!--<td th:text="${item.product.id}"></td>-->
-                                    <!--<td th:text="${item.product.name}"></td>-->
-                                    <!--<td><img th:src="@{/__${item.product.image }__}" height="200px" width="150px"></td>-->
-                                    <!--<td th:text="${item.product.unitPrice}"></td>-->
-                                    <!--<td th:text="${item.quantity}" th:value="${item.quantity}"></td>-->
-                                    <!--<td th:text="${item.product.unitPrice * item.quantity}" class="dongia"></td>-->
-                                <!--</tr>-->
-                            <!--</th:block>-->
-                            <!--<script type="application/javascript">-->
-                                <!--var sum = 0;-->
-                                <!--var table = document.getElementById("res");-->
-                                <!--var ths = table.getElementsByTagName('th');-->
-                                <!--var tds = table.getElementsByClassName('dongia');-->
-                                <!--for(var i=0;i<tds.length;i++){-->
-                                    <!--sum += isNaN(tds[i].innerText) ? 0 : parseInt(tds[i].innerText);-->
-                                <!--}-->
+            <form action="">
+                <table class="table table-hover table-striped" id="res">
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Image</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Sub Total</th>
+                    </tr>
+                    <th:block th:each="item: ${order.items}" >
+                        <tr>
+                            <td th:text="${item.product.id}"></td>
+                            <td th:text="${item.product.name}"></td>
+                            <td><img th:src="@{/__${item.product.image }__}" height="200px" width="150px"></td>
+                            <td th:text="${item.product.unitPrice}"></td>
+                            <td th:text="${item.quantity}" th:value="${item.quantity}"></td>
+                            <td th:text="${item.product.unitPrice * item.quantity}" class="dongia"></td>
+                        </tr>
+                    </th:block>
+                </table>
+                <script type="application/javascript">
+                    var sum = 0;
+                    var table = document.getElementById("res");
+                    var ths = table.getElementsByTagName('th');
+                    var tds = table.getElementsByClassName('dongia');
+                    for(var i=0;i<tds.length;i++){
+                        sum += isNaN(tds[i].innerText) ? 0 : parseInt(tds[i].innerText);
+                    }
 
-                                <!--var row = table.insertRow(table.rows.length);-->
-                                <!--var cell = row.insertCell(0);-->
-                                <!--cell.setAttribute('colspan', ths.length);-->
+                    var row = table.insertRow(table.rows.length);
+                    var cell = row.insertCell(0);
+                    cell.setAttribute('colspan', ths.length);
 
-                                <!--var totalBalance  = document.createTextNode('SUM ' + sum);-->
-                                <!--cell.appendChild(totalBalance);-->
-                            <!--</script>-->
-
-                            <tr>
-                                <td>Ngày đặt hàng</td>
-                                <td><input type="date" th:field="*{dateOrder}"></td>
-                            </tr>
-                            <tr>
-                                <td>Trạng thái</td>
-                                <td><input type="text" th:field="*{status}"></td>
-                            </tr>
-                            <tr>
-                                <td>First name:</td>
-                                <td><input type="text" th:field="*{customer.name}"/></td>
-                            </tr>
-                            <tr>
-                                <td>Email:</td>
-                                <td><input type="text" th:field="*{customer.email}"/></td>
-                            </tr>
-                            <tr>
-                                <td>Giới tính:</td>
-                                <td><input type="text" th:field="*{customer.gender}"/></td>
-                            </tr>
-                            <tr>
-                                <td>Address:</td>
-                                <td><input type="text" th:field="*{customer.address}"/></td>
-                            </tr>
-                            <tr>
-                                <td>Phone:</td>
-                                <td><input type="text" th:field="*{customer.phone}"/></td>
-                            </tr>
-                            <tr>
-                                <td>Note:</td>
-                                <td><input type="text" th:field="*{customer.note}"/></td>
-                            </tr>
-
-
-                            <div style="margin-top: 50px; margin-left: 50px; text-align: right"  >
-                                <input type="submit" value="Đặt Hàng">
-                            </div>
-                        </table>
+                    var totalBalance  = document.createTextNode('SUM ' + sum);
+                    cell.appendChild(totalBalance);
+                </script>
+                <div style="margin-top: 50px; margin-left: 50px; text-align: right"  >
+                    <input type="submit" value="Đặt Hàng">
+                </div>
+            </form>
+            <a th:href="@{/create-order}">test</a>
+            <form th:action="@{/create-order}" method="post" th:object="${order}">
+                <input >
+                <input type="submit" value="lưu">
             </form>
         </div>
     </div>

@@ -49,7 +49,7 @@ public class CustomerController {
     }
 
     @GetMapping("/edit-customer/{id}")
-    public ModelAndView showEditForm(@PathVariable Long id){
+    public ModelAndView showEditForm(@PathVariable Integer id){
         Optional<Customer> customer = customerService.findById(id);
         if(customer != null) {
             ModelAndView modelAndView = new ModelAndView("/customer/edit");
@@ -72,7 +72,7 @@ public class CustomerController {
     }
 
     @GetMapping("/delete-customer/{id}")
-    public ModelAndView showDeleteForm(@PathVariable Long id){
+    public ModelAndView showDeleteForm(@PathVariable Integer id){
         Optional<Customer> customer = customerService.findById(id);
         if(customer != null) {
             ModelAndView modelAndView = new ModelAndView("/customer/delete");

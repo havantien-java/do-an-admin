@@ -30,15 +30,10 @@ public class IndexController {
 
 
     @GetMapping("/member/home")
-    public ModelAndView listProduct(@PageableDefault(size = 10) Pageable pageable, @ModelAttribute("s") String s) {
-        Page<Product> products;
+    public ModelAndView listProduct(@PageableDefault(size = 10) Pageable pageable) {
+        Page<Product> products  = productService.findAll(pageable);
         Page<Producer> producers = producerService.findAll(pageable);
         Page<ProductType> productTypes = productTypeService.findAll(pageable);
-        if (s == null) {
-            products = productService.findAll(pageable);
-        } else {
-            products = productService.findAllByNameContaining(s, pageable);
-        }
         ModelAndView modelAndView = new ModelAndView("giaodien/home");
         modelAndView.addObject("products", products);
         modelAndView.addObject("producers", producers);
@@ -56,6 +51,9 @@ public class IndexController {
         modelAndView.addObject("products", products);
         modelAndView.addObject("producers", producers);
         modelAndView.addObject("productTypes", productTypes);
+        if (products.isEmpty()){
+            modelAndView.addObject("message", "Không tìm thấy sản phẩm");
+        }
         return modelAndView;
     }
 
@@ -84,6 +82,9 @@ public class IndexController {
         modelAndView.addObject("products", products);
         modelAndView.addObject("producers", producers);
         modelAndView.addObject("productTypes", productTypes);
+        if (products.isEmpty()){
+            modelAndView.addObject("message", "Không tìm thấy sản phẩm");
+        }
         return modelAndView;
     }
 
@@ -108,6 +109,9 @@ public class IndexController {
         modelAndView.addObject("products", products);
         modelAndView.addObject("producers", producers);
         modelAndView.addObject("productTypes", productTypes);
+        if (products.isEmpty()){
+            modelAndView.addObject("message", "Không tìm thấy sản phẩm");
+        }
         return modelAndView;
     }
 
@@ -120,6 +124,9 @@ public class IndexController {
         modelAndView.addObject("products", products);
         modelAndView.addObject("producers", producers);
         modelAndView.addObject("productTypes", productTypes);
+        if (products.isEmpty()){
+            modelAndView.addObject("message", "Không tìm thấy sản phẩm");
+        }
         return modelAndView;
     }
 
@@ -132,6 +139,9 @@ public class IndexController {
         modelAndView.addObject("products", products);
         modelAndView.addObject("producers", producers);
         modelAndView.addObject("productTypes", productTypes);
+        if (products.isEmpty()){
+            modelAndView.addObject("message", "Không tìm thấy sản phẩm");
+        }
         return modelAndView;
     }
 
@@ -144,6 +154,24 @@ public class IndexController {
         modelAndView.addObject("products", products);
         modelAndView.addObject("producers", producers);
         modelAndView.addObject("productTypes", productTypes);
+        if (products.isEmpty()){
+            modelAndView.addObject("message", "Không tìm thấy sản phẩm");
+        }
+        return modelAndView;
+    }
+
+    @GetMapping("/product-price200")
+    public ModelAndView productPrice200(@PageableDefault(size = 10) Pageable pageable) {
+        Page<Product> products = productService.findAllByUnitPriceBetween(20000001, 999999999, pageable);
+        Page<Producer> producers = producerService.findAll(pageable);
+        Page<ProductType> productTypes = productTypeService.findAll(pageable);
+        ModelAndView modelAndView = new ModelAndView("/giaodien/index");
+        modelAndView.addObject("products", products);
+        modelAndView.addObject("producers", producers);
+        modelAndView.addObject("productTypes", productTypes);
+        if (products.isEmpty()){
+            modelAndView.addObject("message", "Không tìm thấy sản phẩm");
+        }
         return modelAndView;
     }
 
@@ -156,6 +184,9 @@ public class IndexController {
         modelAndView.addObject("products", products);
         modelAndView.addObject("producers", producers);
         modelAndView.addObject("productTypes", productTypes);
+        if (products.isEmpty()){
+            modelAndView.addObject("message", "Không tìm thấy sản phẩm");
+        }
         return modelAndView;
     }
 
@@ -172,8 +203,15 @@ public class IndexController {
         } else {
             products = productService.findAllByNameContaining(s, pageable);
         }
-        ModelAndView modelAndView = new ModelAndView("giaodien/home");
+        ModelAndView modelAndView = new ModelAndView("giaodien/index");
         modelAndView.addObject("products", products);
+        Page<Producer> producers = producerService.findAll(pageable);
+        Page<ProductType> productTypes = productTypeService.findAll(pageable);
+        modelAndView.addObject("producers", producers);
+        modelAndView.addObject("productTypes", productTypes);
+        if (products.isEmpty()){
+            modelAndView.addObject("message", "Không tìm thấy sản phẩm");
+        }
         return modelAndView;
     }
 

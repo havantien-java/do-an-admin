@@ -17,7 +17,7 @@ public class Customer {
     private String phone;
     private String note;
 
-    @OneToMany(targetEntity = Order.class)
+    @OneToMany(targetEntity = Order.class, mappedBy = "customer")
     private List<Order> orders;
 
     public Customer() {
