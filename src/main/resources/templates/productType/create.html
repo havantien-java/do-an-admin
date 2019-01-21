@@ -173,7 +173,7 @@
                                 <a href="/admin/productTypes"></a>
                             </div>
                             <div class="content table-responsive table-full-width">
-                                <table>
+                                <table class="table table-hover table-striped" id="res">
                                 <form th:action="@{/admin/create-productType}" th:object="${productType}" method="post">
                                         <tr>
                                             <td>Name:</td>

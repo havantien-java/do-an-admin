@@ -125,7 +125,7 @@
 
                                     <form th:action="@{/admin/edit-product}" th:object="${product}" method="post" enctype="multipart/form-data">
                                             <input th:type="hidden" name="id" th:field="*{id}">
-                                        <table>
+                                        <table class="table table-hover table-striped" id="res">
                                             <tr>
                                             <td>Name</td>
                                             <td><input type="text" th:field="*{name}"></td>

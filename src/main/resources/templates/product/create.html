@@ -122,7 +122,7 @@
                                 <a href="/admin/products">Quay Lại Trang Danh Sách</a>
                             </div>
                             <div class="content table-responsive table-full-width">
-                                <table>
+                                <table class="table table-hover table-striped" id="res">
                                     <form th:action="@{/admin/create-product}" th:object="${product}" method="post" enctype="multipart/form-data">
                                         <tr>
                                             <td>Name</td>
@@ -186,7 +186,7 @@
                                         <tr>
                                             <td>Loại Sản Phẩm</td>
                                             <td>
-                                                <select th:field="*{productType}" style="width: 100%; padding: 10px" >
+                                                <select th:field="*{productType}"  >
                                                     <option th:each="pt : ${productTypes}" th:value="${pt.id}" th:text="${pt.name}">
                                                     </option>
                                                 </select>
@@ -196,7 +196,7 @@
                                         <tr>
                                             <td>Nhà Sản Xuất</td>
                                             <td>
-                                                <select th:field="*{producer}"} style="width: 100%; padding: 10px">
+                                                <select th:field="*{producer}" >
                                                     <option th:each="pc : ${producers}" th:value="${pc.id}" th:text="${pc.name}">
 
                                                     </option>
