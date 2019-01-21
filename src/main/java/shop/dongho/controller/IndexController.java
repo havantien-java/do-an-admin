@@ -191,8 +191,10 @@ public class IndexController {
     }
 
     @GetMapping("/checkout")
-    public ModelAndView checkout() {
-        return new ModelAndView("/giaodien/checkout");
+    public ModelAndView checkout(Pageable pageable) {
+        Page<Product> products = productService.findAll(pageable);
+        ModelAndView modelAndView = new ModelAndView("/giaodien/checkout");
+        return modelAndView;
     }
 
     @GetMapping("/search")

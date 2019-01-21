@@ -1,13 +1,7 @@
 package shop.dongho.model;
-
-import org.hibernate.cache.spi.support.AbstractReadWriteAccess;
-import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
-import javax.xml.crypto.Data;
-import java.util.Date;
 import java.util.List;
-import java.util.Set;
+
 
 @Entity
 @Table(name = "orders")
@@ -19,9 +13,6 @@ public class Order {
     private List<Item> items;
 
     private String status;
-
-    @DateTimeFormat(pattern ="yyyy-MM-dd")
-    private String dateOrder;
 
     @ManyToOne(targetEntity = Customer.class)
     @JoinColumn(name = "customer_id")
@@ -52,14 +43,6 @@ public class Order {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    public String getDateOrder() {
-        return dateOrder;
-    }
-
-    public void setDateOrder(String dateOrder) {
-        this.dateOrder = dateOrder;
     }
 
     public Customer getCustomer() {

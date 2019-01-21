@@ -11,7 +11,7 @@ public interface ItemService {
 
     Optional<Item> findById(Integer id);
 
-    void save(Item item);
+    Item save(Item item);
 
     void remove(Integer id);
 }

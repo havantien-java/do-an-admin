@@ -27,17 +27,23 @@ import java.util.Optional;
 
 @Controller
 public class AddToCardController {
-    @Autowired
+
+    private CustomerService customerService;
+    private OrderService orderService;
+    private ItemService itemService;
     private ProductService productService;
 
-    @Autowired
-    private OrderService orderService;
 
     @Autowired
-    private ItemService itemService;
-
-    @Autowired
-    private CustomerService customerService;
+    public void setUpController(ProductService productService,
+                                OrderService orderService,
+                                ItemService itemService,
+                                CustomerService customerService) {
+        this.productService = productService;
+        this.orderService = orderService;
+        this.customerService = customerService;
+        this.itemService = itemService;
+    }
 
 //    @Autowired
 //    private OrderDetailsService orderDetailsService;
@@ -71,6 +77,11 @@ public class AddToCardController {
             item.setPrice(product.get().getUnitPrice());
             items.add(item);
             order.setItems(items);
+//            order = orderService.save(order);
+//            itemService.save(item);
+            System.out.println(order.getItems().size());
+
+
             session.setAttribute("order", order);
         } else {
             Order order = (Order) session.getAttribute("order");
@@ -81,6 +92,7 @@ public class AddToCardController {
                     item.setQuantity(item.getQuantity() + 1);
                     check = true;
                 }
+//                itemService.save(item);
             }
             if (check == false) {
                 Item item = new Item();
@@ -88,8 +100,10 @@ public class AddToCardController {
                 item.setPrice(product.get().getUnitPrice());
                 item.setProduct(product.get());
                 items.add(item);
+//                itemService.save(item);
             }
             session.setAttribute("order", order);
+
         }
         ModelAndView modelAndView = new ModelAndView("redirect:/member/home");
         modelAndView.addObject("session", session);
@@ -97,48 +111,48 @@ public class AddToCardController {
     }
 
 
-    @GetMapping("/create-order")
-    public ModelAndView createOrder(HttpServletRequest request) {
-        ModelAndView modelAndView = new ModelAndView("giaodien/register");
-        HttpSession session = request.getSession();
-        Order order = (Order) session.getAttribute("order");
-        List<Item> items = (List<Item>) session.getAttribute("items");
-        order.setItems(items);
-        modelAndView.addObject("order", order);
-//        orderService.save(order);
-        modelAndView.addObject("customer", new Customer());
-        return modelAndView;
-    }
 
     @PostMapping("/save-order")
-    public ModelAndView saveOrder(HttpServletRequest request, @ModelAttribute("customer") Customer customer ) {
+    public ModelAndView saveOrder(HttpServletRequest request,@ModelAttribute Customer customer) {
         HttpSession session = request.getSession();
         Order order = (Order) session.getAttribute("order");
-        List<Item> items = (List<Item>) session.getAttribute("items");
+        List<Item> items = (List<Item>) ((Order) session.getAttribute("order")).getItems();
         order.setItems(items);
-
+        customerService.save(customer);
+        order.setCustomer(customer);
         orderService.save(order);
 
-        customerService.save(customer);
+        for (Item item : items) {
+            item.setOrder(order);
+            itemService.save(item);
+        }
+//        customerService.save(customer);
+
+
         ModelAndView modelAndView = new ModelAndView("/giaodien/home");
-        modelAndView.addObject("customer", customer);
+//        modelAndView.addObject("customer", customer);
         return modelAndView;
     }
 
-    @GetMapping("/register")
+    @GetMapping("/save-customer")
     public ModelAndView newRegister(@ModelAttribute("customer") Customer customer, HttpServletRequest request, @ModelAttribute("order") Order order) {
-        ModelAndView modelAndView = new ModelAndView("giaodien/register");
+        ModelAndView modelAndView = new ModelAndView("giaodien/customer");
         HttpSession session = request.getSession();
 //        Order order = (Order) session.getAttribute("order");
         modelAndView.addObject("customer", customer);
         return modelAndView;
     }
+//
+//    @PostMapping("/save-customer")
+//    public ModelAndView save(@ModelAttribute("customer") Customer customer) {
+//        ModelAndView modelAndView = new ModelAndView("giaodien/register");
+//        customerService.save(customer);
+//
+//        modelAndView.addObject("customer", customer);
+//        return modelAndView;
+//    }
 
-    @PostMapping("/save-or")
-    public ModelAndView save(@ModelAttribute("order") Order order, @ModelAttribute("customer") Customer customer) {
-        ModelAndView modelAndView = new ModelAndView("giaodien/register");
-        orderService.save(order);
-        return modelAndView;
-    }
+
+
 
 }

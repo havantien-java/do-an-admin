@@ -10,7 +10,9 @@ public class Item {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+
     @ManyToOne(targetEntity = Order.class)
+    @JoinColumn(name = "order_id")
     private Order order;
 
     public Order getOrder() {

@@ -1,5 +1,7 @@
 package shop.dongho.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -15,6 +17,8 @@ public class Customer {
     private String gender;
     private  String address;
     private String phone;
+    @DateTimeFormat(pattern ="yyyy-MM-dd")
+    private String dateOrder;
     private String note;
 
     @OneToMany(targetEntity = Order.class, mappedBy = "customer")
@@ -24,13 +28,15 @@ public class Customer {
 
     }
 
-    public Customer(String name, String email, String gender, String address, String phone, String note) {
+    public Customer(String name, String email, String gender, String address, String phone, String dateOrder, String note, List<Order> orders) {
         this.name = name;
         this.email = email;
         this.gender = gender;
         this.address = address;
         this.phone = phone;
+        this.dateOrder = dateOrder;
         this.note = note;
+        this.orders = orders;
     }
 
     public Integer getId() {
@@ -81,11 +87,27 @@ public class Customer {
         this.phone = phone;
     }
 
+    public String getDateOrder() {
+        return dateOrder;
+    }
+
+    public void setDateOrder(String dateOrder) {
+        this.dateOrder = dateOrder;
+    }
+
     public String getNote() {
         return note;
     }
 
     public void setNote(String note) {
         this.note = note;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 }

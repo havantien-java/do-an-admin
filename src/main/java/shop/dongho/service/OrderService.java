@@ -11,7 +11,7 @@ public interface OrderService {
 
     Optional<Order> findById(Integer id);
 
-    void save(Order order);
+    Order save(Order order);
 
     void remove(Integer id);
 }
