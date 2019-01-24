@@ -17,8 +17,7 @@ public class Customer {
     private String gender;
     private  String address;
     private String phone;
-    @DateTimeFormat(pattern ="yyyy-MM-dd")
-    private String dateOrder;
+
     private String note;
 
     @OneToMany(targetEntity = Order.class, mappedBy = "customer")
@@ -28,13 +27,12 @@ public class Customer {
 
     }
 
-    public Customer(String name, String email, String gender, String address, String phone, String dateOrder, String note, List<Order> orders) {
+    public Customer(String name, String email, String gender, String address, String phone, String note, List<Order> orders) {
         this.name = name;
         this.email = email;
         this.gender = gender;
         this.address = address;
         this.phone = phone;
-        this.dateOrder = dateOrder;
         this.note = note;
         this.orders = orders;
     }
@@ -85,14 +83,6 @@ public class Customer {
 
     public void setPhone(String phone) {
         this.phone = phone;
-    }
-
-    public String getDateOrder() {
-        return dateOrder;
-    }
-
-    public void setDateOrder(String dateOrder) {
-        this.dateOrder = dateOrder;
     }
 
     public String getNote() {

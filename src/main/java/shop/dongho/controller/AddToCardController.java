@@ -22,10 +22,7 @@ import shop.dongho.service.ProductService;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.ConcurrentModificationException;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Controller
 public class AddToCardController {
@@ -162,14 +159,14 @@ public class AddToCardController {
 //    }
 //
 //
-//    @GetMapping("/save-customer")
-//    public ModelAndView newRegister(@ModelAttribute("customer") Customer customer, HttpServletRequest request, @ModelAttribute("order") Order order) {
-//        ModelAndView modelAndView = new ModelAndView("giaodien/customer");
-//        HttpSession session = request.getSession();
-////        Order order = (Order) session.getAttribute("order");
-//        modelAndView.addObject("customer", customer);
-//        return modelAndView;
-//    }
+    @GetMapping("/create-customer")
+    public ModelAndView newRegister(@ModelAttribute("customer") Customer customer, HttpServletRequest request, @ModelAttribute("order") Order order) {
+        ModelAndView modelAndView = new ModelAndView("giaodien/customer");
+        HttpSession session = request.getSession();
+//        Order order = (Order) session.getAttribute("order");
+        modelAndView.addObject("customer", customer);
+        return modelAndView;
+    }
 @GetMapping("/addtocard/{id}")
 public ModelAndView addToCard(@PathVariable("id") Integer id, HttpServletRequest request) {
     Integer quantity = 1;
@@ -192,7 +189,7 @@ public ModelAndView addToCard(@PathVariable("id") Integer id, HttpServletRequest
         List<Item> items = order.getItems();
         boolean check = false;
         for (Item item : items) {
-            if (item.getProduct().getId() == product.get().getId()) {
+            if (item.getProduct().getId().equals(id)) {
                 item.setQuantity(item.getQuantity() + 1);
                 check = true;
             }
@@ -219,9 +216,17 @@ public ModelAndView addToCard(@PathVariable("id") Integer id, HttpServletRequest
         List<Item> items = order.getItems();
         if (items.size() != 0) {
             try {
-                for (Item item : items) {
-                    if (item.getId() == id) {
-                        items.remove(item);
+//                for (Item item : items) {
+//                    if (item.getId() == id) {
+//                        items.remove(item);
+//                    }
+//                }
+                Iterator iterator = items.iterator();
+                while (iterator.hasNext()){
+                    Item item = (Item) iterator.next();
+                    if (item.getId().equals(id)) {
+                        iterator.remove();
+                        break;
                     }
                 }
             } catch (ConcurrentModificationException e) {
@@ -235,29 +240,29 @@ public ModelAndView addToCard(@PathVariable("id") Integer id, HttpServletRequest
         return modelAndView;
     }
 
-//    @PostMapping("/save-order")
-//    public ModelAndView saveOrder(HttpServletRequest request, @ModelAttribute Customer customer) {
-//        HttpSession session = request.getSession();
-//        Order order = (Order) session.getAttribute("order");
-//        List<Item> items = (List<Item>) ((Order) session.getAttribute("order")).getItems();
-//        order.setItems(items);
-//        customerService.save(customer);
-//        order.setCustomer(customer);
-//        Date date = new Date();
-//        String currentTime = new SimpleDateFormat("dd/MM/yyyy").format(date);
-//        order.setDateOrder(currentTime);
-//        orderService.save(order);
-//
-//        for (Item item : items) {
-//            item.setOrder(order);
-//            itemService.save(item);
-//        }
-//        session.invalidate();
-//
-//        ModelAndView modelAndView = new ModelAndView("/UI/index");
-//        modelAndView.addObject("message", "Mua hàng thành công. Cửa hàng sẽ liên hệ cho bạn trong thời gian sớm nhất.");
-//        return modelAndView;
-//    }
+    @PostMapping("/save-order")
+    public ModelAndView saveOrder(HttpServletRequest request, @ModelAttribute Customer customer) {
+        HttpSession session = request.getSession();
+        Order order = (Order) session.getAttribute("order");
+        List<Item> items = (List<Item>) ((Order) session.getAttribute("order")).getItems();
+        order.setItems(items);
+        customerService.save(customer);
+        order.setCustomer(customer);
+        Date date = new Date();
+        String currentTime = new SimpleDateFormat("dd/MM/yyyy").format(date);
+        order.setDateOrder(currentTime);
+        orderService.save(order);
+
+        for (Item item : items) {
+            item.setOrder(order);
+            itemService.save(item);
+        }
+        session.invalidate();
+
+        ModelAndView modelAndView = new ModelAndView("/giaodien/index");
+        modelAndView.addObject("message", "Mua hàng thành công. Cửa hàng sẽ liên hệ cho bạn trong thời gian sớm nhất.");
+        return modelAndView;
+    }
 
 
 

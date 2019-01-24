@@ -18,6 +18,17 @@ public class Order {
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
+    private String dateOrder;
+
+    @Column(name = "dateOrder")
+    public String getDateOrder() {
+        return dateOrder;
+    }
+
+    public void setDateOrder(String dateOrder) {
+        this.dateOrder = dateOrder;
+    }
+
     public Order() {
     }
 
