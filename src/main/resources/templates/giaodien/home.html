@@ -64,11 +64,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="col-md-5 top-header-left">
                 <div class="cart box_1">
                     <a href="/checkout">
-                        <div class="total">
-                            <span class="simpleCart_total"></span></div>
+                        <!--<div class="total">-->
+                            <!--<span class="simpleCart_total"></span>-->
+                        <!--</div>-->
                         <img th:src="@{/images/cart-1.png}" alt=""/>
                     </a>
-                    <p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
+                    <!--<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>-->
                     <div class="clearfix"></div>
                 </div>
             </div>
@@ -271,11 +272,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="product-bottom">
                         <h3 th:text="${product.name}"></h3>
                         <p>Explore Now</p>
-                        <h4><a class="item_add" th:href="@{/addtocard/__${product.id}__}"><i></i></a> <span
-                                class=" item_price"><p th:text="${product.unitPrice}"></p></span></h4>
+                        <h4>
+
+                            <span
+                                class=" item_price">
+                                <lable th:text="${product.unitPrice}"></lable><lable> VNĐ</lable>
+                                <!--<p th:text="${product.unitPrice}"></p>-->
+                            </span>
+
+                        </h4>
                         <div style="color: blue" th:if="${not #strings.startsWith(product.promotionPrice,'0')}">đang
                             giảm giá
                         </div>
+                        <a class="item_add" th:href="@{/addtocard/__${product.id}__}" style="background-color: black">
+                            <img th:src="@{/images/cart-1.png}" alt=""/>
+                        </a>
                     </div>
                     <div class="srch">
                         <span>-50%</span>
@@ -345,8 +356,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <h4>The company name,
                         <span>Lorem ipsum dolor,</span>
                         Glasglow Dr 40 Fe 72.</h4>
-                    <h5>+955 123 4567</h5>
-                    <p><a href="mailto:example@email.com">contact@example.com</a></p>
+                    <h5>0976648611</h5>
+                    <p><a href="mailto:example@email.com">havantien95tb@gmail.com</a></p>
                 </div>
                 <div class="clearfix"></div>
             </div>

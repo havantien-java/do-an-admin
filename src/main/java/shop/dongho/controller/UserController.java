@@ -61,7 +61,7 @@ public class UserController {
     }
 //
     @GetMapping("admin/edit-user/{id}")
-    public ModelAndView editUser(@PathVariable Long id) {
+    public ModelAndView editUser(@PathVariable Integer id) {
         Optional<User> user =userService.findById(id);
         if (user != null) {
             ModelAndView modelAndView = new ModelAndView("/user/edit");
@@ -83,7 +83,7 @@ public class UserController {
     }
 //
 //    @GetMapping("delete-user/{id}")
-//    public ModelAndView deleteUser(@PathVariable Long id) {
+//    public ModelAndView deleteUser(@PathVariable Integer id) {
 //        Optional<User> user = userService.findById(id);
 //        if (user != null) {
 //            ModelAndView modelAndView = new ModelAndView("/user/delete");

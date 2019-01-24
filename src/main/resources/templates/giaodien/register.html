@@ -57,11 +57,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="col-md-6 top-header-left">
                 <div class="cart box_1">
                     <a href="checkout.html">
-                        <div class="total">
-                            <span class="simpleCart_total"></span></div>
+                        <!--<div class="total">-->
+                            <!--<span class="simpleCart_total"></span>-->
+                        <!--</div>-->
                         <img src="images/cart-1.png" alt="" />
                     </a>
-                    <p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
+                    <!--<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>-->
                     <div class="clearfix"> </div>
                 </div>
             </div>
@@ -187,41 +188,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <form th:action="@{/save-order}" th:object="${customer}" method="post">
                 <input type="hidden" th:field="*{customer.id}">
                         <table class="table table-hover table-striped" id="res">
-                            <!--<tr>-->
-                                <!--<th>Id</th>-->
-                                <!--<th>Name</th>-->
-                                <!--<th>Image</th>-->
-                                <!--<th>Price</th>-->
-                                <!--<th>Quantity</th>-->
-                                <!--<th>Sub Total</th>-->
-                            <!--</tr>-->
-                            <!--<th:block th:each="item: ${session.order.items}" th:unless="${session == null}" >-->
-                                    <!--&lt;!&ndash;<input th:type="hidden" name="id" th:field="*{id}">&ndash;&gt;-->
-                                <!--<tr>-->
-                                    <!--<td th:text="${item.product.id}"></td>-->
-                                    <!--<td th:text="${item.product.name}"></td>-->
-                                    <!--<td><img th:src="@{/__${item.product.image }__}" height="200px" width="150px"></td>-->
-                                    <!--<td th:text="${item.product.unitPrice}"></td>-->
-                                    <!--<td th:text="${item.quantity}" th:value="${item.quantity}"></td>-->
-                                    <!--<td th:text="${item.product.unitPrice * item.quantity}" class="dongia"></td>-->
-                                <!--</tr>-->
-                            <!--</th:block>-->
-                            <!--<script type="application/javascript">-->
-                                <!--var sum = 0;-->
-                                <!--var table = document.getElementById("res");-->
-                                <!--var ths = table.getElementsByTagName('th');-->
-                                <!--var tds = table.getElementsByClassName('dongia');-->
-                                <!--for(var i=0;i<tds.length;i++){-->
-                                    <!--sum += isNaN(tds[i].innerText) ? 0 : parseInt(tds[i].innerText);-->
-                                <!--}-->
-
-                                <!--var row = table.insertRow(table.rows.length);-->
-                                <!--var cell = row.insertCell(0);-->
-                                <!--cell.setAttribute('colspan', ths.length);-->
-
-                                <!--var totalBalance  = document.createTextNode('SUM ' + sum);-->
-                                <!--cell.appendChild(totalBalance);-->
-                            <!--</script>-->
 
                             <tr>
                                 <td>Ngày đặt hàng</td>
@@ -303,8 +269,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <h4>The company name,
                     <span>Lorem ipsum dolor,</span>
                     Glasglow Dr 40 Fe 72.</h4>
-                <h5>+955 123 4567</h5>
-                <p><a href="mailto:example@email.com">contact@example.com</a></p>
+                <h5>0976648611</h5>
+                <p><a href="mailto:example@email.com">havantien95tb@gmail.com</a></p>
             </div>
             <div class="clearfix"></div>
         </div>

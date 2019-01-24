@@ -7,13 +7,17 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import shop.dongho.model.Item;
 import shop.dongho.model.Producer;
 import shop.dongho.model.Product;
 import shop.dongho.model.ProductType;
+import shop.dongho.service.ItemService;
 import shop.dongho.service.ProducerService;
 import shop.dongho.service.ProductService;
 import shop.dongho.service.ProductTypeService;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.Optional;
 
 @Controller
@@ -27,6 +31,9 @@ public class IndexController {
 
     @Autowired
     private ProductTypeService productTypeService;
+
+    @Autowired
+    private ItemService itemService;
 
 
     @GetMapping("/member/home")
@@ -191,10 +198,33 @@ public class IndexController {
     }
 
     @GetMapping("/checkout")
-    public ModelAndView checkout(Pageable pageable) {
-        Page<Product> products = productService.findAll(pageable);
-        ModelAndView modelAndView = new ModelAndView("/giaodien/checkout");
-        return modelAndView;
+    public ModelAndView checkout(Pageable pageable, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+      if (session.getAttribute("order") == null ){
+
+          Page<Producer> producers = producerService.findAll(pageable);
+          Page<ProductType> productTypes = productTypeService.findAll(pageable);
+
+          ModelAndView modelAndView = new ModelAndView("giaodien/index");
+
+          modelAndView.addObject("producers", producers);
+          modelAndView.addObject("productTypes", productTypes);
+          modelAndView.addObject("message", "Không có sản phảm trong giỏ hàng. Bạn vui lòng về trang chủ để đặt mua sản phẩm");
+
+          return modelAndView;
+
+        } else {
+            Page<Product> products = productService.findAll(pageable);
+            Page<Producer> producers = producerService.findAll(pageable);
+            Page<ProductType> productTypes = productTypeService.findAll(pageable);
+
+            ModelAndView modelAndView = new ModelAndView("giaodien/checkout");
+            modelAndView.addObject("products", products);
+            modelAndView.addObject("producers", producers);
+            modelAndView.addObject("productTypes", productTypes);
+
+            return modelAndView;
+        }
     }
 
     @GetMapping("/search")

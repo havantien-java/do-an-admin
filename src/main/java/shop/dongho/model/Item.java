@@ -27,22 +27,22 @@ public class Item {
     @JoinColumn(name = "product_id")
     private Product product;
 
-    public long getQuantity() {
+    public Integer getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(long quantity) {
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
 
-    private long price;
+    private Integer price;
 
-    private long quantity;
+    private Integer quantity;
 
     public Item() {
     }
 
-    public Item(Product product, long price, long quantity) {
+    public Item(Product product, Integer price, Integer quantity) {
         this.product = product;
         this.price = price;
         this.quantity = quantity;
@@ -68,7 +68,7 @@ public class Item {
         return price;
     }
 
-    public void setPrice(long price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 }
