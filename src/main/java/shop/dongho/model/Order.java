@@ -12,7 +12,7 @@ public class Order {
     @OneToMany(targetEntity = Item.class, mappedBy = "order")
     private List<Item> items;
 
-    private String status;
+    private String status = "chưa xử lý";
 
     @ManyToOne(targetEntity = Customer.class)
     @JoinColumn(name = "customer_id")
