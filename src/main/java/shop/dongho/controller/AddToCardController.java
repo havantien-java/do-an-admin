@@ -10,14 +10,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
-import shop.dongho.model.Customer;
-import shop.dongho.model.Item;
-import shop.dongho.model.Order;
-import shop.dongho.model.Product;
-import shop.dongho.service.CustomerService;
-import shop.dongho.service.ItemService;
-import shop.dongho.service.OrderService;
-import shop.dongho.service.ProductService;
+import shop.dongho.model.*;
+import shop.dongho.service.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -31,17 +25,23 @@ public class AddToCardController {
     private OrderService orderService;
     private ItemService itemService;
     private ProductService productService;
+    private ProducerService producerService;
+    private ProductTypeService productTypeService;
 
 
     @Autowired
     public void setUpController(ProductService productService,
                                 OrderService orderService,
                                 ItemService itemService,
+                                ProducerService producerService,
+                                ProductTypeService productTypeService,
                                 CustomerService customerService) {
         this.productService = productService;
         this.orderService = orderService;
         this.customerService = customerService;
         this.itemService = itemService;
+        this.producerService = producerService;
+        this.productTypeService = productTypeService;
     }
 
 //    @Autowired
@@ -160,11 +160,15 @@ public class AddToCardController {
 //
 //
     @GetMapping("/create-customer")
-    public ModelAndView newRegister(@ModelAttribute("customer") Customer customer, HttpServletRequest request, @ModelAttribute("order") Order order) {
+    public ModelAndView newRegister(@ModelAttribute("customer") Customer customer, HttpServletRequest request, @ModelAttribute("order") Order order, Pageable pageable) {
         ModelAndView modelAndView = new ModelAndView("giaodien/customer");
         HttpSession session = request.getSession();
 //        Order order = (Order) session.getAttribute("order");
+        Page<Producer> producers = producerService.findAll(pageable);
+        Page<ProductType> productTypes = productTypeService.findAll(pageable);
         modelAndView.addObject("customer", customer);
+        modelAndView.addObject("producers", producers);
+        modelAndView.addObject("productTypes", productTypes);
         return modelAndView;
     }
 @GetMapping("/addtocard/{id}")
@@ -210,7 +214,7 @@ public ModelAndView addToCard(@PathVariable("id") Integer id, HttpServletRequest
 }
 
     @GetMapping("/remove-item/{id}")
-    public ModelAndView removeItem(HttpServletRequest request, @PathVariable("id") Integer id) {
+    public ModelAndView removeItem(HttpServletRequest request, @PathVariable("id") Integer id, Pageable pageable) {
         HttpSession session = request.getSession();
         Order order = (Order) session.getAttribute("order");
         List<Item> items = order.getItems();
@@ -233,10 +237,18 @@ public ModelAndView addToCard(@PathVariable("id") Integer id, HttpServletRequest
                 System.out.println("Ơ. Lỗi");
             }
         }
+        if (items.size() == 0) {
+            return new ModelAndView("redirect:/member/home");
+        }
         order.setItems(items);
         session.setAttribute("order", order);
         ModelAndView modelAndView = new ModelAndView("redirect:/checkout");
 //        modelAndView.addObject("session", session);
+        Page<Producer> producers = producerService.findAll(pageable);
+        Page<ProductType> productTypes = productTypeService.findAll(pageable);
+
+        modelAndView.addObject("producers", producers);
+        modelAndView.addObject("productTypes", productTypes);
         return modelAndView;
     }
 
