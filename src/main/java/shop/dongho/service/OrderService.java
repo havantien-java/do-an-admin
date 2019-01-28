@@ -4,6 +4,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import shop.dongho.model.Order;
 
+import javax.xml.crypto.Data;
+import java.util.Date;
 import java.util.Optional;
 
 public interface OrderService {
@@ -14,4 +16,6 @@ public interface OrderService {
     Order save(Order order);
 
     void remove(Integer id);
+
+    Page<Order> findALlByDateOrder(String date, Pageable pageable);
 }
