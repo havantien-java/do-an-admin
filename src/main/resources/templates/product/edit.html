@@ -78,6 +78,12 @@
                         <p>Quản Trị Loại Đồng Hồ</p>
                     </a>
                 </li>
+                <li >
+                    <a href="/admin/list-order">
+                        <i class="pe-7s-science"></i>
+                        <p>Quản Trị Hóa Đơn</p>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
@@ -123,6 +129,10 @@
                             </div>
                             <div class="content table-responsive table-full-width">
 
+                                <th:block th:if="${message}">
+                                    <h1 th:text="${message} " style="color: red"></h1>
+
+                                </th:block>
                                     <form th:action="@{/admin/edit-product}" th:object="${product}" method="post" enctype="multipart/form-data">
                                             <input th:type="hidden" name="id" th:field="*{id}">
                                         <table class="table table-hover table-striped" id="res">
@@ -209,7 +219,7 @@
                                         </tr>
                                         <tr>
                                             <td></td>
-                                            <td><input type="submit" value="Sửa"></td>
+                                            <td><input type="submit" value="Sửa" onclick="alert('Sửa thành công')"></td>
                                         </tr>
                                         </table>
                                     </form>

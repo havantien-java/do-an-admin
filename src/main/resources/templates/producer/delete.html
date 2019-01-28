@@ -121,13 +121,13 @@
                         <p>Quản Trị Thành Viên</p>
                     </a>
                 </li>
-                <li class="active">
+                <li>
                     <a  href="/admin/products">
                         <i class="pe-7s-note2"></i>
                         <p>Quản Lý Sản Phẩm</p>
                     </a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="/admin/producers">
                         <i class="pe-7s-news-paper"></i>
                         <p>Quản Trị Nhà Sản Xuất</p>
@@ -137,6 +137,12 @@
                     <a href="/admin/productTypes">
                         <i class="pe-7s-science"></i>
                         <p>Quản Trị Loại Đồng Hồ</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/list-order">
+                        <i class="pe-7s-science"></i>
+                        <p>Quản Trị Hóa Đơn</p>
                     </a>
                 </li>
             </ul>
@@ -233,7 +239,7 @@
                                 <h4 class="title">Xóa Tên Nhà Sản Xuất</h4>
                             </div>
                             <div class="content table-responsive table-full-width">
-                                <form th:action="@{admin/delete-producer}" th:object="${producer}" method="post">
+                                <form th:action="@{/admin/delete-producer}" th:object="${producer}" method="post">
                                     <input type="hidden" name="id" th:field="*{id}">
                                     <table>
                                         <tr>
@@ -242,7 +248,7 @@
                                         </tr>
                                         <tr>
                                             <td></td>
-                                            <td><input type="submit" value="Xóa Nhà Sản Xuất"></td>
+                                            <td><input type="submit" value="Xóa Nhà Sản Xuất" onclick="alert('Xóa thành công')"></td>
                                         </tr>
                                     </table>
                                 </form>

@@ -124,6 +124,7 @@ public class ProductController {
         if (product != null) {
             ModelAndView modelAndView = new ModelAndView("/product/delete");
             modelAndView.addObject("product", product);
+
             return modelAndView;
         } else {
             ModelAndView modelAndView = new ModelAndView("/error.404");

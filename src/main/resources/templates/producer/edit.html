@@ -1,33 +1,33 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Edit producer</title>
-</head>
-<body>
-<h1>Edit producer</h1>
-<p>
-    <a href="/producers">Category list</a>
-</p>
-<th:block th:if="${message}">
-    <p th:text="${message}"></p>
-</th:block>
-<form th:action="@{/edit-producer}" th:object="${producer}" method="post">
-    <input th:type="hidden" name="id" th:field="*{id}">
-    <table class="table table-hover table-striped" id="res">
-        <tr>
-            <td>Name:</td>
-            <td><input type="text" th:field="*{name}"/></td>
-        </tr>
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<title>Edit producer</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h1>Edit producer</h1>-->
+<!--<p>-->
+    <!--<a href="/producers">Category list</a>-->
+<!--</p>-->
+<!--<th:block th:if="${message}">-->
+    <!--<p th:text="${message}"></p>-->
+<!--</th:block>-->
+<!--<form th:action="@{/edit-producer}" th:object="${producer}" method="post">-->
+    <!--<input th:type="hidden" name="id" th:field="*{id}">-->
+    <!--<table class="table table-hover table-striped" id="res">-->
+        <!--<tr>-->
+            <!--<td>Name:</td>-->
+            <!--<td><input type="text" th:field="*{name}"/></td>-->
+        <!--</tr>-->
 
-        <tr>
-            <td></td>
-            <td><input type="submit" value="Update producer"></td>
-        </tr>
-    </table>
-</form>
-</body>
-</html>
+        <!--<tr>-->
+            <!--<td></td>-->
+            <!--<td><input type="submit" value="Update producer"></td>-->
+        <!--</tr>-->
+    <!--</table>-->
+<!--</form>-->
+<!--</body>-->
+<!--</html>-->
 
 
 <!--<!DOCTYPE html>-->
@@ -121,7 +121,7 @@
                         <p>Quản Trị Thành Viên</p>
                     </a>
                 </li>
-                <li >
+                <li>
                     <a  href="/admin/products">
                         <i class="pe-7s-note2"></i>
                         <p>Quản Lý Sản Phẩm</p>
@@ -137,6 +137,12 @@
                     <a href="/admin/productTypes">
                         <i class="pe-7s-science"></i>
                         <p>Quản Trị Loại Đồng Hồ</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/list-order">
+                        <i class="pe-7s-science"></i>
+                        <p>Quản Trị Hóa Đơn</p>
                     </a>
                 </li>
             </ul>
@@ -234,7 +240,7 @@
                                 <a href="/admin/producers">Quay Lại Trang Danh Sách</a>
                             </div>
                             <div class="content table-responsive table-full-width">
-                                <form th:action="@{admin/edit-producer}" th:object="${producer}" method="post">
+                                <form th:action="@{/admin/edit-producer}" th:object="${producer}" method="post">
                                     <input type="hidden" name="id" th:field="*{id}">
                                     <table>
                                         <tr>
@@ -243,7 +249,7 @@
                                         </tr>
                                         <tr>
                                             <td></td>
-                                            <td><input type="submit" value="Sửa Nhà Sản Xuất"></td>
+                                            <td><input type="submit" value="Sửa Nhà Sản Xuất" onclick="alert('Sửa thành công')"></td>
                                         </tr>
                                     </table>
                                 </form>

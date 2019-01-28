@@ -30,7 +30,7 @@ public class ProductTypeController {
     productTypeService.save(productType);
     ModelAndView modelAndView = new ModelAndView("productType/create");
     modelAndView.addObject("productType", productType);
-    modelAndView.addObject("message","New productType created successfully");
+    modelAndView.addObject("message","Thành Công");
     return modelAndView;
     }
 
@@ -65,7 +65,7 @@ public class ProductTypeController {
         productTypeService.save(productType);
         ModelAndView modelAndView = new ModelAndView("/productType/edit");
         modelAndView.addObject("productType", productType);
-        modelAndView.addObject("message","ProductType update successfully");
+        modelAndView.addObject("message","Thành Công");
         return modelAndView;
     }
 

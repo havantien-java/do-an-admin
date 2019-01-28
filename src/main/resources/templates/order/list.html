@@ -60,7 +60,7 @@
                         <p>Quản Trị Thành Viên</p>
                     </a>
                 </li>
-                <li class="active">
+                <li>
                     <a  href="/admin/products">
                         <i class="pe-7s-note2"></i>
                         <p>Quản Lý Sản Phẩm</p>
@@ -78,7 +78,7 @@
                         <p>Quản Trị Loại Đồng Hồ</p>
                     </a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="/admin/list-order">
                         <i class="pe-7s-science"></i>
                         <p>Quản Trị Hóa Đơn</p>
@@ -176,7 +176,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Danh Sách Sản Phẩm</h4>
+                                <h4 class="title">Danh Sách Hóa Đơn</h4>
                                 <form th:action="@{/admin/search-order}" th:object="${orders}" method="get">
                                     Tìm kiếm hóa đơn :
                                     <input type="text" name="dateOrder">
@@ -187,9 +187,6 @@
 
                                     </th:block>
                                 </form><br/>
-                                <p>
-                                    <a th:href="@{create-product}">Thêm Sản Phẩm</a>
-                                </p>
 
                             </div>
                             <div class="content table-responsive table-full-width">
