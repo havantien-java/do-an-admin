@@ -7,14 +7,8 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import shop.dongho.model.Item;
-import shop.dongho.model.Producer;
-import shop.dongho.model.Product;
-import shop.dongho.model.ProductType;
-import shop.dongho.service.ItemService;
-import shop.dongho.service.ProducerService;
-import shop.dongho.service.ProductService;
-import shop.dongho.service.ProductTypeService;
+import shop.dongho.model.*;
+import shop.dongho.service.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -34,6 +28,9 @@ public class IndexController {
 
     @Autowired
     private ItemService itemService;
+
+    @Autowired
+    private OrderService orderService;
 
 
     @GetMapping("/member/home")
@@ -246,5 +243,7 @@ public class IndexController {
         }
         return modelAndView;
     }
+
+
 
 }

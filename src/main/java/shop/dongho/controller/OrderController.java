@@ -11,7 +11,6 @@ import org.springframework.web.servlet.ModelAndView;
 import shop.dongho.model.Order;
 import shop.dongho.service.OrderService;
 
-import java.util.Date;
 
 @Controller
 @RequestMapping("/admin")
@@ -29,16 +28,23 @@ public class OrderController {
 
     }
 
-    @GetMapping("/search-order/dateOrder")
+    @GetMapping("/search-order")
     public ModelAndView searchDateOrder(Pageable pageable, @ModelAttribute("dateOrder") String dateOrder) {
         Page<Order> orders;
         if (dateOrder == null) {
             orders = orderService.findAll(pageable);
         } else {
             orders = orderService.findALlByDateOrder(dateOrder, pageable);
+
         }
         ModelAndView modelAndView = new ModelAndView("/order/list");
         modelAndView.addObject("orders", orders);
+        if (orders.isEmpty()) {
+            modelAndView.addObject("message", "không có hóa đươn trong ngày này");
+        }
         return modelAndView;
+
     }
+
+
 }

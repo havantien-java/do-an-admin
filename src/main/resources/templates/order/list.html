@@ -177,15 +177,20 @@
                         <div class="card">
                             <div class="header">
                                 <h4 class="title">Danh Sách Sản Phẩm</h4>
-                                <form th:action="@{/search-order}" th:object="${orders}" method="get">
+                                <form th:action="@{/admin/search-order}" th:object="${orders}" method="get">
                                     Tìm kiếm hóa đơn :
                                     <input type="text" name="dateOrder">
                                     <input type="submit" value="Search">
 
+                                    <th:block th:if="${message}">
+                                        <h1 th:text="${message} " style="color: red"></h1>
+
+                                    </th:block>
                                 </form><br/>
                                 <p>
                                     <a th:href="@{create-product}">Thêm Sản Phẩm</a>
                                 </p>
+
                             </div>
                             <div class="content table-responsive table-full-width">
                                 <table class="table table-hover table-striped" id="res">
