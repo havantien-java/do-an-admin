@@ -7,7 +7,6 @@ import shop.dongho.model.Order;
 import shop.dongho.repository.OrderRepository;
 import shop.dongho.service.OrderService;
 
-import java.util.Date;
 import java.util.Optional;
 
 public class OrderServiceImpl implements OrderService {
@@ -30,13 +29,15 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void remove(Integer id) {
+    public Optional<Order> remove(Integer id) {
         orderRepository.deleteById(id);
 
+        return null;
     }
 
     @Override
     public Page<Order> findALlByDateOrder(String date, Pageable pageable) {
         return orderRepository.findALlByDateOrder(date, pageable);
     }
+
 }

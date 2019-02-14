@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -44,121 +43,7 @@ public class AddToCardController {
         this.productTypeService = productTypeService;
     }
 
-//    @Autowired
-//    private OrderDetailsService orderDetailsService;
 
-
-//    @GetMapping("/")
-//    public ModelAndView home() {
-//        ModelAndView modelAndView = new ModelAndView("home");
-//        return modelAndView;
-//    }
-//
-////    @GetMapping("/list")
-////    public ModelAndView list(Pageable pageable) {
-////        Page<Product> products = productService.findAll(pageable);
-////        ModelAndView modelAndView = new ModelAndView("list");
-////        modelAndView.addObject("products", products);
-////        return modelAndView;
-////    }
-//
-//    @GetMapping("/addtocard/{id}")
-//    public ModelAndView addToCard(@PathVariable("id") Integer id, HttpServletRequest request) {
-//        long quantity = 1;
-//        Optional<Product> product = productService.findById(id);
-//        HttpSession session = request.getSession();
-//        if (session.getAttribute("order") == null) {
-//            Order order = new Order();
-//            List<Item> items = new ArrayList<Item>();
-//            Item item = new Item();
-//            item.setId(id);
-//            item.setProduct(product.get());
-//            item.setQuantity(quantity);
-//            item.setPrice(product.get().getUnitPrice());
-//            items.add(item);
-//            order.setItems(items);
-//            session.setAttribute("order", order);
-//        } else {
-//            Order order = (Order) session.getAttribute("order");
-//            List<Item> items = order.getItems();
-//            boolean check = false;
-//            for (Item item : items) {
-//                if (item.getProduct().getId() == product.get().getId()) {
-//                    item.setQuantity(item.getQuantity() + 1);
-//                    check = true;
-//                }
-//            }
-//            if (check == false) {
-//                Item item = new Item();
-//                item.setId(id);
-//                item.setQuantity(quantity);
-//                item.setPrice(product.get().getUnitPrice());
-//                item.setProduct(product.get());
-//                items.add(item);
-//            }
-//            session.setAttribute("order", order);
-//
-//
-//
-//        }
-//        ModelAndView modelAndView = new ModelAndView("redirect:/member/home");
-//        modelAndView.addObject("session", session);
-//        return modelAndView;
-//    }
-//
-//
-//
-//    @PostMapping("/save-order")
-//    public ModelAndView saveOrder(HttpServletRequest request,@ModelAttribute Customer customer) {
-//        HttpSession session = request.getSession();
-//        Order order = (Order) session.getAttribute("order");
-//        List<Item> items = (List<Item>) ((Order) session.getAttribute("order")).getItems();
-//        order.setItems(items);
-//        customerService.save(customer);
-//        order.setCustomer(customer);
-//        orderService.save(order);
-//
-//        for (Item item : items) {
-//            item.setOrder(order);
-//            itemService.save(item);
-//        }
-////        customerService.save(customer);
-//        session.invalidate();
-//
-//
-//        ModelAndView modelAndView = new ModelAndView("/giaodien/index");
-////        modelAndView.addObject("customer", customer);
-//        modelAndView.addObject("message", "Bạn đã đặt hàng thành công");
-//        return modelAndView;
-//    }
-//
-//    @GetMapping("/delete-item/{id}")
-//    public ModelAndView removeItem(HttpServletRequest request, @PathVariable("id") Integer id) {
-////        Optional<Product> product = productService.findById(id);
-//        HttpSession session = request.getSession();
-//        Order order = (Order) session.getAttribute("order");
-//        List<Item> items = order.getItems();
-//        if (items.size() != 0) {
-//            try {
-//                for (Item item : items) {
-//                    if (item.getId() == id) {
-//                        items.remove(item);
-//                    }
-//                }
-//
-//            } catch (ConcurrentModificationException e) {
-//                System.out.println("lỗi");
-//            }
-//        }
-//
-//        order.setItems(items);
-//        session.setAttribute("order", order);
-//        ModelAndView modelAndView = new ModelAndView("redirect:/checkout");
-//
-//        return modelAndView;
-//    }
-//
-//
     @GetMapping("/create-customer")
     public ModelAndView newRegister(@ModelAttribute("customer") Customer customer, HttpServletRequest request, @ModelAttribute("order") Order order, Pageable pageable) {
         ModelAndView modelAndView = new ModelAndView("giaodien/customer");

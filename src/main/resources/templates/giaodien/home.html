@@ -236,25 +236,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <th:block th:if="${message}">
                         <h1 th:text="${message} " style="color: red"></h1>
                     </th:block>
-
-                    <!--<th:block th:each="product : ${products}">-->
-
-                    <!--<div class="col-md-3 product-left" style="margin-top: 50px">-->
-                    <!--<div class="product-main simpleCart_shelfItem">-->
-                    <!--<a th:href="@{/list-product/__${product.id}__}" class="mask"><img-->
-                    <!--th:src="@{/__${product.image }__}" height="200px" width="150px"></a>-->
-                    <!--<div class="product-bottom">-->
-                    <!--<h3 th:text="${product.name}"></h3>-->
-                    <!--<p>Explore Now</p>-->
-                    <!--<h4><a class="item_add" th:href="@{/addtocard/__${product.id}__}"><i></i></a> <span-->
-                    <!--class=" item_price"><p th:text="${product.unitPrice}"></p></span></h4>-->
-                    <!--</div>-->
-                    <!--<div class="srch">-->
-                    <!--<span>-50%</span>-->
-                    <!--</div>-->
-                    <!--</div>-->
-                    <!--</div>-->
-                    <!--</th:block>-->
                 </div>
             </div>
         </div>
@@ -276,7 +257,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                             <span
                                 class=" item_price">
-                                <lable th:text="${product.unitPrice}"></lable><lable> VNĐ</lable>
+                                <lable th:text="${product.unitPrice}"></lable><lable> VNĐ </lable>
                                 <!--<p th:text="${product.unitPrice}"></p>-->
                             </span>
 

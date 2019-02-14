@@ -14,4 +14,6 @@ public interface ItemService {
     Item save(Item item);
 
     void remove(Integer id);
+
+    Page<Item> findAllByOrder_Id(Integer id, Pageable pageable);
 }

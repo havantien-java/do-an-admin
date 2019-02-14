@@ -1,65 +1,3 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
-<!--<head>-->
-    <!--<meta charset="UTF-8">-->
-    <!--<title>Edit producer</title>-->
-<!--</head>-->
-<!--<body>-->
-<!--<h1>Edit producer</h1>-->
-<!--<p>-->
-    <!--<a href="/producers">Category list</a>-->
-<!--</p>-->
-<!--<th:block th:if="${message}">-->
-    <!--<p th:text="${message}"></p>-->
-<!--</th:block>-->
-<!--<form th:action="@{/edit-producer}" th:object="${producer}" method="post">-->
-    <!--<input th:type="hidden" name="id" th:field="*{id}">-->
-    <!--<table class="table table-hover table-striped" id="res">-->
-        <!--<tr>-->
-            <!--<td>Name:</td>-->
-            <!--<td><input type="text" th:field="*{name}"/></td>-->
-        <!--</tr>-->
-
-        <!--<tr>-->
-            <!--<td></td>-->
-            <!--<td><input type="submit" value="Update producer"></td>-->
-        <!--</tr>-->
-    <!--</table>-->
-<!--</form>-->
-<!--</body>-->
-<!--</html>-->
-
-
-<!--<!DOCTYPE html>-->
-<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
-<!--<head>-->
-<!--<meta charset="UTF-8">-->
-<!--<title>Create</title>-->
-<!--</head>-->
-<!--<body>-->
-<!--<h1>Create </h1>-->
-<!--<p>-->
-<!--<a href="admin/producers">producer list</a>-->
-<!--</p>-->
-<!--<th:block th:if="${message}">-->
-<!--<p th:text="${message}"></p>-->
-<!--</th:block>-->
-<!--<form th:action="@{admin/create-producer}" th:object="${producer}" method="post">-->
-<!--<table>-->
-<!--<tr>-->
-<!--<td>Name:</td>-->
-<!--<td><input type="text" th:field="*{name}"/></td>-->
-<!--</tr>-->
-<!--<tr>-->
-<!--<td></td>-->
-<!--<td><input type="submit" value="Create Producer"></td>-->
-<!--</tr>-->
-<!--</table>-->
-<!--</form>-->
-<!--</body>-->
-<!--</html>-->
-
-
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -104,13 +42,13 @@
         <div class="sidebar-wrapper">
             <div class="logo">
                 <a href="http://www.creative-tim.com" class="simple-text">
-                    ADMIN
+                    Xin Chào ADMIN
                 </a>
             </div>
 
             <ul class="nav">
                 <li>
-                    <a href="bills">
+                    <a href="/admin/over-view">
                         <i class="pe-7s-graph"></i>
                         <p>Tổng Quan</p>
                     </a>

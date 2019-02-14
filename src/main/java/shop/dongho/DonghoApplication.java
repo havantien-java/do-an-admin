@@ -33,11 +33,6 @@ public class DonghoApplication {
 	}
 
 	@Bean
-	public BillService billService() {
-		return new BillServiceImpl();
-	}
-
-	@Bean
 	public ProductTypeService productTypeService() {
 		return new ProductTypeServiceImpl();
 	}
@@ -45,11 +40,6 @@ public class DonghoApplication {
 	@Bean
 	public CustomerService customerService() {
 		return new CustomerServiceImpl();
-	}
-
-	@Bean
-	public BillDetailService billDetailService() {
-		return new BillDetailServiceImpl();
 	}
 
 	@Bean

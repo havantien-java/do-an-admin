@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -42,13 +43,13 @@
         <div class="sidebar-wrapper">
             <div class="logo">
                 <a href="http://www.creative-tim.com" class="simple-text">
-                    Xin Chào ADMIN
+                    ADMIN
                 </a>
             </div>
 
             <ul class="nav">
                 <li>
-                    <a href="/admin/over-view">
+                    <a href="bills">
                         <i class="pe-7s-graph"></i>
                         <p>Tổng Quan</p>
                     </a>
@@ -65,7 +66,7 @@
                         <p>Quản Lý Sản Phẩm</p>
                     </a>
                 </li>
-                <li class="active">
+                <li>
                     <a href="/admin/producers">
                         <i class="pe-7s-news-paper"></i>
                         <p>Quản Trị Nhà Sản Xuất</p>
@@ -77,7 +78,7 @@
                         <p>Quản Trị Loại Đồng Hồ</p>
                     </a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="/admin/list-order">
                         <i class="pe-7s-science"></i>
                         <p>Quản Trị Hóa Đơn</p>
@@ -158,9 +159,10 @@
                         <!--</ul>-->
                         <!--</li>-->
                         <li style="text-align: right">
-                            <a href="#">
-                                <p>Log out</p>
-                            </a>
+                            <form th:action="@{/logout}" method="post">
+                                <button class="btn btn-lg btn-primary btn-block" name="Submit" value="Logout" type="submit"
+                                        th:text="Logout"></button>
+                            </form>
                         </li>
                         <li class="separator hidden-lg hidden-md"></li>
                     </ul>
@@ -174,22 +176,85 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Xóa Tên Nhà Sản Xuất</h4>
+                                <h4 class="title">Sửa Hóa Đơn</h4>
                             </div>
                             <div class="content table-responsive table-full-width">
-                                <form th:action="@{/admin/delete-producer}" th:object="${producer}" method="post">
-                                    <input type="hidden" name="id" th:field="*{id}">
-                                    <table class="table table-hover table-striped" id="res">
+                                <table class="table table-hover table-striped">
+                                    <form th:action="@{/admin/edit-order}" th:object="${order}" method="post">
                                         <tr>
-                                            <td>Name:</td>
-                                            <td><input type="text" th:field="*{name}"/></td>
+                                            <td>Mã đơn hàng: </td>
+                                            <td><input type="text" th:field="*{id}" hidden>
+                                                <input type="text" th:field="*{id}" disabled></td>
                                         </tr>
                                         <tr>
+                                            <td>Ngày đặt hàng: </td>
+                                            <td><input type="text" th:field="*{dateOrder}" hidden>
+                                                <input type="text" th:field="*{dateOrder}" disabled></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tên khách hàng: </td>
+                                            <td><input type="text" th:field="*{customer.id}" hidden>
+                                                <input type="text" th:field="*{customer.name}" disabled></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Trạng thái: </td>
+                                            <td>
+                                                <select th:field="*{status}" style="width: 28%">
+                                                    <option value="đã xử lý">đã xử lý</option>
+                                                    <option value="chưa xử lý">chưa xử lý</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <table class="table table-hover table-striped" style="text-align: left" id="res">
+                                                <thead>
+                                                <th>ID</th>
+                                                <th>Sản Phẩm</th>
+                                                <th>Giá</th>
+                                                <th>Số Lượng</th>
+                                                <th>KM</th>
+                                                <th>Đơn Giá</th>
+                                                </thead>
+                                                <tbody>
+                                                <th:block th:each="item: ${items}">
+                                                    <tr>
+                                                        <td scope="row" th:text="${item.product.id}"></td>
+                                                        <td><span th:text="${item.product.name}"></span></td>
+
+                                                        <td th:text="${item.product.unitPrice}"></td>
+                                                        <td>
+                                                            <span th:text="${item.quantity}" th:value="${item.quantity}"></span>
+                                                        </td>
+                                                        <td><span th:text="${item.product.promotionPrice}"></span>%</td>
+
+                                                        <td th:text="${item.product.unitPrice * item.quantity - item.product.unitPrice * item.quantity * item.product.promotionPrice / 100}" class="dongia"></td>
+                                                    </tr>
+                                                </th:block>
+                                                </tbody>
+                                            </table>
+                                            <script type="application/javascript">
+                                                var sum = 0;
+                                                var table = document.getElementById("res");
+                                                var ths = table.getElementsByTagName('th');
+                                                var tds = table.getElementsByClassName('dongia');
+                                                for(var i=0;i<tds.length;i++){
+                                                    sum += isNaN(tds[i].innerText) ? 0 : parseInt(tds[i].innerText);
+                                                }
+                                                var row = table.insertRow(table.rows.length);
+                                                var cell = row.insertCell(0);
+                                                cell.setAttribute('colspan', ths.length);
+                                                var totalBalance  = document.createTextNode('Tổng tiền: ' + sum + ' VNĐ');
+                                                cell.appendChild(totalBalance);
+                                            </script>
+                                        </tr>
+                                        <tr>
+                                            <td onclick="myFunction()"><input type="submit" value="Save Bill" style="width: 117px; height: 35px; float: left;"></td>
                                             <td></td>
-                                            <td><input type="submit" value="Xóa Nhà Sản Xuất" onclick="alert('Xóa thành công')"></td>
                                         </tr>
-                                    </table>
-                                </form>
+                                    </form>
+
+                                </table>
+
                             </div>
                         </div>
                     </div>

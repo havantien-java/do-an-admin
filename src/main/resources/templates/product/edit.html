@@ -43,13 +43,13 @@
         <div class="sidebar-wrapper">
             <div class="logo">
                 <a href="http://www.creative-tim.com" class="simple-text">
-                    ADMIN
+                    Xin Chào ADMIN
                 </a>
             </div>
 
             <ul class="nav">
                 <li>
-                    <a href="bills">
+                    <a href="/admin/over-view">
                         <i class="pe-7s-graph"></i>
                         <p>Tổng Quan</p>
                     </a>
@@ -128,11 +128,10 @@
                                 <a href="/admin/products">Quay Lại Trang Danh Sách</a>
                             </div>
                             <div class="content table-responsive table-full-width">
+                                <!--<th:block th:if="${message}">-->
+                                    <!--<h1 th:text="${message} " style="color: red"></h1>-->
 
-                                <th:block th:if="${message}">
-                                    <h1 th:text="${message} " style="color: red"></h1>
-
-                                </th:block>
+                                <!--</th:block>-->
                                     <form th:action="@{/admin/edit-product}" th:object="${product}" method="post" enctype="multipart/form-data">
                                             <input th:type="hidden" name="id" th:field="*{id}">
                                         <table class="table table-hover table-striped" id="res">
