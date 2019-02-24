@@ -98,6 +98,53 @@ public ModelAndView addToCard(@PathVariable("id") Integer id, HttpServletRequest
     return modelAndView;
 }
 
+    @GetMapping("/increase-item/{id}")
+    public ModelAndView increaseItem(HttpServletRequest request, @PathVariable("id") Integer id) {
+        HttpSession session = request.getSession();
+        Order order = (Order) session.getAttribute("order");
+        List<Item> items = order.getItems();
+        if (items.size() != 0) {
+            try {
+                for (Item item : items) {
+                    if (item.getId().equals(id)) {
+                        item.setQuantity(item.getQuantity()+1);
+                    }
+                }
+            } catch (ConcurrentModificationException e) {
+                System.out.println("Ơ. Lỗi");
+            }
+        }
+        order.setItems(items);
+        session.setAttribute("order", order);
+        ModelAndView modelAndView = new ModelAndView("redirect:/checkout");
+        return modelAndView;
+    }
+
+    @GetMapping("/decrease-item/{id}")
+    public ModelAndView decreaseItem(HttpServletRequest request, @PathVariable("id") Integer id) {
+        HttpSession session = request.getSession();
+        Order order = (Order) session.getAttribute("order");
+        List<Item> items = order.getItems();
+        if (items.size() != 0) {
+            try {
+                for (Item item : items) {
+                    if (item.getId().equals(id)) {
+                        item.setQuantity(item.getQuantity()-1);
+                        if (item.getQuantity() == 0) {
+                            items.remove(item);
+                        }
+                    }
+                }
+            } catch (ConcurrentModificationException e) {
+                System.out.println("Ơ. Lỗi");
+            }
+        }
+        order.setItems(items);
+        session.setAttribute("order", order);
+        ModelAndView modelAndView = new ModelAndView("redirect:/checkout");
+        return modelAndView;
+    }
+
     @GetMapping("/remove-item/{id}")
     public ModelAndView removeItem(HttpServletRequest request, @PathVariable("id") Integer id, Pageable pageable) {
         HttpSession session = request.getSession();

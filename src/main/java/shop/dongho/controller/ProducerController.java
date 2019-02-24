@@ -9,7 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import shop.dongho.model.Producer;
+import shop.dongho.model.Product;
 import shop.dongho.service.ProducerService;
+import shop.dongho.service.ProductService;
 
 import java.util.Optional;
 
@@ -19,6 +21,9 @@ import java.util.Optional;
 public class ProducerController {
     @Autowired
     private ProducerService producerService;
+
+    @Autowired
+    private ProductService productService;
 
     @GetMapping("/create-producer")
     public ModelAndView showCreateProducer() {
@@ -85,7 +90,11 @@ public class ProducerController {
     }
 
     @PostMapping("/delete-producer")
-    public String deleteProducer(@ModelAttribute("producer") Producer producer){
+    public String deleteProducer(@ModelAttribute("producer") Producer producer, Pageable pageable){
+        Page<Product> products = productService.findAllByProducer_Id(producer.getId(), pageable);
+        for (Product product : products) {
+            productService.remove(product.getId());
+        }
         producerService.remove(producer.getId());
         return "redirect:producers";
     }

@@ -50,10 +50,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="col-md-6 top-header-left">
 					<div class="cart box_1">
-						<a href="checkout.html">
+						<a href="/checkout">
 							<!--<div class="total">-->
 								<!--<span class="simpleCart_total"></span></div>-->
-								<img src="images/cart-1.png" alt="" />
+							<div style="float: right; padding-left:50px">
+								<img th:src="@{/images/cart-1.png}" />
+								<th:block th:if="${size}">
+									<span th:text="${'('+size+')'}" style="color: red; font-size: small"></span>
+								</th:block>
+							</div>
 						</a>
 						<!--<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>-->
 						<div class="clearfix"> </div>
@@ -201,8 +206,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<td th:field th:text="${item.product.name}"></td>
 								<td><img th:src="@{/__${item.product.image }__}" height="200px" width="150px"></td>
 								<td th:text="${item.product.unitPrice}"></td>
-								<td th:text="${item.quantity}" th:value="${item.quantity}"></td>
+								<!--<td th:text="${item.quantity}" th:value="${item.quantity}"></td>-->
+								<td>
+									<a th:href="@{/decrease-item/__${item.product.id}__ }">-</a>
+									<span th:text="${item.quantity}" th:value="${item.quantity}"></span>
+									<a th:href="@{/increase-item/__${item.product.id}__ }">+</a>
+								</td>
 								<td th:text="${item.product.promotionPrice}">%</td>
+
 								<td th:text="${item.product.unitPrice * item.quantity - item.product.unitPrice * item.quantity * item.product.promotionPrice / 100}" class="dongia"></td>
 								<td><a th:href="@{/remove-item/__${item.product.id}__ }">Xóa</a></td>
 							</tr>

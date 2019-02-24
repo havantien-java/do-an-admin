@@ -126,7 +126,7 @@
                                 <h4 class="title">Danh Sách Hóa Đơn</h4>
                                 <form th:action="@{/admin/search-order}" th:object="${orders}" method="get">
                                     Tìm kiếm hóa đơn :
-                                    <input type="text" name="dateOrder">
+                                    <input type="text" name="dateOrder" placeholder="dd/mm/yyyy">
                                     <input type="submit" value="Search">
 
                                     <th:block th:if="${message}">
@@ -153,8 +153,9 @@
                                             <td th:text="${istart.index + 1}"></td>
                                             <td><a th:href="@{/admin/edit-order/__${order.id}__}"><span th:text="${order.id}"></span></a></td>
 
-                                            <td th:if="${not #strings.startsWith(order.status,'đ')}"><span th:text="${order.status}" style="color: red"></span></td>
-                                            <td th:if="${not #strings.startsWith(order.status,'c')}"><span th:text="${order.status}" style="color: blue"></span></td>
+                                            <td th:if="${ #strings.startsWith(order.status,'đã xử lý')}"><span th:text="${order.status}" style="color: red"></span></td>
+                                            <td th:if="${ #strings.startsWith(order.status,'c')}"><span th:text="${order.status}" style="color: blue"></span></td>
+                                            <td th:if="${ #strings.startsWith(order.status,'đã hủy')}"><span th:text="${order.status}" style="color: red"></span></td>
                                             <td th:text="${order.dateOrder}"></td>
                                             <td th:text="${order.customer.id}"></td>
                                             <td><a onclick="myfunction" th:href="@{/admin/delete-order/__${order.id}__}">Xóa</a></td>
