@@ -30,6 +30,7 @@ public class OverViewController {
 
     @Autowired
     private UserService userService;
+
     @GetMapping("/over-view")
     public ModelAndView overView(Pageable pageable) {
         int count = 0, count1 = 0, count2 = 0, count3 = 0;
@@ -38,21 +39,21 @@ public class OverViewController {
             count++;
         }
         Page<Producer> producers = producerService.findAll(pageable);
-        for (Producer producer : producers){
+        for (Producer producer : producers) {
             count1++;
         }
         Page<ProductType> productTypes = productTypeService.findAll(pageable);
-        for (ProductType productType : productTypes){
+        for (ProductType productType : productTypes) {
             count2++;
         }
         Page<User> users = userService.findAll(pageable);
-        for (User user : users){
+        for (User user : users) {
             count3++;
         }
         ModelAndView modelAndView = new ModelAndView("/overview/view");
         modelAndView.addObject("count", count);
         modelAndView.addObject("count1", count1);
-        modelAndView.addObject("count2",count2);
+        modelAndView.addObject("count2", count2);
         modelAndView.addObject("count3", count3);
 
         return modelAndView;

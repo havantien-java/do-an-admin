@@ -7,7 +7,9 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import shop.dongho.model.Product;
 import shop.dongho.model.ProductType;
+import shop.dongho.service.ProductService;
 import shop.dongho.service.ProductTypeService;
 
 import java.util.Optional;
@@ -17,6 +19,9 @@ import java.util.Optional;
 public class ProductTypeController {
     @Autowired
     private ProductTypeService productTypeService;
+
+    @Autowired
+    private ProductService productService;
 
     @GetMapping("/create-productType")
     public ModelAndView showCreateProductType() {
@@ -83,7 +88,11 @@ public class ProductTypeController {
     }
 
     @PostMapping("/delete-productType")
-    public String deleteProductType(@ModelAttribute("productType") ProductType productType){
+    public String deleteProductType(@ModelAttribute("productType") ProductType productType, Pageable pageable){
+        Page<Product> products = productService.findAllByProductType_Id(productType.getId(), pageable);
+        for (Product product : products) {
+            productService.remove(product.getId());
+        }
         productTypeService.remove(productType.getId());
         return "redirect:productTypes";
     }
